@@ -1309,7 +1309,11 @@
       },
       {
         "domain_suffix": [
-          "ir"
+          ".ir",
+          "cloudflare.com",
+          "cloudflareinsights.com",
+          "appcenter.ms",
+          "github.com"
         ],
         "outbound": "bypass"
       },
