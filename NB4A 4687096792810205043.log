@@ -83,6 +83,7 @@
       "sniff_override_destination": false,
       "stack": "system",
       "tag": "tun-in",
+      "auto_route": true,
       "type": "tun"
     },
     {
