@@ -1,6 +1,6 @@
-profile-title: base64:VFZDIHwgTUlY
-profile-update-interval: 1
-subscription-userinfo: upload=500; download=500; total=10737418240000000; expire=2546249531
+#profile-title: base64:VFZDIHwgTUlY
+#profile-update-interval: 1
+#subscription-userinfo: upload=500; download=500; total=10737418240000000; expire=2546249531
 #support-url: https://t.me/v2raycollector
 profile-web-page-url: https://github.com/aghilechresh83
 
