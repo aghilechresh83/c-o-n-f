@@ -34,12 +34,12 @@
     ],
     "rules": [
       {
-        "domain": "google.com",
-        "server": "dns-direct"
+        "domain": "google",
+        "server": "dns-fake"
       },
       {
         "inbound": "tun-in",
-        "server": "dns-remote"
+        "server": "dns-fake"
       }
     ],
     "fakeip": {
