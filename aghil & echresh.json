@@ -23,7 +23,7 @@
     "dns": {
         "servers": [
             {
-                "address": "114.114.114.114,
+                "address": "114.114.114.114",
                 "address_resolver": "dns-direct",
                 "strategy": "ipv4_only",
                 "tag": "dns-remote"
