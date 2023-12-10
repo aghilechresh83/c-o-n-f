@@ -1,79 +1,116 @@
 {
   "log": {
-    "disabled": false,
     "level": "fatal",
     "timestamp": true
   },
-  "experimental": {
-    "clash_api": {
-      "external_controller": "0.0.0.0:9090",
-      "external_ui": "yacd",
-      "external_ui_download_url": "https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
-      "external_ui_download_detour": "direct",
-      "secret": "",
-      "default_mode": "rule"
-    }
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns-remote",
+        "address": "https://1.1.1.1/dns-query",
+        "address_resolver": "dns-direct",
+        "strategy": "ipv4_only"
+      },
+      {
+        "tag": "dns-direct",
+        "address": "8.8.8.8",
+        "address_resolver": "dns-local",
+        "strategy": "ipv4_only",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns-local",
+        "address": "local",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns-block",
+        "address": "rcode://success"
+      },
+      {
+        "tag": "dns-fake",
+        "address": "fakeip",
+        "strategy": "ipv4_only"
+      }
+    ],
+    "rules": [
+      {
+        "geosite": "category-ads-all",
+        "server": "dns-block",
+        "disable_cache": true
+      },
+      {
+        "domain_suffix": [
+          "appcenter.ms",
+          "firebase.io",
+          "crashlytics.com"
+        ],
+        "server": "dns-direct",
+        "disable_cache": true
+      },
+      {
+        "inbound": "tun-in",
+        "domain_suffix": "googleapis.cn",
+        "server": "dns-remote"
+      },
+      {
+        "domain_suffix": "googleapis.cn",
+        "server": "dns-direct"
+      },
+      {
+        "geosite": "cn",
+        "server": "dns-remote"
+      },
+      {
+        "geosite": "ir",
+        "server": "dns-direct"
+      },
+      {
+        "inbound": "tun-in",
+        "server": "dns-remote",
+        "disable_cache": true
+      }
+    ],
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    },
+    "independent_cache": true
   },
   "inbounds": [
     {
+      "type": "direct",
+      "tag": "dns-in",
       "listen": "0.0.0.0",
       "listen_port": 6450,
       "override_address": "8.8.4.4",
-      "override_port": 53,
-      "tag": "dns-in",
-      "type": "direct"
+      "override_port": 53
     },
     {
       "type": "tun",
       "tag": "tun-in",
-      "domain_strategy": "",
       "interface_name": "tun0",
-      "inet4_address": "172.19.0.1/30",
       "mtu": 1500,
+      "inet4_address": "172.19.0.1/30",
       "auto_route": true,
       "strict_route": true,
       "stack": "system",
-      "endpoint_independent_nat": false,
-      "sniff": true,
-      "sniff_override_destination": false
+      "sniff": true
     },
     {
-      "domain_strategy": "",
+      "type": "mixed",
+      "tag": "mixed-in",
       "listen": "0.0.0.0",
       "listen_port": 2080,
-      "sniff": true,
-      "sniff_override_destination": false,
-      "tag": "mixed-in",
-      "type": "mixed"
+      "sniff": true
     }
   ],
   "outbounds": [
     {
-      "tag": "proxy",
-      "type": "selector",
-      "outbounds": [
-        "URL-TEST | رایگان",
-        "GB🇬🇧",
-        "BY🇧🇾",
-        "UA🇺🇦",
-        "TR🇹🇷",
-        "SE🇸🇪",
-        "SG🇸🇬",
-        "RU🇷🇺",
-        "NL🇳🇱",
-        "JP🇯🇵",
-        "IS🇮🇸",
-        "DE🇩🇪",
-        "US🇺🇸",
-        "CH🇨🇭"
-      ]
-    },
-    {
-      "tag": "URL-TEST | رایگان",
       "type": "urltest",
+      "tag": "proxy",
       "outbounds": [
-        "رایگان | SS | @vmess_vless_v2rayng | GB🇬🇧 | 0️⃣1️⃣",
-        "رایگان | SS | @VmessProtocol | GB🇬🇧 | 0️⃣1️⃣",
         "رایگان | SS | @VmessProtocol | GB🇬🇧 | 0️⃣2️⃣",
         "رایگان | SS | @VmessProtocol | GB🇬🇧 | 0️⃣4️⃣",
         "رایگان | SS | @VmessProtocol | BY🇧🇾 | 0️⃣3️⃣",
@@ -90,359 +127,647 @@
         "رایگان | SS | @forwardv2ray | IS🇮🇸 | 0️⃣1️⃣",
         "رایگان | SS | @FAKEOFTVC | DE🇩🇪 | 0️⃣1️⃣",
         "رایگان | SS | @FAKEOFTVC | US🇺🇸 | 0️⃣3️⃣",
-        "رایگان | SS | @FAKEOFTVC | CH🇨🇭 | 0️⃣4️⃣"
+        "رایگان | SS | @FAKEOFTVC | CH🇨🇭 | 0️⃣4️⃣",
+        "رایگان | VLESS | @customv2ray | CA🇨🇦 | 0️⃣2️⃣",
+        "رایگان | VMESS | @FreakConfig | NO🇳🇴 | 0️⃣7️⃣",
+        "رایگان | VLESS | @customv2ray | CA🇨🇦 | 0️⃣3️⃣",
+        "رایگان | VLESS | @customv2ray | CA🇨🇦 | 0️⃣5️⃣",
+        "رایگان | VLESS | @https_config_injector | NL🇳🇱 | 0️⃣7️⃣",
+        "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣1️⃣",
+        "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣2️⃣",
+        "رایگان | VLESS | @vmess_vless_v2rayng | NL🇳🇱 | 0️⃣3️⃣",
+        "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣3️⃣",
+        "رایگان | VLESS | @vmess_vless_v2rayng | CA🇨🇦 | 0️⃣4️⃣",
+        "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣6️⃣",
+        "رایگان | VLESS | @vmess_vless_v2rayng | NL🇳🇱 | 0️⃣5️⃣",
+        "رایگان | TUIC | @azadi_az_inja_migzare | NL🇳🇱 | 0️⃣2️⃣",
+        "رایگان | TROJAN | @yaney_01 | HK🇭🇰 | 0️⃣1️⃣",
+        "رایگان | VLESS | @v2rayngvpn | CA🇨🇦 | 0️⃣7️⃣",
+        "رایگان | VLESS | @FalconPolV2rayNG | CA🇨🇦 | 0️⃣2️⃣",
+        "رایگان | VLESS | @mahvarehnewssat | CA🇨🇦 | 0️⃣2️⃣",
+        "رایگان | VLESS | @ShadowProxy66 | US🇺🇸 | 0️⃣1️⃣",
+        "رایگان | VLESS | @ShadowProxy66 | US🇺🇸 | 0️⃣2️⃣",
+        "رایگان | VLESS | @ShadowProxy66 | US🇺🇸 | 0️⃣3️⃣",
+        "رایگان+|+SS+|+@V2rayCollectorDonate+|+NL🇳🇱+|+0️⃣1️⃣"
       ],
       "url": "https://www.gstatic.com/generate_204",
-      "interval": "1m",
+      "interval": "1m0s",
       "tolerance": 20
     },
     {
-      "tag": "GB🇬🇧",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @vmess_vless_v2rayng | GB🇬🇧 | 0️⃣1️⃣",
-        "رایگان | SS | @VmessProtocol | GB🇬🇧 | 0️⃣1️⃣",
-        "رایگان | SS | @VmessProtocol | GB🇬🇧 | 0️⃣2️⃣",
-        "رایگان | SS | @VmessProtocol | GB🇬🇧 | 0️⃣4️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "2m",
-      "tolerance": 20
-    },
-    {
-      "tag": "BY🇧🇾",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @VmessProtocol | BY🇧🇾 | 0️⃣3️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "2m",
-      "tolerance": 20
-    },
-    {
-      "tag": "UA🇺🇦",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @OutlineVpnOfficial | UA🇺🇦 | 0️⃣1️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "1m",
-      "tolerance": 50
-    },
-    {
-      "tag": "TR🇹🇷",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @OutlineVpnOfficial | TR🇹🇷 | 0️⃣2️⃣",
-        "رایگان | SS | @FAKEOFTVC | TR🇹🇷 | 0️⃣6️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
-    },
-    {
-      "tag": "SE🇸🇪",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @OutlineVpnOfficial | SE🇸🇪 | 0️⃣3️⃣",
-        "رایگان | SS | @FAKEOFTVC | SE🇸🇪 | 0️⃣5️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
-    },
-    {
-      "tag": "SG🇸🇬",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @OutlineVpnOfficial | SG🇸🇬 | 0️⃣4️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
-    },
-    {
-      "tag": "RU🇷🇺",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @OutlineVpnOfficial | RU🇷🇺 | 0️⃣5️⃣",
-        "رایگان | SS | @FAKEOFTVC | RU🇷🇺 | 0️⃣2️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
-    },
-    {
-      "tag": "NL🇳🇱",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @OutlineVpnOfficial | NL🇳🇱 | 0️⃣6️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
-    },
-    {
-      "tag": "JP🇯🇵",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @OutlineVpnOfficial | JP🇯🇵 | 0️⃣7️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
-    },
-    {
-      "tag": "IS🇮🇸",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @forwardv2ray | IS🇮🇸 | 0️⃣1️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
-    },
-    {
-      "tag": "DE🇩🇪",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @FAKEOFTVC | DE🇩🇪 | 0️⃣1️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
-    },
-    {
-      "tag": "US🇺🇸",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @FAKEOFTVC | US🇺🇸 | 0️⃣3️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
-    },
-    {
-      "tag": "CH🇨🇭",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @FAKEOFTVC | CH🇨🇭 | 0️⃣4️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
-    },
-    {
-      "tag": "رایگان | SS | @vmess_vless_v2rayng | GB🇬🇧 | 0️⃣1️⃣",
       "type": "shadowsocks",
-      "server": "13.87.75.155",
-      "server_port": 46130,
-      "method": "chacha20-ietf-poly1305",
-      "password": "mTypilmjidrr6dQYaOGHf7",
-      "plugin": "",
-      "plugin_opts": ""
-    },
-    {
-      "tag": "رایگان | SS | @VmessProtocol | GB🇬🇧 | 0️⃣1️⃣",
-      "type": "shadowsocks",
-      "server": "13.87.74.71",
-      "server_port": 14564,
-      "method": "chacha20-ietf-poly1305",
-      "password": "Q1qlRknoN9PwGeExWVyTKg",
-      "plugin": "",
-      "plugin_opts": ""
-    },
-    {
       "tag": "رایگان | SS | @VmessProtocol | GB🇬🇧 | 0️⃣2️⃣",
-      "type": "shadowsocks",
       "server": "51.142.92.199",
       "server_port": 44934,
       "method": "chacha20-ietf-poly1305",
-      "password": "cg9gKWbWgJ8aj3FfUN6Ztu",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "cg9gKWbWgJ8aj3FfUN6Ztu"
     },
     {
-      "tag": "رایگان | SS | @VmessProtocol | GB🇬🇧 | 0️⃣4️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @VmessProtocol | GB🇬🇧 | 0️⃣4️⃣",
       "server": "145.239.6.202",
       "server_port": 4444,
       "method": "aes-256-gcm",
-      "password": "pKEW8JPByTVTLtM",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "pKEW8JPByTVTLtM"
     },
     {
-      "tag": "رایگان | SS | @VmessProtocol | BY🇧🇾 | 0️⃣3️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @VmessProtocol | BY🇧🇾 | 0️⃣3️⃣",
       "server": "178.172.217.15",
       "server_port": 51348,
       "method": "chacha20-ietf-poly1305",
-      "password": "yL0x8K51CRW9K3kn1lgh98ZPcSBAEQOL6bpNqVMlphtZYNT3",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "yL0x8K51CRW9K3kn1lgh98ZPcSBAEQOL6bpNqVMlphtZYNT3"
     },
     {
-      "tag": "رایگان | SS | @OutlineVpnOfficial | UA🇺🇦 | 0️⃣1️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @OutlineVpnOfficial | UA🇺🇦 | 0️⃣1️⃣",
       "server": "www.outline.network.ak1991.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
       "server_port": 8443,
       "method": "aes-256-gcm",
-      "password": "f47e3706-883a-482e-8062-388a2c5ff00e",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "f47e3706-883a-482e-8062-388a2c5ff00e"
     },
     {
-      "tag": "رایگان | SS | @OutlineVpnOfficial | TR🇹🇷 | 0️⃣2️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @OutlineVpnOfficial | TR🇹🇷 | 0️⃣2️⃣",
       "server": "www.outline.network.ak1990.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
       "server_port": 2443,
       "method": "aes-256-gcm",
-      "password": "0uG0FbGpAV",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "0uG0FbGpAV"
     },
     {
-      "tag": "رایگان | SS | @FAKEOFTVC | TR🇹🇷 | 0️⃣6️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @FAKEOFTVC | TR🇹🇷 | 0️⃣6️⃣",
       "server": "94.131.108.237",
       "server_port": 46041,
       "method": "chacha20-ietf-poly1305",
-      "password": "cDewnplB4DhF7VjzDIdMFf",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "cDewnplB4DhF7VjzDIdMFf"
     },
     {
-      "tag": "رایگان | SS | @OutlineVpnOfficial | SE🇸🇪 | 0️⃣3️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @OutlineVpnOfficial | SE🇸🇪 | 0️⃣3️⃣",
       "server": "www.outline.network.ak1989.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
       "server_port": 2443,
       "method": "aes-256-gcm",
-      "password": "slkiJLsW+2c9UiX0XvxISMvfiZWr53MjDqx1DuAC1VE=",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "slkiJLsW+2c9UiX0XvxISMvfiZWr53MjDqx1DuAC1VE="
     },
     {
-      "tag": "رایگان | SS | @FAKEOFTVC | SE🇸🇪 | 0️⃣5️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @FAKEOFTVC | SE🇸🇪 | 0️⃣5️⃣",
       "server": "94.131.115.129",
       "server_port": 38108,
       "method": "chacha20-ietf-poly1305",
-      "password": "bNUe0jR9rzsvLEzfPmI4Of",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "bNUe0jR9rzsvLEzfPmI4Of"
     },
     {
-      "tag": "رایگان | SS | @OutlineVpnOfficial | SG🇸🇬 | 0️⃣4️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @OutlineVpnOfficial | SG🇸🇬 | 0️⃣4️⃣",
       "server": "www.outline.network.ak1988.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
       "server_port": 2443,
       "method": "2022-blake3-aes-256-gcm",
-      "password": "2a2QOvselXyVSJKlm8B5xdNROPXusODrODVse9wsCMo=",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "2a2QOvselXyVSJKlm8B5xdNROPXusODrODVse9wsCMo="
     },
     {
-      "tag": "رایگان | SS | @OutlineVpnOfficial | RU🇷🇺 | 0️⃣5️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @OutlineVpnOfficial | RU🇷🇺 | 0️⃣5️⃣",
       "server": "www.outline.network.ak1987.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
       "server_port": 2443,
       "method": "aes-256-gcm",
-      "password": "ec+AA7AaT5JfP4UGJHsYwFqyy+hkunVRp8gdIrfWt7U=",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "ec+AA7AaT5JfP4UGJHsYwFqyy+hkunVRp8gdIrfWt7U="
     },
     {
-      "tag": "رایگان | SS | @FAKEOFTVC | RU🇷🇺 | 0️⃣2️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @FAKEOFTVC | RU🇷🇺 | 0️⃣2️⃣",
       "server": "45.144.30.202",
       "server_port": 28490,
       "method": "chacha20-ietf-poly1305",
-      "password": "yZdRgske85Hou96z2dRdtH",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "yZdRgske85Hou96z2dRdtH"
     },
     {
-      "tag": "رایگان | SS | @OutlineVpnOfficial | NL🇳🇱 | 0️⃣6️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @OutlineVpnOfficial | NL🇳🇱 | 0️⃣6️⃣",
       "server": "www.outline.network.ak1986.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
       "server_port": 2443,
       "method": "aes-256-gcm",
-      "password": "mVMNhvDFhFH56a2iFF4ZOPTvkSEPbFXoe3eQ205xHTU=",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "mVMNhvDFhFH56a2iFF4ZOPTvkSEPbFXoe3eQ205xHTU="
     },
     {
-      "tag": "رایگان | SS | @OutlineVpnOfficial | JP🇯🇵 | 0️⃣7️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @OutlineVpnOfficial | JP🇯🇵 | 0️⃣7️⃣",
       "server": "www.outline.network.ak1985.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
       "server_port": 2443,
       "method": "aes-256-gcm",
-      "password": "5O+1vuAy1jMIm3H3olcLL53lZy/9akX8UvaItv6ls2M=",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "5O+1vuAy1jMIm3H3olcLL53lZy/9akX8UvaItv6ls2M="
     },
     {
-      "tag": "رایگان | SS | @forwardv2ray | IS🇮🇸 | 0️⃣1️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @forwardv2ray | IS🇮🇸 | 0️⃣1️⃣",
       "server": "91.194.161.7",
       "server_port": 8388,
       "method": "chacha20-ietf-poly1305",
-      "password": "OWJlYjYy",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "OWJlYjYy"
     },
     {
-      "tag": "رایگان | SS | @FAKEOFTVC | DE🇩🇪 | 0️⃣1️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @FAKEOFTVC | DE🇩🇪 | 0️⃣1️⃣",
       "server": "95.164.89.142",
       "server_port": 58603,
       "method": "chacha20-ietf-poly1305",
-      "password": "5UyVcx4jYrcbFwmhPkhzim",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "5UyVcx4jYrcbFwmhPkhzim"
     },
     {
-      "tag": "رایگان | SS | @FAKEOFTVC | US🇺🇸 | 0️⃣3️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @FAKEOFTVC | US🇺🇸 | 0️⃣3️⃣",
       "server": "45.150.65.34",
       "server_port": 11285,
       "method": "chacha20-ietf-poly1305",
-      "password": "yTzEeImDDKooThuQKhZjob",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "yTzEeImDDKooThuQKhZjob"
     },
     {
-      "tag": "رایگان | SS | @FAKEOFTVC | CH🇨🇭 | 0️⃣4️⃣",
       "type": "shadowsocks",
+      "tag": "رایگان | SS | @FAKEOFTVC | CH🇨🇭 | 0️⃣4️⃣",
       "server": "94.131.12.58",
       "server_port": 26669,
       "method": "chacha20-ietf-poly1305",
-      "password": "B0ry56X2AxfFgcgI7sHDWD",
-      "plugin": "",
-      "plugin_opts": ""
+      "password": "B0ry56X2AxfFgcgI7sHDWD"
+    },
+        {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "95.164.38.223",
+      "server_port": 443,
+      "transport": {
+        "service_name": "",
+        "type": "grpc"
+      },
+      "uuid": "ce9ccee1-8c0e-4ea4-8d93-7b896ec54e31",
+      "type": "vmess",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | VMESS | @FreakConfig | NO🇳🇴 | 0️⃣7️⃣"
     },
     {
-      "tag": "direct",
-      "type": "direct"
+      "packet_encoding": "",
+      "server": "2606:4700:3031::ac43:cc54",
+      "server_port": 8443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "nl29.vlessx.us"
+      },
+      "transport": {
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "headers": {
+          "Host": "nl29.vlessx.us"
+        },
+        "max_early_data": 2048,
+        "path": "/",
+        "type": "ws"
+      },
+      "uuid": "ad229dec-b7ed-4e47-a5ee-6bc9a8b062eb",
+      "type": "vless",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | VLESS | @customv2ray | CA🇨🇦 | 0️⃣2️⃣"
     },
     {
-      "tag": "bypass",
-      "type": "direct"
+      "packet_encoding": "",
+      "server": "2a06:98c1:3121::7",
+      "server_port": 8443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "edgood.king361.cf"
+      },
+      "transport": {
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "headers": {
+          "Host": "edgood.king361.cf"
+        },
+        "max_early_data": 2048,
+        "path": "/",
+        "type": "ws"
+      },
+      "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4",
+      "type": "vless",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | VLESS | @customv2ray | CA🇨🇦 | 0️⃣3️⃣"
     },
     {
-      "tag": "block",
-      "type": "block"
+      "packet_encoding": "",
+      "server": "104.21.12.150",
+      "server_port": 2082,
+      "transport": {
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "headers": {
+          "Host": "nl57.vlessx.us"
+        },
+        "max_early_data": 2048,
+        "path": "/",
+        "type": "ws"
+      },
+      "uuid": "a2dadb95-3f15-4e1c-b517-0b54c336a5fd",
+      "type": "vless",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | VLESS | @customv2ray | CA🇨🇦 | 0️⃣5️⃣"
     },
     {
-      "tag": "dns-out",
-      "type": "dns"
+      "packet_encoding": "",
+      "server": "104.21.12.150",
+      "server_port": 8443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "nl57.vlessx.us"
+      },
+      "transport": {
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "headers": {
+          "Host": "nl57.vlessx.us"
+        },
+        "max_early_data": 2048,
+        "path": "/",
+        "type": "ws"
+      },
+      "uuid": "a2dadb95-3f15-4e1c-b517-0b54c336a5fd",
+      "type": "vless",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | VLESS | @v2rayngvpn | CA🇨🇦 | 0️⃣7️⃣"
+    },
+    {
+      "packet_encoding": "",
+      "server": "172.67.194.57",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "sdgf.bdfstt.sbs"
+      },
+      "transport": {
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "headers": {
+          "Host": "sdgf.bdfstt.sbs"
+        },
+        "max_early_data": 2048,
+        "path": "/",
+        "type": "ws"
+      },
+      "uuid": "e28bb3f8-e64a-4419-9496-33c46220354b",
+      "type": "vless",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | VLESS | @FalconPolV2rayNG | CA🇨🇦 | 0️⃣2️⃣"
+    },
+    {
+      "packet_encoding": "",
+      "server": "5.161.157.222",
+      "server_port": 443,
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "ada36.qvqag.com"
+      },
+      "transport": {
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "headers": {},
+        "max_early_data": 2048,
+        "path": "users",
+        "type": "ws"
+      },
+      "uuid": "a61eb3a2-1adb-48cb-ab46-ce225769de16",
+      "type": "vless",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | VLESS | @ShadowProxy66 | US🇺🇸 | 0️⃣1️⃣"
+    },
+    {
+      "packet_encoding": "",
+      "server": "5.161.158.206",
+      "server_port": 443,
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "mt1.nabsk.com"
+      },
+      "transport": {
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "headers": {},
+        "max_early_data": 2048,
+        "path": "users",
+        "type": "ws"
+      },
+      "uuid": "a61eb3a2-1adb-48cb-ab46-ce225769de16",
+      "type": "vless",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | VLESS | @ShadowProxy66 | US🇺🇸 | 0️⃣2️⃣"
+    },
+    {
+      "packet_encoding": "",
+      "server": "5.161.132.6",
+      "server_port": 443,
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "ada145.lefxb.com"
+      },
+      "transport": {
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "headers": {},
+        "max_early_data": 2048,
+        "path": "users",
+        "type": "ws"
+      },
+      "uuid": "a61eb3a2-1adb-48cb-ab46-ce225769de16",
+      "type": "vless",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | VLESS | @ShadowProxy66 | US🇺🇸 | 0️⃣3️⃣"
+    },
+    {
+      "packet_encoding": "",
+      "server": "46.105.218.0",
+      "server_port": 16741,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "kp0my80cNyM8TPeU-LbUaU3DSlAnYkbJ9jeWI2WougM",
+          "short_id": "6ae860e1"
+        },
+        "server_name": "ea.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "service_name": "",
+        "type": "grpc"
+      },
+      "uuid": "d2176467-4879-4beb-94e9-f1fa8177d8e2",
+      "type": "vless",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | REALITY | @ShadowProxy66 | FR🇫🇷 | 0️⃣4️⃣"
+    },
+    {
+      "packet_encoding": "",
+      "server": "188.114.97.0",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "cf-wkrs-pages-vless-aoy.pages.dev"
+      },
+      "transport": {
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "headers": {
+          "Host": "cf-wkrs-pages-vless-aoy.pages.dev"
+        },
+        "max_early_data": 2048,
+        "path": "/",
+        "type": "ws"
+      },
+      "uuid": "884f9b2c-f0c5-44dd-a68e-3e39ce93bb39",
+      "type": "vless",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | VLESS | @vmess_vless_v2rayng | NL🇳🇱 | 0️⃣3️⃣"
+    },
+    {
+      "packet_encoding": "",
+      "server": "172.67.156.27",
+      "server_port": 2053,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "baipiao1.curly-train.pages.dev"
+      },
+      "transport": {
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "headers": {
+          "Host": "baipiao1.curly-train.pages.dev"
+        },
+        "max_early_data": 2048,
+        "path": "/",
+        "type": "ws"
+      },
+      "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4",
+      "type": "vless",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | VLESS | @vmess_vless_v2rayng | CA🇨🇦 | 0️⃣4️⃣"
+    },
+    {
+      "packet_encoding": "",
+      "server": "188.114.96.3",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "cf-wkrs-pages-vless-aoy.pages.dev"
+      },
+      "transport": {
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "headers": {
+          "Host": "cf-wkrs-pages-vless-aoy.pages.dev"
+        },
+        "max_early_data": 2048,
+        "path": "/",
+        "type": "ws"
+      },
+      "uuid": "884f9b2c-f0c5-44dd-a68e-3e39ce93bb39",
+      "type": "vless",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | VLESS | @vmess_vless_v2rayng | NL🇳🇱 | 0️⃣5️⃣"
+    },
+    {
+      "packet_encoding": "",
+      "server": "188.114.97.3",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "cf-wkrs-pages-vless-aoy.pages.dev",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "randomized"
+        }
+      },
+      "transport": {
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "headers": {
+          "Host": "cf-wkrs-pages-vless-aoy.pages.dev"
+        },
+        "max_early_data": 2048,
+        "path": "/",
+        "type": "ws"
+      },
+      "uuid": "884f9b2c-f0c5-44dd-a68e-3e39ce93bb39",
+      "type": "vless",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | VLESS | @https_config_injector | NL🇳🇱 | 0️⃣7️⃣"
+    },
+    {
+      "packet_encoding": "",
+      "server": "104.21.70.25",
+      "server_port": 2082,
+      "transport": {
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "headers": {
+          "Host": "sg1.vlessx.xyz"
+        },
+        "max_early_data": 2048,
+        "path": "/",
+        "type": "ws"
+      },
+      "uuid": "a74068d7-7aee-4cc9-a0a8-954df6ceafd0",
+      "type": "vless",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | VLESS | @mahvarehnewssat | CA🇨🇦 | 0️⃣2️⃣"
+    },
+    {
+      "password": "45a99be4-8cb4-4df2-b7a4-42f1a8dea5c1",
+      "server": "20.239.144.102",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "usa.liangyuandiancloud.com"
+      },
+      "type": "trojan",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | TROJAN | @yaney_01 | HK🇭🇰 | 0️⃣1️⃣"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "dPW6SKhVfqDevBfdrt5eJg",
+      "server": "95.164.87.138",
+      "server_port": 63830,
+      "type": "shadowsocks",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان+|+SS+|+@V2rayCollectorDonate+|+NL🇳🇱+|+0️⃣1️⃣"
+    },
+    {
+      "congestion_control": "bbr",
+      "password": "dongtaiwang.com",
+      "server": "108.181.22.239",
+      "server_port": 12980,
+      "tls": {
+        "alpn": [
+          "h3"
+        ],
+        "disable_sni": false,
+        "enabled": true,
+        "insecure": true,
+        "server_name": "telegramEUT-VPN.ddns.net"
+      },
+      "uuid": "ea8be14e-f82a-43ae-90b2-e110a7c7e164",
+      "zero_rtt_handshake": false,
+      "type": "tuic",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣1️⃣"
+    },
+    {
+      "congestion_control": "bbr",
+      "password": "dongtaiwang",
+      "server": "108.181.24.7",
+      "server_port": 23450,
+      "tls": {
+        "alpn": [
+          "h3"
+        ],
+        "disable_sni": false,
+        "enabled": true,
+        "insecure": true,
+        "server_name": "telegramEUT-VPN.ddns.net"
+      },
+      "uuid": "3618921b-adeb-4bd3-a2a0-f98b72a674b1",
+      "zero_rtt_handshake": false,
+      "type": "tuic",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣2️⃣"
+    },
+    {
+      "congestion_control": "cubic",
+      "password": "iLHa7ogC0RjF",
+      "server": "108.181.22.239",
+      "server_port": 26789,
+      "tls": {
+        "alpn": [
+          "h3"
+        ],
+        "disable_sni": false,
+        "enabled": true,
+        "insecure": true,
+        "server_name": "telegramEUT-VPN.ddns.net"
+      },
+      "uuid": "a6ccf4f3-2b05-48ff-b440-2e3dce3e216a",
+      "zero_rtt_handshake": false,
+      "type": "tuic",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣3️⃣"
+    },
+    {
+      "congestion_control": "bbr",
+      "password": "dongtaiwang",
+      "server": "108.181.22.205",
+      "server_port": 50987,
+      "tls": {
+        "alpn": [
+          "h3"
+        ],
+        "disable_sni": false,
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.google.com"
+      },
+      "uuid": "d6214437-e1b5-4334-9090-8f66b78bea89",
+      "zero_rtt_handshake": false,
+      "type": "tuic",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣6️⃣"
+    },
+    {
+      "congestion_control": "bbr",
+      "password": "e7b1c11f0d40cc95",
+      "server": "209.250.254.198",
+      "server_port": 443,
+      "tls": {
+        "alpn": [
+          "h3"
+        ],
+        "disable_sni": false,
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.apple.com"
+      },
+      "uuid": "38e38f61-b1dd-4b34-90d0-f6222fd7393f",
+      "zero_rtt_handshake": false,
+      "type": "tuic",
+      "domain_strategy": "ipv4_only",
+      "tag": "رایگان | TUIC | @azadi_az_inja_migzare | NL🇳🇱 | 0️⃣2️⃣"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "direct",
+      "tag": "bypass"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
     }
   ],
   "route": {
-    "auto_detect_interface": true,
-    "override_android_vpn": true,
-    "final": "proxy",
     "geoip": {
       "download_url": "https://github.com/chocolate4u/Iran-sing-box-rules/releases/latest/download/geoip.db",
       "download_detour": "direct"
@@ -453,21 +778,15 @@
     },
     "rules": [
       {
-        "outbound": "dns-out",
-        "port": [
-          53
-        ]
-      },
-      {
-        "inbound": [
-          "dns-in"
-        ],
+        "port": 53,
         "outbound": "dns-out"
       },
       {
-        "domain_suffix": [
-          "ir"
-        ],
+        "inbound": "dns-in",
+        "outbound": "dns-out"
+      },
+      {
+        "domain_suffix": "ir",
         "outbound": "direct"
       },
       {
@@ -479,9 +798,7 @@
         "outbound": "direct"
       },
       {
-        "geosite": [
-          "ir"
-        ],
+        "geosite": "ir",
         "outbound": "direct"
       },
       {
@@ -494,9 +811,7 @@
         "outbound": "proxy"
       },
       {
-        "geosite": [
-          "other"
-        ],
+        "geosite": "other",
         "outbound": "proxy"
       },
       {
@@ -507,105 +822,28 @@
         "outbound": "direct"
       },
       {
+        "source_ip_cidr": [
+          "224.0.0.0/3",
+          "ff00::/8"
+        ],
         "ip_cidr": [
           "224.0.0.0/3",
           "ff00::/8"
         ],
-        "outbound": "direct",
-        "source_ip_cidr": [
-          "224.0.0.0/3",
-          "ff00::/8"
-        ]
-      }
-    ]
-  },
-  "dns": {
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
-    "independent_cache": true,
-    "rules": [
-      {
-        "disable_cache": true,
-        "geosite": [
-          "category-ads-all"
-        ],
-        "server": "dns-block"
-      },
-      {
-        "disable_cache": true,
-        "domain_suffix": [
-          "appcenter.ms",
-          "firebase.io",
-          "crashlytics.com"
-        ],
-        "server": "dns-direct"
-      },
-      {
-        "domain_suffix": [
-          "googleapis.cn"
-        ],
-        "inbound": [
-          "tun-in"
-        ],
-        "server": "dns-remote"
-      },
-      {
-        "domain_suffix": [
-          "googleapis.cn"
-        ],
-        "server": "dns-direct"
-      },
-      {
-        "geosite": [
-          "cn"
-        ],
-        "server": "dns-remote"
-      },
-      {
-        "geosite": [
-          "ir"
-        ],
-        "server": "dns-direct"
-      },
-      {
-        "disable_cache": true,
-        "inbound": [
-          "tun-in"
-        ],
-        "server": "dns-remote"
+        "outbound": "direct"
       }
     ],
-    "servers": [
-      {
-        "address": "https://1.1.1.1/dns-query",
-        "address_resolver": "dns-direct",
-        "strategy": "ipv4_only",
-        "tag": "dns-remote"
-      },
-      {
-        "address": "8.8.8.8",
-        "address_resolver": "dns-local",
-        "detour": "direct",
-        "strategy": "ipv4_only",
-        "tag": "dns-direct"
-      },
-      {
-        "address": "local",
-        "detour": "direct",
-        "tag": "dns-local"
-      },
-      {
-        "address": "rcode://success",
-        "tag": "dns-block"
-      },
-      {
-        "address": "fakeip",
-        "strategy": "ipv4_only",
-        "tag": "dns-fake"
-      }
-    ]
+    "final": "proxy",
+    "auto_detect_interface": true,
+    "override_android_vpn": true
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "0.0.0.0:9090",
+      "external_ui": "yacd",
+      "external_ui_download_url": "https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
+      "external_ui_download_detour": "direct",
+      "default_mode": "rule"
+    }
   }
 }
