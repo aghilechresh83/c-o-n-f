@@ -7,13 +7,13 @@
     "servers": [
       {
         "tag": "dns-remote",
-        "address": "https://1.1.1.1/dns-query",
+        "address": "tcp://95.85.95.85",
         "address_resolver": "dns-direct",
         "strategy": "ipv4_only"
       },
       {
         "tag": "dns-direct",
-        "address": "8.8.8.8",
+        "address": "local",
         "address_resolver": "dns-local",
         "strategy": "ipv4_only",
         "detour": "direct"
@@ -51,15 +51,15 @@
       {
         "inbound": "tun-in",
         "domain_suffix": "googleapis.cn",
-        "server": "dns-remote"
-      },
-      {
-        "domain_suffix": "googleapis.cn",
         "server": "dns-direct"
       },
       {
-        "geosite": "cn",
+        "domain_suffix": "googleapis.cn",
         "server": "dns-remote"
+      },
+      {
+        "geosite": "cn",
+        "server": "dns-direct"
       },
       {
         "geosite": "ir",
