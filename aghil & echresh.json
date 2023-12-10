@@ -23,13 +23,13 @@
     "dns": {
         "servers": [
             {
-                "address": "tcp:\/\/95.85.95.85",
+                "address": "https://dns.google/dns-query",
                 "address_resolver": "dns-direct",
                 "strategy": "ipv4_only",
                 "tag": "dns-remote"
             },
             {
-                "address": "8.8.8.8",
+                "address": "local",
                 "address_resolver": "dns-local",
                 "detour": "direct",
                 "strategy": "ipv4_only",
