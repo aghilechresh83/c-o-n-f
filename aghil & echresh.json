@@ -6,13 +6,13 @@
     "servers": [
       {
         "tag": "dns-remote",
-        "address": "https://1.0.0.1/dns-query",
+        "address": "https://1.1.1.1/dns-query",
         "address_resolver": "dns-direct",
         "strategy": "ipv4_only"
       },
       {
         "tag": "dns-direct",
-        "address": "8.8.8.8",
+        "address": "local",
         "address_resolver": "dns-local",
         "strategy": "ipv4_only",
         "detour": "direct"
@@ -25,33 +25,65 @@
       {
         "tag": "dns-block",
         "address": "rcode://success"
-      },
-      {
-        "tag": "dns-fake",
-        "address": "fakeip",
-        "strategy": "ipv4_only"
       }
     ],
+    "independent_cache": true,
     "rules": [
       {
-        "domain": "www.google.com",
+        "domain": [
+          "osn.dominogolden.eu.org",
+          "channel.safenetir.life",
+          "vmessorg.join.bede.mokhin.me",
+          "dns.google",
+          "footlo.argha-v2pedia.monster",
+          "lightning6-joinbedee.mamd.sbs",
+          "maskvpn.de",
+          "flyv2ray.ddns.net",
+          "free3.h3lixchannel.fun",
+          "free1.h3lixchannel.fun",
+          "trch.blueberrynetwork.icu",
+          "wx.vpnxw.eu.org",
+          "800-join.v2raytz.sbs",
+          "gam1.dadnetiran.xyz",
+          "tixorey.ddns.net"
+        ],
+        "server": "dns-direct"
+      },
+      {
+        "disable_cache": true,
+        "geosite": [
+          "category-ads-all"
+        ],
+        "server": "dns-block"
+      },
+      {
+        "disable_cache": true,
+        "domain_suffix": [
+          "appcenter.ms",
+          "firebase.io",
+          "crashlytics.com"
+        ],
+        "server": "dns-block"
+      },
+      {
+        "domain_suffix": [
+          "googleapis.cn"
+        ],
         "server": "dns-remote"
       },
       {
-        "domain_suffix": "google",
-        "server": "dns-remote"
+        "geosite": [
+          "cn"
+        ],
+        "server": "dns-direct"
       },
       {
-        "inbound": "tun-in",
-        "server": "dns-fake"
+        "geosite": [
+          "ir"
+        ],
+        "server": "dns-direct"
       }
-    ],
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
-    "independent_cache": true
+    ]
   },
   "inbounds": [
     {
@@ -67,7 +99,7 @@
       "tag": "mixed-in",
       "listen": "0.0.0.0",
       "listen_port": 2080,
-      "sniff": true,
+      "sniff": false,
       "domain_strategy": "ipv4_only"
     },
     {
@@ -76,7 +108,7 @@
       "interface_name": "tun0",
       "inet4_address": "172.19.0.1/30",
       "inet6_address": "fdfe:dcba:9876::1/126",
-      "mtu": 9000,
+      "mtu": 1500,
       "auto_route": true,
       "strict_route": true,
       "inet4_route_address": [
@@ -94,7 +126,7 @@
           "server_port": 2080
         }
       },
-      "domain_strategy": ""
+      "domain_strategy": "ipv4_only"
     }
   ],
   "outbounds": [
@@ -1944,7 +1976,7 @@
       },
       {
         "domain_suffix": [
-          "ir"
+          ".ir"
         ],
         "outbound": "bypass"
       },
@@ -1956,7 +1988,7 @@
       },
       {
         "geosite": [
-          "ir"
+          "other"
         ],
         "outbound": "direct"
       },
