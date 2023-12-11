@@ -13,7 +13,7 @@
       },
       {
         "tag": "dns-direct",
-        "address": "https://blitz.ahadns.com/",
+        "address": "local",
         "address_resolver": "dns-local",
         "strategy": "ipv4_only",
         "detour": "direct"
@@ -45,7 +45,7 @@
           "firebase.io",
           "crashlytics.com"
         ],
-        "server": "dns-direct",
+        "server": "dns-local",
         "disable_cache": true
       },
       {
@@ -59,15 +59,15 @@
       },
       {
         "geosite": "cn",
-        "server": "dns-remote"
+        "server": "dns-local"
       },
       {
         "geosite": "ir",
-        "server": "dns-direct"
+        "server": "dns-local"
       },
       {
         "inbound": "tun-in",
-        "server": "dns-remote",
+        "server": "dns-fake",
         "disable_cache": true
       }
     ],
@@ -84,14 +84,14 @@
       "tag": "dns-in",
       "listen": "0.0.0.0",
       "listen_port": 6450,
-      "override_address": "8.8.4.4",
+      "override_address": "77.88.8.8",
       "override_port": 53
     },
     {
       "type": "tun",
       "tag": "tun-in",
       "interface_name": "tun0",
-      "mtu": 1500,
+      "mtu": 9000,
       "inet4_address": "172.19.0.1/30",
       "auto_route": true,
       "strict_route": true,
@@ -111,44 +111,44 @@
       "type": "urltest",
       "tag": "proxy",
       "outbounds": [
-        "رایگان | SS | @VmessProtocol | GB🇬🇧 | 0️⃣2️⃣",
-        "رایگان | SS | @VmessProtocol | GB🇬🇧 | 0️⃣4️⃣",
-        "رایگان | SS | @VmessProtocol | BY🇧🇾 | 0️⃣3️⃣",
-        "رایگان | SS | @OutlineVpnOfficial | UA🇺🇦 | 0️⃣1️⃣",
-        "رایگان | SS | @OutlineVpnOfficial | TR🇹🇷 | 0️⃣2️⃣",
-        "رایگان | SS | @FAKEOFTVC | TR🇹🇷 | 0️⃣6️⃣",
-        "رایگان | SS | @OutlineVpnOfficial | SE🇸🇪 | 0️⃣3️⃣",
-        "رایگان | SS | @FAKEOFTVC | SE🇸🇪 | 0️⃣5️⃣",
-        "رایگان | SS | @OutlineVpnOfficial | SG🇸🇬 | 0️⃣4️⃣",
-        "رایگان | SS | @OutlineVpnOfficial | RU🇷🇺 | 0️⃣5️⃣",
-        "رایگان | SS | @FAKEOFTVC | RU🇷🇺 | 0️⃣2️⃣",
-        "رایگان | SS | @OutlineVpnOfficial | NL🇳🇱 | 0️⃣6️⃣",
-        "رایگان | SS | @OutlineVpnOfficial | JP🇯🇵 | 0️⃣7️⃣",
-        "رایگان | SS | @forwardv2ray | IS🇮🇸 | 0️⃣1️⃣",
-        "رایگان | SS | @FAKEOFTVC | DE🇩🇪 | 0️⃣1️⃣",
-        "رایگان | SS | @FAKEOFTVC | US🇺🇸 | 0️⃣3️⃣",
-        "رایگان | SS | @FAKEOFTVC | CH🇨🇭 | 0️⃣4️⃣",
-        "رایگان | VLESS | @customv2ray | CA🇨🇦 | 0️⃣2️⃣",
-        "رایگان | VMESS | @FreakConfig | NO🇳🇴 | 0️⃣7️⃣",
-        "رایگان | VLESS | @customv2ray | CA🇨🇦 | 0️⃣3️⃣",
-        "رایگان | VLESS | @customv2ray | CA🇨🇦 | 0️⃣5️⃣",
-        "رایگان | VLESS | @https_config_injector | NL🇳🇱 | 0️⃣7️⃣",
-        "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣1️⃣",
-        "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣2️⃣",
-        "رایگان | VLESS | @vmess_vless_v2rayng | NL🇳🇱 | 0️⃣3️⃣",
-        "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣3️⃣",
-        "رایگان | VLESS | @vmess_vless_v2rayng | CA🇨🇦 | 0️⃣4️⃣",
-        "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣6️⃣",
-        "رایگان | VLESS | @vmess_vless_v2rayng | NL🇳🇱 | 0️⃣5️⃣",
-        "رایگان | TUIC | @azadi_az_inja_migzare | NL🇳🇱 | 0️⃣2️⃣",
-        "رایگان | TROJAN | @yaney_01 | HK🇭🇰 | 0️⃣1️⃣",
-        "رایگان | VLESS | @v2rayngvpn | CA🇨🇦 | 0️⃣7️⃣",
-        "رایگان | VLESS | @FalconPolV2rayNG | CA🇨🇦 | 0️⃣2️⃣",
-        "رایگان | VLESS | @mahvarehnewssat | CA🇨🇦 | 0️⃣2️⃣",
-        "رایگان | VLESS | @ShadowProxy66 | US🇺🇸 | 0️⃣1️⃣",
-        "رایگان | VLESS | @ShadowProxy66 | US🇺🇸 | 0️⃣2️⃣",
-        "رایگان | VLESS | @ShadowProxy66 | US🇺🇸 | 0️⃣3️⃣",
-        "رایگان+|+SS+|+@V2rayCollectorDonate+|+NL🇳🇱+|+0️⃣1️⃣"
+        "VmessProtocol | GB🇬🇧 | 0️⃣2️⃣",
+        "VmessProtocol | GB🇬🇧 | 0️⃣4️⃣",
+        "VmessProtocol | BY🇧🇾 | 0️⃣3️⃣",
+        "OutlineVpnOfficial | UA🇺🇦 | 0️⃣1️⃣",
+        "OutlineVpnOfficial | TR🇹🇷 | 0️⃣2️⃣",
+        "FAKEOFTVC | TR🇹🇷 | 0️⃣6️⃣",
+        "OutlineVpnOfficial | SE🇸🇪 | 0️⃣3️⃣",
+        "FAKEOFTVC | SE🇸🇪 | 0️⃣5️⃣",
+        "OutlineVpnOfficial | SG🇸🇬 | 0️⃣4️⃣",
+        "OutlineVpnOfficial | RU🇷🇺 | 0️⃣5️⃣",
+        "FAKEOFTVC | RU🇷🇺 | 0️⃣2️⃣",
+        "OutlineVpnOfficial | NL🇳🇱 | 0️⃣6️⃣",
+        "OutlineVpnOfficial | JP🇯🇵 | 0️⃣7️⃣",
+        "forwardv2ray | IS🇮🇸 | 0️⃣1️⃣",
+        "FAKEOFTVC | DE🇩🇪 | 0️⃣1️⃣",
+        "FAKEOFTVC | US🇺🇸 | 0️⃣3️⃣",
+        "FAKEOFTVC | CH🇨🇭 | 0️⃣4️⃣",
+        "customv2ray | CA🇨🇦 | 0️⃣2️⃣",
+        "FreakConfig | NO🇳🇴 | 0️⃣7️⃣",
+        "customv2ray | CA🇨🇦 | 0️⃣3️⃣",
+        "customv2ray | CA🇨🇦 | 0️⃣5️⃣",
+        "https_config_injector | NL🇳🇱 | 0️⃣7️⃣",
+        "EUT_VPN | US🇺🇸 | 0️⃣1️⃣",
+        "EUT_VPN | US🇺🇸 | 0️⃣2️⃣",
+        "vmess_vless_v2rayng | NL🇳🇱 | 0️⃣3️⃣",
+        "EUT_VPN | US🇺🇸 | 0️⃣3️⃣",
+        "vmess_vless_v2rayng | CA🇨🇦 | 0️⃣4️⃣",
+        "EUT_VPN | US🇺🇸 | 0️⃣6️⃣",
+        "vmess_vless_v2rayng | NL🇳🇱 | 0️⃣5️⃣",
+        "azadi_az_inja_migzare | NL🇳🇱 | 0️⃣2️⃣",
+        "yaney_01 | HK🇭🇰 | 0️⃣1️⃣",
+        "v2rayngvpn | CA🇨🇦 | 0️⃣7️⃣",
+        "FalconPolV2rayNG | CA🇨🇦 | 0️⃣2️⃣",
+        "mahvarehnewssat | CA🇨🇦 | 0️⃣2️⃣",
+        "ShadowProxy66 | US🇺🇸 | 0️⃣1️⃣",
+        "ShadowProxy66 | US🇺🇸 | 0️⃣2️⃣",
+        "ShadowProxy66 | US🇺🇸 | 0️⃣3️⃣",
+        "V2rayCollectorDonate+|+NL🇳🇱+|+0️⃣1️⃣"
       ],
       "url": "https://www.gstatic.com/generate_204",
       "interval": "1m0s",
@@ -156,7 +156,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @VmessProtocol | GB🇬🇧 | 0️⃣2️⃣",
+      "tag": "VmessProtocol | GB🇬🇧 | 0️⃣2️⃣",
       "server": "51.142.92.199",
       "server_port": 44934,
       "method": "chacha20-ietf-poly1305",
@@ -164,7 +164,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @VmessProtocol | GB🇬🇧 | 0️⃣4️⃣",
+      "tag": "VmessProtocol | GB🇬🇧 | 0️⃣4️⃣",
       "server": "145.239.6.202",
       "server_port": 4444,
       "method": "aes-256-gcm",
@@ -172,7 +172,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @VmessProtocol | BY🇧🇾 | 0️⃣3️⃣",
+      "tag": "VmessProtocol | BY🇧🇾 | 0️⃣3️⃣",
       "server": "178.172.217.15",
       "server_port": 51348,
       "method": "chacha20-ietf-poly1305",
@@ -180,7 +180,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @OutlineVpnOfficial | UA🇺🇦 | 0️⃣1️⃣",
+      "tag": "OutlineVpnOfficial | UA🇺🇦 | 0️⃣1️⃣",
       "server": "www.outline.network.ak1991.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
       "server_port": 8443,
       "method": "aes-256-gcm",
@@ -188,7 +188,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @OutlineVpnOfficial | TR🇹🇷 | 0️⃣2️⃣",
+      "tag": "OutlineVpnOfficial | TR🇹🇷 | 0️⃣2️⃣",
       "server": "www.outline.network.ak1990.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
       "server_port": 2443,
       "method": "aes-256-gcm",
@@ -196,7 +196,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @FAKEOFTVC | TR🇹🇷 | 0️⃣6️⃣",
+      "tag": "FAKEOFTVC | TR🇹🇷 | 0️⃣6️⃣",
       "server": "94.131.108.237",
       "server_port": 46041,
       "method": "chacha20-ietf-poly1305",
@@ -204,7 +204,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @OutlineVpnOfficial | SE🇸🇪 | 0️⃣3️⃣",
+      "tag": "OutlineVpnOfficial | SE🇸🇪 | 0️⃣3️⃣",
       "server": "www.outline.network.ak1989.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
       "server_port": 2443,
       "method": "aes-256-gcm",
@@ -212,7 +212,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @FAKEOFTVC | SE🇸🇪 | 0️⃣5️⃣",
+      "tag": "FAKEOFTVC | SE🇸🇪 | 0️⃣5️⃣",
       "server": "94.131.115.129",
       "server_port": 38108,
       "method": "chacha20-ietf-poly1305",
@@ -220,7 +220,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @OutlineVpnOfficial | SG🇸🇬 | 0️⃣4️⃣",
+      "tag": "OutlineVpnOfficial | SG🇸🇬 | 0️⃣4️⃣",
       "server": "www.outline.network.ak1988.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
       "server_port": 2443,
       "method": "2022-blake3-aes-256-gcm",
@@ -228,7 +228,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @OutlineVpnOfficial | RU🇷🇺 | 0️⃣5️⃣",
+      "tag": "OutlineVpnOfficial | RU🇷🇺 | 0️⃣5️⃣",
       "server": "www.outline.network.ak1987.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
       "server_port": 2443,
       "method": "aes-256-gcm",
@@ -236,7 +236,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @FAKEOFTVC | RU🇷🇺 | 0️⃣2️⃣",
+      "tag": "FAKEOFTVC | RU🇷🇺 | 0️⃣2️⃣",
       "server": "45.144.30.202",
       "server_port": 28490,
       "method": "chacha20-ietf-poly1305",
@@ -244,7 +244,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @OutlineVpnOfficial | NL🇳🇱 | 0️⃣6️⃣",
+      "tag": "OutlineVpnOfficial | NL🇳🇱 | 0️⃣6️⃣",
       "server": "www.outline.network.ak1986.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
       "server_port": 2443,
       "method": "aes-256-gcm",
@@ -252,7 +252,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @OutlineVpnOfficial | JP🇯🇵 | 0️⃣7️⃣",
+      "tag": "OutlineVpnOfficial | JP🇯🇵 | 0️⃣7️⃣",
       "server": "www.outline.network.ak1985.fr8678825324247b8176d59f83c30bd94d23d2e3ac5cd4a743bkwqeikvdyufr.cyou",
       "server_port": 2443,
       "method": "aes-256-gcm",
@@ -260,7 +260,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @forwardv2ray | IS🇮🇸 | 0️⃣1️⃣",
+      "tag": "forwardv2ray | IS🇮🇸 | 0️⃣1️⃣",
       "server": "91.194.161.7",
       "server_port": 8388,
       "method": "chacha20-ietf-poly1305",
@@ -268,7 +268,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @FAKEOFTVC | DE🇩🇪 | 0️⃣1️⃣",
+      "tag": "FAKEOFTVC | DE🇩🇪 | 0️⃣1️⃣",
       "server": "95.164.89.142",
       "server_port": 58603,
       "method": "chacha20-ietf-poly1305",
@@ -276,7 +276,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @FAKEOFTVC | US🇺🇸 | 0️⃣3️⃣",
+      "tag": "FAKEOFTVC | US🇺🇸 | 0️⃣3️⃣",
       "server": "45.150.65.34",
       "server_port": 11285,
       "method": "chacha20-ietf-poly1305",
@@ -284,7 +284,7 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "رایگان | SS | @FAKEOFTVC | CH🇨🇭 | 0️⃣4️⃣",
+      "tag": "FAKEOFTVC | CH🇨🇭 | 0️⃣4️⃣",
       "server": "94.131.12.58",
       "server_port": 26669,
       "method": "chacha20-ietf-poly1305",
@@ -303,7 +303,7 @@
       "uuid": "ce9ccee1-8c0e-4ea4-8d93-7b896ec54e31",
       "type": "vmess",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | VMESS | @FreakConfig | NO🇳🇴 | 0️⃣7️⃣"
+      "tag": "FreakConfig | NO🇳🇴 | 0️⃣7️⃣"
     },
     {
       "packet_encoding": "",
@@ -326,7 +326,7 @@
       "uuid": "ad229dec-b7ed-4e47-a5ee-6bc9a8b062eb",
       "type": "vless",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | VLESS | @customv2ray | CA🇨🇦 | 0️⃣2️⃣"
+      "tag": "customv2ray | CA🇨🇦 | 0️⃣2️⃣"
     },
     {
       "packet_encoding": "",
@@ -349,7 +349,7 @@
       "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4",
       "type": "vless",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | VLESS | @customv2ray | CA🇨🇦 | 0️⃣3️⃣"
+      "tag": "customv2ray | CA🇨🇦 | 0️⃣3️⃣"
     },
     {
       "packet_encoding": "",
@@ -367,7 +367,7 @@
       "uuid": "a2dadb95-3f15-4e1c-b517-0b54c336a5fd",
       "type": "vless",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | VLESS | @customv2ray | CA🇨🇦 | 0️⃣5️⃣"
+      "tag": "customv2ray | CA🇨🇦 | 0️⃣5️⃣"
     },
     {
       "packet_encoding": "",
@@ -390,7 +390,7 @@
       "uuid": "a2dadb95-3f15-4e1c-b517-0b54c336a5fd",
       "type": "vless",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | VLESS | @v2rayngvpn | CA🇨🇦 | 0️⃣7️⃣"
+      "tag": "v2rayngvpn | CA🇨🇦 | 0️⃣7️⃣"
     },
     {
       "packet_encoding": "",
@@ -413,7 +413,7 @@
       "uuid": "e28bb3f8-e64a-4419-9496-33c46220354b",
       "type": "vless",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | VLESS | @FalconPolV2rayNG | CA🇨🇦 | 0️⃣2️⃣"
+      "tag": "FalconPolV2rayNG | CA🇨🇦 | 0️⃣2️⃣"
     },
     {
       "packet_encoding": "",
@@ -437,7 +437,7 @@
       "uuid": "a61eb3a2-1adb-48cb-ab46-ce225769de16",
       "type": "vless",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | VLESS | @ShadowProxy66 | US🇺🇸 | 0️⃣1️⃣"
+      "tag": "ShadowProxy66 | US🇺🇸 | 0️⃣1️⃣"
     },
     {
       "packet_encoding": "",
@@ -461,7 +461,7 @@
       "uuid": "a61eb3a2-1adb-48cb-ab46-ce225769de16",
       "type": "vless",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | VLESS | @ShadowProxy66 | US🇺🇸 | 0️⃣2️⃣"
+      "tag": "ShadowProxy66 | US🇺🇸 | 0️⃣2️⃣"
     },
     {
       "packet_encoding": "",
@@ -485,7 +485,7 @@
       "uuid": "a61eb3a2-1adb-48cb-ab46-ce225769de16",
       "type": "vless",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | VLESS | @ShadowProxy66 | US🇺🇸 | 0️⃣3️⃣"
+      "tag": "ShadowProxy66 | US🇺🇸 | 0️⃣3️⃣"
     },
     {
       "packet_encoding": "",
@@ -535,7 +535,7 @@
       "uuid": "884f9b2c-f0c5-44dd-a68e-3e39ce93bb39",
       "type": "vless",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | VLESS | @vmess_vless_v2rayng | NL🇳🇱 | 0️⃣3️⃣"
+      "tag": "vmess_vless_v2rayng | NL🇳🇱 | 0️⃣3️⃣"
     },
     {
       "packet_encoding": "",
@@ -558,7 +558,7 @@
       "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4",
       "type": "vless",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | VLESS | @vmess_vless_v2rayng | CA🇨🇦 | 0️⃣4️⃣"
+      "tag": "vmess_vless_v2rayng | CA🇨🇦 | 0️⃣4️⃣"
     },
     {
       "packet_encoding": "",
@@ -581,7 +581,7 @@
       "uuid": "884f9b2c-f0c5-44dd-a68e-3e39ce93bb39",
       "type": "vless",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | VLESS | @vmess_vless_v2rayng | NL🇳🇱 | 0️⃣5️⃣"
+      "tag": "vmess_vless_v2rayng | NL🇳🇱 | 0️⃣5️⃣"
     },
     {
       "packet_encoding": "",
@@ -608,7 +608,7 @@
       "uuid": "884f9b2c-f0c5-44dd-a68e-3e39ce93bb39",
       "type": "vless",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | VLESS | @https_config_injector | NL🇳🇱 | 0️⃣7️⃣"
+      "tag": "https_config_injector | NL🇳🇱 | 0️⃣7️⃣"
     },
     {
       "packet_encoding": "",
@@ -626,7 +626,7 @@
       "uuid": "a74068d7-7aee-4cc9-a0a8-954df6ceafd0",
       "type": "vless",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | VLESS | @mahvarehnewssat | CA🇨🇦 | 0️⃣2️⃣"
+      "tag": "mahvarehnewssat | CA🇨🇦 | 0️⃣2️⃣"
     },
     {
       "password": "45a99be4-8cb4-4df2-b7a4-42f1a8dea5c1",
@@ -639,7 +639,7 @@
       },
       "type": "trojan",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | TROJAN | @yaney_01 | HK🇭🇰 | 0️⃣1️⃣"
+      "tag": "yaney_01 | HK🇭🇰 | 0️⃣1️⃣"
     },
     {
       "method": "chacha20-ietf-poly1305",
@@ -648,7 +648,7 @@
       "server_port": 63830,
       "type": "shadowsocks",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان+|+SS+|+@V2rayCollectorDonate+|+NL🇳🇱+|+0️⃣1️⃣"
+      "tag": "V2rayCollectorDonate+|+NL🇳🇱+|+0️⃣1️⃣"
     },
     {
       "congestion_control": "bbr",
@@ -668,7 +668,7 @@
       "zero_rtt_handshake": false,
       "type": "tuic",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣1️⃣"
+      "tag": "EUT_VPN | US🇺🇸 | 0️⃣1️⃣"
     },
     {
       "congestion_control": "bbr",
@@ -688,7 +688,7 @@
       "zero_rtt_handshake": false,
       "type": "tuic",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣2️⃣"
+      "tag": "EUT_VPN | US🇺🇸 | 0️⃣2️⃣"
     },
     {
       "congestion_control": "cubic",
@@ -708,7 +708,7 @@
       "zero_rtt_handshake": false,
       "type": "tuic",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣3️⃣"
+      "tag": "EUT_VPN | US🇺🇸 | 0️⃣3️⃣"
     },
     {
       "congestion_control": "bbr",
@@ -728,7 +728,7 @@
       "zero_rtt_handshake": false,
       "type": "tuic",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | TUIC | @EUT_VPN | US🇺🇸 | 0️⃣6️⃣"
+      "tag": "EUT_VPN | US🇺🇸 | 0️⃣6️⃣"
     },
     {
       "congestion_control": "bbr",
@@ -748,7 +748,7 @@
       "zero_rtt_handshake": false,
       "type": "tuic",
       "domain_strategy": "ipv4_only",
-      "tag": "رایگان | TUIC | @azadi_az_inja_migzare | NL🇳🇱 | 0️⃣2️⃣"
+      "tag": "azadi_az_inja_migzare | NL🇳🇱 | 0️⃣2️⃣"
     },
     {
       "type": "direct",
