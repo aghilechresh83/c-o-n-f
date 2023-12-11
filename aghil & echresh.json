@@ -7,13 +7,13 @@
     "servers": [
       {
         "tag": "dns-remote",
-        "address": "tcp://95.85.95.85",
+        "address": "https://blitz.ahadns.com/",
         "address_resolver": "dns-direct",
         "strategy": "ipv4_only"
       },
       {
         "tag": "dns-direct",
-        "address": "local",
+        "address": "https://antivirus.bebasid.com/dns-query",
         "address_resolver": "dns-local",
         "strategy": "ipv4_only",
         "detour": "direct"
@@ -36,7 +36,7 @@
     "rules": [
       {
         "geosite": "category-ads-all",
-        "server": "dns-block",
+        "server": "dns-direct",
         "disable_cache": true
       },
       {
@@ -51,11 +51,11 @@
       {
         "inbound": "tun-in",
         "domain_suffix": "googleapis.cn",
-        "server": "dns-direct"
+        "server": "dns-remote"
       },
       {
         "domain_suffix": "googleapis.cn",
-        "server": "dns-remote"
+        "server": "dns-direct"
       },
       {
         "geosite": "cn",
