@@ -1,6 +1,7 @@
 {
   "log": {
-    "level": "warn",
+    "disabled": false,
+    "level": "fatal",
     "timestamp": true
   },
   "dns": {
