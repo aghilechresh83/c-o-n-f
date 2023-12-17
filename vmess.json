@@ -1,674 +1,858 @@
 {
+  "log": {
+    "level": "warn",
+    "timestamp": true
+  },
   "dns": {
-    "independent_cache": true,
-    "rules": [
-      {
-        "domain": [
-          "osn.dominogolden.eu.org",
-          "channel.safenetir.life",
-          "free3.h3lixchannel.fun",
-          "vmessorg.join.bede.mokhin.me",
-          "805-join.v2raytz.sbs",
-          "trch.blueberrynetwork.icu",
-          "free1.h3lixchannel.fun",
-          "wx.vpnxw.eu.org",
-          "gam1.dadnetiran.xyz"
-        ],
-        "server": "dns-direct"
-      }
-    ],
     "servers": [
       {
-        "address": "https:\/\/1.1.1.1\/dns-query",
-        "address_resolver": "dns-direct",
-        "strategy": "prefer_ipv4",
-        "tag": "dns-remote"
+        "tag": "dns-remote",
+        "address": "tcp://8.8.8.8",
+        "address_resolver": "dns-direct"
       },
       {
-        "address": "local",
+        "tag": "dns-direct",
+        "address": "8.8.8.8",
         "address_resolver": "dns-local",
-        "detour": "direct",
-        "strategy": "prefer_ipv4",
-        "tag": "dns-direct"
+        "detour": "direct"
       },
       {
+        "tag": "dns-local",
         "address": "local",
-        "detour": "direct",
-        "tag": "dns-local"
+        "detour": "direct"
       },
       {
-        "address": "rcode:\/\/success",
-        "tag": "dns-block"
+        "tag": "dns-block",
+        "address": "rcode://success"
       }
-    ]
-  },
-  "experimental": {
-    "clash_api": {
-      "cache_file": "..\/cache\/clash.db",
-      "external_controller": "127.0.0.1:9090",
-      "external_ui": "..\/files\/yacd"
-    }
+    ],
+    "independent_cache": true
   },
   "inbounds": [
     {
-      "listen": "127.0.0.1",
-      "listen_port": 6450,
-      "override_address": "8.8.8.8",
-      "override_port": 53,
-      "tag": "dns-in",
-      "type": "direct"
-    },
-    {
-      "domain_strategy": "",
-      "endpoint_independent_nat": true,
-      "inet4_address": [
-        "172.19.0.1\/28"
-      ],
-      "inet6_address": [
-        "fdfe:dcba:9876::1\/126"
-      ],
-      "mtu": 9000,
-      "sniff": true,
-      "sniff_override_destination": false,
-      "stack": "system",
-      "tag": "tun-in",
       "type": "tun",
+      "tag": "tun-in",
+      "mtu": 9000,
+      "inet4_address": "172.19.0.1/28",
       "auto_route": true,
-      "strict_route": true
+      "endpoint_independent_nat": true,
+      "sniff": true,
+      "sniff_override_destination": false
     },
     {
-      "domain_strategy": "",
+      "type": "mixed",
+      "tag": "mixed-in",
       "listen": "127.0.0.1",
       "listen_port": 2080,
       "sniff": true,
-      "sniff_override_destination": false,
-      "tag": "mixed-in",
-      "type": "mixed"
+      "sniff_override_destination": false
+    },
+    {
+      "type": "direct",
+      "tag": "dns-in",
+      "listen": "127.0.0.1",
+      "listen_port": 6450,
+      "override_address": "8.8.8.8",
+      "override_port": 53
     }
   ],
-  "log": {
-    "level": "warn"
-  },
   "outbounds": [
     {
+      "type": "selector",
+      "tag": "select",
       "outbounds": [
-        "رایگان | REALITY | @Helix_Servers | FI🇫🇮 | 0️⃣1️⃣",
-        "رایگان | REALITY | @Helix_Servers | DE🇩🇪 | 0️⃣3️⃣",
-        "رایگان | REALITY | @Parsashonam | DE🇩🇪 | 0️⃣1️⃣",
-        "رایگان | REALITY | @Good_V2rayy | DE🇩🇪 | 0️⃣1️⃣",
-        "رایگان | REALITY | @EliV2ray | TR🇹🇷 | 0️⃣1️⃣",
-        "رایگان | REALITY | @Lockey_vpn | US🇺🇸 | 0️⃣1️⃣",
-        "رایگان | REALITY | @Lockey_vpn | FI🇫🇮 | 0️⃣2️⃣",
-        "رایگان | REALITY | @azadi_az_inja_migzare | FI🇫🇮 | 0️⃣1️⃣",
-        "رایگان | REALITY | @vpn_xw | AT🇦🇹 | 0️⃣1️⃣",
-        "رایگان | REALITY | @azadi_az_inja_migzare | FI🇫🇮 | 0️⃣3️⃣",
-        "رایگان | REALITY | @FOX_VPN66 | AT🇦🇹 | 0️⃣2️⃣",
-        "رایگان | REALITY | @v2rayNG_Matsuri | DE🇩🇪 | 0️⃣2️⃣",
-        "رایگان | REALITY | @v2rayNG_Matsuri | US🇺🇸 | 0️⃣3️⃣",
-        "رایگان | REALITY | @SafeNet_Server | NL🇳🇱 | 0️⃣2️⃣",
-        "رایگان | REALITY | @Outlinev2rayNG | TR🇹🇷 | 0️⃣3️⃣",
-        "رایگان | REALITY | @V2RayTz | DE🇩🇪 | 0️⃣1️⃣",
-        "رایگان | REALITY | @sinabigo | DE🇩🇪 | 0️⃣1️⃣"
+        "auto",
+        "Japan (9) § 0",
+        "Relay_🇺🇸US-🇺🇸US_208 § 1",
+        "United States (42) § 2",
+        "United States (31) § 3",
+        "United States § 4",
+        "United States (30) § 5",
+        "Netherlands (24) § 6",
+        "United States (44) § 7",
+        "United States (19) § 8",
+        "United States (88) § 9",
+        "United States (33) § 10",
+        "United States (60) § 11",
+        "Netherlands (20) § 12",
+        "United States (66) § 13",
+        "Relay_🇺🇸US-🇺🇸US_124 § 14",
+        "Netherlands (21) § 15",
+        "United States (80) § 16",
+        "United States (38) § 17",
+        "Relay_🇺🇸US-🇯🇵JP_177 § 18",
+        "United States (5) § 19",
+        "Relay_🇺🇸US-🇬🇧GB_60 |33.42Mb § 20",
+        "United States (61) § 21",
+        "United States (16) § 22",
+        "United States (87) § 23",
+        "Netherlands (19) § 24",
+        "United States (105) § 25",
+        "United States (74) § 26"
       ],
-      "tag": "proxy",
+      "default": "auto"
+    },
+    {
       "type": "urltest",
-      "interval": "10s",
-      "tolerance": 2,
-      "url": "https:\/\/www.gstatic.com\/generate_204"
+      "tag": "auto",
+      "outbounds": [
+        "Japan (9) § 0",
+        "Relay_🇺🇸US-🇺🇸US_208 § 1",
+        "United States (42) § 2",
+        "United States (31) § 3",
+        "United States § 4",
+        "United States (30) § 5",
+        "Netherlands (24) § 6",
+        "United States (44) § 7",
+        "United States (19) § 8",
+        "United States (88) § 9",
+        "United States (33) § 10",
+        "United States (60) § 11",
+        "Netherlands (20) § 12",
+        "United States (66) § 13",
+        "Relay_🇺🇸US-🇺🇸US_124 § 14",
+        "Netherlands (21) § 15",
+        "United States (80) § 16",
+        "United States (38) § 17",
+        "Relay_🇺🇸US-🇯🇵JP_177 § 18",
+        "United States (5) § 19",
+        "Relay_🇺🇸US-🇬🇧GB_60 |33.42Mb § 20",
+        "United States (61) § 21",
+        "United States (16) § 22",
+        "United States (87) § 23",
+        "Netherlands (19) § 24",
+        "United States (105) § 25",
+        "United States (74) § 26"
+      ],
+      "url": "http://cp.cloudflare.com/",
+      "interval": "1m0s"
     },
     {
-      "packet_encoding": "",
-      "server": "free3.h3lixchannel.fun",
+      "type": "vmess",
+      "tag": "Japan (9) § 0",
+      "server": "103.35.190.65",
       "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "0Ckov-4qL39Uei6IVu6z85AU7W4aHY_6DSioz3TfmFM",
-          "short_id": "ba525fd6"
-        },
-        "server_name": "eset.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
+      "uuid": "ed531ebe-4971-47f9-a881-636d0b101a45",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
       "transport": {
-        "service_name": "Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers",
-        "type": "grpc"
-      },
-      "uuid": "d5e19e29-701e-46b4-a20f-417b72aa0684",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @Helix_Servers | FI🇫🇮 | 0️⃣1️⃣"
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "packet_encoding": "",
-      "server": "free1.h3lixchannel.fun",
+      "type": "vmess",
+      "tag": "Relay_🇺🇸US-🇺🇸US_208 § 1",
+      "server": "104.21.40.198",
       "server_port": 443,
+      "uuid": "172dc69f-3b43-4457-8ef8-d555b2d37f4a",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "bQeqHsCsG1Ge92b6wv21hg3QPqjYB3zDyyRBu-aTJCI",
-          "short_id": "b0ad1a74"
-        },
-        "server_name": "ea.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "transport": {
-        "service_name": "Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers-Telegram-Channel:@HELIX_Servers",
-        "type": "grpc"
-      },
-      "uuid": "01467edb-5b88-4d05-a622-f39ef473096d",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @Helix_Servers | DE🇩🇪 | 0️⃣3️⃣"
-    },
-    {
-      "packet_encoding": "",
-      "server": "154.53.164.136",
-      "server_port": 55594,
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "-xhIXlm-n_0CAvbjAyYTzndvdD5wjyznabelgSU3NGU",
-          "short_id": "15b2b41e"
-        },
-        "server_name": "tuyacn.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "transport": {
-        "service_name": "",
-        "type": "grpc"
-      },
-      "uuid": "bdbd3e1b-c480-482e-9072-ac2f2db7519c",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @EliV2ray | TR🇹🇷 | 0️⃣1️⃣"
-    },
-    {
-      "packet_encoding": "",
-      "server": "128.140.73.200",
-      "server_port": 3637,
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "3We_DkzVs7rLbQyzGJZLj0ql4Qb1ICWImmPd0jmQvy4",
-          "short_id": "182f5636"
-        },
-        "server_name": "tuyaus.com",
+        "server_name": "service1.karop.homes",
+        "insecure": true,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
         }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "service_name": "",
-        "type": "grpc"
-      },
-      "uuid": "---Telegram-Parsashonam---",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @Parsashonam | DE🇩🇪 | 0️⃣1️⃣"
-    },
-    {
-      "packet_encoding": "",
-      "server": "5.78.82.33",
-      "server_port": 40930,
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "vtNMkCuBoXPwid9f3Tb75Ohw2O7a6Czp3FqUl6iJZAw",
-          "short_id": "8d2207d9"
+        "type": "ws",
+        "path": "/OqkskdkeaHFYCl4zLtIwwkkwJewoowepo0YwKHeQ",
+        "headers": {
+          "Host": "service1.karop.homes"
         },
-        "server_name": "eset.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "service_name": "",
-        "type": "grpc"
-      },
-      "uuid": "---Telegram-Parsashonam---",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @Lockey_vpn | US🇺🇸 | 0️⃣1️⃣"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "packet_encoding": "",
-      "server": "65.108.251.177",
-      "server_port": 42790,
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "Og9v1vIzaw0VNf3CunY3-ylWkK0d1BGDBpVa0_YbxzQ",
-          "short_id": "50b623e5"
+      "type": "vmess",
+      "tag": "United States (42) § 2",
+      "server": "172.67.229.14",
+      "server_port": 80,
+      "uuid": "617c9bc4-4116-41c6-99e0-ace49a38fcdb",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Jnv8ViZOUVgijjOh0p5uGjHnXIiY",
+        "headers": {
+          "Host": "fr9.tehme100.fun"
         },
-        "server_name": "www.cloudflare.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "service_name": "",
-        "type": "grpc"
-      },
-      "uuid": "---Telegram-Parsashonam---",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @Lockey_vpn | FI🇫🇮 | 0️⃣2️⃣"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "packet_encoding": "",
-      "server": "wx.vpnxw.eu.org",
-      "server_port": 2053,
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "495Doi2d2oGoPQfSTRrTzt42Qcim9oDXN6_KoWaJ9nU",
-          "short_id": "2eef975b"
+      "type": "vmess",
+      "tag": "United States (31) § 3",
+      "server": "104.31.16.28",
+      "server_port": 80,
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "headers": {
+          "Host": "ca4.tehme2.fun"
         },
-        "server_name": "ftp.debian.org",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "transport": {
-        "service_name": "",
-        "type": "grpc"
-      },
-      "uuid": "7429f451-c8ed-4650-b96b-cedd9bf47a8e",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @vpn_xw | AT🇦🇹 | 0️⃣1️⃣"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "packet_encoding": "",
-      "server": "osn.dominogolden.eu.org",
+      "type": "vmess",
+      "tag": "United States § 4",
+      "server": "172.67.197.82",
       "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "2L9edPpuOTkHiylRzWLK8c_qZ2G9wpW24B8rwBXITGA",
-          "short_id": "35677f9b"
-        },
-        "server_name": "dash.cloudflare.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "transport": {
-        "service_name": "",
-        "type": "grpc"
-      },
-      "uuid": "c4042cbc-e426-48a0-8f56-cc970c67e924",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @FOX_VPN66 | AT🇦🇹 | 0️⃣2️⃣"
-    },
-    {
-      "packet_encoding": "",
-      "server": "65.109.211.236",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "dTGmUPDOGQhE1VI97cGpw-DOnsW_rzm7a-YMDcDkx2c",
-          "short_id": "a786cf49"
-        },
-        "server_name": "ghbi.ir",
+        "server_name": "odelia.autos",
+        "insecure": true,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
         }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "service_name": "@Everyday_VPN",
-        "type": "grpc"
-      },
-      "uuid": "68ade786-efac-40f4-8119-3f1b511d6b56",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @azadi_az_inja_migzare | FI🇫🇮 | 0️⃣1️⃣"
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "packet_encoding": "",
-      "server": "65.109.184.213",
+      "type": "vmess",
+      "tag": "United States (30) § 5",
+      "server": "104.21.21.88",
       "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "dTGmUPDOGQhE1VI97cGpw-DOnsW_rzm7a-YMDcDkx2c",
-          "short_id": "a786cf49"
-        },
-        "server_name": "gsmarena.com",
+        "server_name": "odelia.autos",
+        "insecure": true,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
         }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "service_name": "@Everyday_VPN",
-        "type": "grpc"
-      },
-      "uuid": "de5f0173-cfb1-4344-940f-4fd2ddc1b94a",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @azadi_az_inja_migzare | FI🇫🇮 | 0️⃣3️⃣"
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "packet_encoding": "",
-      "server": "vmessorg.join.bede.mokhin.me",
+      "type": "vmess",
+      "tag": "Netherlands (24) § 6",
+      "server": "188.114.99.0",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "ophelia.mom",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "ophelia.mom"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "United States (44) § 7",
+      "server": "104.31.16.27",
+      "server_port": 80,
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "headers": {
+          "Host": "ca5.tehme2.fun"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "United States (19) § 8",
+      "server": "104.21.53.12",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "ophelia.mom",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "ophelia.mom"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "United States (88) § 9",
+      "server": "172.67.142.191",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "edeen.makeup",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "edeen.makeup"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "United States (33) § 10",
+      "server": "172.67.179.37",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "octavi.cfd",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "octavi.cfd"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "United States (60) § 11",
+      "server": "172.67.215.202",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "octavi.cfd",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "octavi.cfd"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "Netherlands (20) § 12",
+      "server": "188.114.98.0",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "odelia.autos",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "United States (66) § 13",
+      "server": "104.21.27.139",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "edeen.makeup",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "edeen.makeup"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "Relay_🇺🇸US-🇺🇸US_124 § 14",
+      "server": "172.67.164.184",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "alvvin.click",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "alvvin.click"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "Netherlands (21) § 15",
+      "server": "188.114.97.1",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "odelia.autos",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "United States (80) § 16",
+      "server": "104.21.91.254",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "waynn.makeup",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "waynn.makeup"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "United States (38) § 17",
+      "server": "104.31.16.120",
       "server_port": 8443,
+      "uuid": "aa0c4744-9568-4bee-a08b-73668a9b2a42",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "9U3GO-mx3W6XsFh1pdQQ8T98Fy8n3TcGcKZINWVy23w",
-          "short_id": "5c4b8ba1"
-        },
-        "server_name": "ftp.debian.org",
+        "server_name": "cloudconebbb.gorgorchicken.one",
+        "insecure": true,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
         }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "service_name": "@VmessOrg",
-        "type": "grpc"
-      },
-      "uuid": "eedf4a2f-4e7d-48f8-8f47-258561f2d5b3",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @v2rayNG_Matsuri | DE🇩🇪 | 0️⃣2️⃣"
+        "type": "ws",
+        "path": "/cloudconebbb",
+        "headers": {
+          "Host": "cloudconebbb.gorgorchicken.one"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "packet_encoding": "",
-      "server": "5.78.82.33",
-      "server_port": 3024,
+      "type": "vmess",
+      "tag": "Relay_🇺🇸US-🇯🇵JP_177 § 18",
+      "server": "188.114.96.11",
+      "server_port": 443,
+      "uuid": "18e5f40f-bda6-4c15-9334-e87cda6047af",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "VMuYXRYV-Os34HU38K3t6VJIpNGJkaGaACejIf-v4As",
-          "short_id": "ff7f39ff"
-        },
-        "server_name": "tuyaus.com",
+        "server_name": "ming2.kiwireich.com",
+        "insecure": true,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
         }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "service_name": "",
-        "type": "grpc"
-      },
-      "uuid": "---Telegram-Parsashonam---",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @v2rayNG_Matsuri | US🇺🇸 | 0️⃣3️⃣"
+        "type": "ws",
+        "path": "/ray",
+        "headers": {
+          "Host": "ming2.kiwireich.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "packet_encoding": "",
-      "server": "805-join.v2raytz.sbs",
-      "server_port": 2083,
+      "type": "vmess",
+      "tag": "United States (5) § 19",
+      "server": "104.21.36.26",
+      "server_port": 8443,
+      "uuid": "1cec1ebc-b489-4769-f2d9-e079b5832a60",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "FJZbse9FHSP3ra4f_8EnpR4uCCEraOtYVASIRnuYNzs",
-          "short_id": "00c0"
-        },
-        "server_name": "greenpepper.ir",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "transport": {
-        "service_name": "Channel:@free_v2rayyy-Join:@free_v2rayyy-Channel:@free_v2rayyy-Join:@free_v2rayyy-Channel:@free_v2rayyy-Join:@free_v2rayyy-Channel:@free_v2rayyy-Join:@free_v2rayyy",
-        "type": "grpc"
-      },
-      "uuid": "da70971d-a233-4794-c15f-f88d42ab565a",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @V2RayTz | DE🇩🇪 | 0️⃣1️⃣"
-    },
-    {
-      "packet_encoding": "",
-      "server": "51.75.90.211",
-      "server_port": 51129,
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "tHUQkJ8gpxjTgeOkCrswR_pXx39S45SnTUv_FUP8Fis",
-          "short_id": "7fe29733"
-        },
-        "server_name": "www.speedtest.net",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "transport": {
-        "service_name": "",
-        "type": "grpc"
-      },
-      "uuid": "b1e4fe2d-0513-5b9f-b8a8-91efc97db47a",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @sinabigo | DE🇩🇪 | 0️⃣1️⃣"
-    },
-    {
-      "packet_encoding": "",
-      "server": "channel.safenetir.life",
-      "server_port": 39427,
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "w70-KBS_ApLlWCl1Ml9B-zGl_rrLqyzY2bSFhNhKLBk",
-          "short_id": "3f5e82fa"
-        },
-        "server_name": "Cloudflare.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "transport": {
-        "service_name": "@SafeNetIR-@SafeNetIR-@SafeNetIR-@SafeNetIR-@SafeNetIR-@SafeNetIR-@SafeNetIR-@SafeNetIR",
-        "type": "grpc"
-      },
-      "uuid": "0d27a6a4-2c56-4949-f350-ea0dec06f125",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @SafeNet_Server | NL🇳🇱 | 0️⃣2️⃣"
-    },
-    {
-      "flow": "xtls-rprx-vision",
-      "packet_encoding": "",
-      "server": "trch.blueberrynetwork.icu",
-      "server_port": 333,
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "o0eRV4p7lizgJXVxPt9fbOzqKzL9UlyhHjnZJGVAUQo",
-          "short_id": "80c7292c"
-        },
-        "server_name": "www.kukala.ir",
+        "server_name": "cloudconeaaa.gorgorchicken.one",
+        "insecure": true,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
         }
       },
-      "uuid": "ff2cb43b-a093-4372-a19c-37ff6f6d741f",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @Outlinev2rayNG | TR🇹🇷 | 0️⃣3️⃣"
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/cloudconeaaa",
+        "headers": {
+          "Host": "cloudconeaaa.gorgorchicken.one"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "packet_encoding": "",
-      "server": "gam1.dadnetiran.xyz",
-      "server_port": 36711,
+      "type": "vmess",
+      "tag": "Relay_🇺🇸US-🇬🇧GB_60 |33.42Mb § 20",
+      "server": "188.114.96.7",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
       "tls": {
         "enabled": true,
-        "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "LmMvF6Nyg0Or6fJo3P2d_a3HYMzLyhV2pqeIPZQaLSY",
-          "short_id": "7ca4ada1"
-        },
-        "server_name": "b130pbn.myraidbox.de",
+        "server_name": "ophelia.mom",
+        "insecure": true,
         "utls": {
           "enabled": true,
-          "fingerprint": "firefox"
+          "fingerprint": "chrome"
         }
       },
+      "packet_encoding": "xudp",
       "transport": {
-        "service_name": "@GOOD_V2RAYY@GOOD_V2RAYY",
-        "type": "grpc"
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "ophelia.mom"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "United States (61) § 21",
+      "server": "172.67.183.110",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "waynn.makeup",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
       },
-      "uuid": "718da114-9b15-47c3-b2ee-9ca28470c15f",
-      "type": "vless",
-      "domain_strategy": "",
-      "tag": "رایگان | REALITY | @Good_V2rayy | DE🇩🇪 | 0️⃣1️⃣"
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "waynn.makeup"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "tag": "direct",
-      "type": "direct"
+      "type": "vmess",
+      "tag": "United States (16) § 22",
+      "server": "162.251.62.115",
+      "server_port": 22324,
+      "uuid": "04621bae-ab36-11ec-b909-0242ac120002",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
     },
     {
-      "tag": "bypass",
-      "type": "direct"
+      "type": "vmess",
+      "tag": "United States (87) § 23",
+      "server": "104.21.50.177",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "alvvin.click",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "alvvin.click"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "tag": "block",
-      "type": "block"
+      "type": "vmess",
+      "tag": "Netherlands (19) § 24",
+      "server": "188.114.96.2",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "ophelia.mom",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "ophelia.mom"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "tag": "dns-out",
-      "type": "dns"
+      "type": "vmess",
+      "tag": "United States (105) § 25",
+      "server": "104.21.75.246",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "cf.tonyluk.link",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/ophelia.mom:443/linkvws",
+        "headers": {
+          "Host": "cf.tonyluk.link"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "United States (74) § 26",
+      "server": "172.67.207.114",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "ophelia.mom",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "ophelia.mom"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "direct",
+      "tag": "bypass"
+    },
+    {
+      "type": "block",
+      "tag": "block"
     }
   ],
   "route": {
-    "auto_detect_interface": true,
+    "geoip": {
+      "path": "geo-assets/sagernet-sing-geoip-geoip.db"
+    },
+    "geosite": {
+      "path": "geo-assets/sagernet-sing-geosite-geosite.db"
+    },
     "rules": [
       {
-        "outbound": "dns-out",
-        "port": [
-          53
-        ]
-      },
-      {
-        "inbound": [
-          "dns-in"
-        ],
+        "inbound": "dns-in",
         "outbound": "dns-out"
       },
       {
-        "network": [
-          "udp"
-        ],
-        "outbound": "block",
-        "port": [
-          443
-        ],
-        "port_range": []
+        "port": 53,
+        "outbound": "dns-out"
       },
       {
-        "geosite": [
-          "category-ads-all"
-        ],
-        "outbound": "block"
+        "clash_mode": "Direct",
+        "outbound": "direct"
       },
       {
-        "domain_suffix": [
-          "appcenter.ms",
-          "firebase.io",
-          "crashlytics.com"
-        ],
-        "outbound": "block"
-      },
-      {
-        "domain_suffix": [
-          "googleapis.cn"
-        ],
-        "outbound": "proxy"
-      },
-      {
-        "geosite": [
-          "cn"
-        ],
-        "outbound": "bypass"
-      },
-      {
-        "geoip": [
-          "cn"
-        ],
-        "outbound": "bypass"
-      },
-      {
-        "geosite": [
-          "ir"
-        ],
-        "outbound": "bypass"
-      },
-      {
-        "geoip": [
-          "ir"
-        ],
-        "outbound": "bypass"
-      },
-      {
-        "ip_cidr": [
-          "224.0.0.0\/3",
-          "ff00::\/8"
-        ],
-        "outbound": "block",
-        "source_ip_cidr": [
-          "224.0.0.0\/3",
-          "ff00::\/8"
-        ]
+        "clash_mode": "Global",
+        "outbound": "select"
       }
-    ]
+    ],
+    "auto_detect_interface": true,
+    "override_android_vpn": true
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "store_selected": true,
+      "cache_file": "clash.db"
+    }
   }
 }
