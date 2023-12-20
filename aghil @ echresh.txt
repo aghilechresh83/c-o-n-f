@@ -121,128 +121,4086 @@
           "ff00::/8"
         ]
       }
-    ]
+    ],
+    "geoip": {
+      "path": "geo-assets/sagernet-sing-geoip-geoip.db"
+    },
+    "geosite": {
+      "path": "geo-assets/sagernet-sing-geosite-geosite.db"
+    }
   },
   "outbounds": [
     {
-      "tag": "proxy",
       "type": "selector",
+      "tag": "select",
       "outbounds": [
-        "URL-TEST | رایگان",
-        "SE🇸🇪",
-        "DE🇩🇪",
-        "NL🇳🇱",
-        "KR🇰🇷"
-      ]
-    },
-    {
-      "tag": "URL-TEST | رایگان",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @VmessProtocol | SE🇸🇪 | 0️⃣1️⃣",
-        "رایگان | SS | @VmessProtocol | DE🇩🇪 | 0️⃣2️⃣",
-        "رایگان | SS | @VmessProtocol | NL🇳🇱 | 0️⃣3️⃣",
-        "رایگان | SS | @yaney_01 | KR🇰🇷 | 0️⃣1️⃣"
+        "auto",
+        "🇵🇭 Philippines § 0",
+        "🇳🇱 Netherlands (1) § 1",
+        "🇮🇩 Indonesia § 2",
+        "🇺🇸 United States (4) § 3",
+        "🇺🇸 United States (5) § 4",
+        "🇺🇸 United States (6) § 5",
+        "🇺🇸 United States (7) § 6",
+        "🇺🇸 United States (8) § 7",
+        "🇺🇸 United States (10) § 8",
+        "🇺🇸 United States (12) § 9",
+        "🇺🇸 United States (13) § 10",
+        "🇺🇸 United States (15) § 11",
+        "🇺🇸 United States (16) § 12",
+        "🇳🇱 Netherlands (2) § 13",
+        "🇺🇸 United States (18) § 14",
+        "🇺🇸 United States (19) § 15",
+        "🇳🇱 Netherlands (3) § 16",
+        "🇺🇸 United States (21) § 17",
+        "🇺🇸 United States (22) § 18",
+        "🇺🇸 United States (23) § 19",
+        "🇺🇸 United States (24) § 20",
+        "🇺🇸 United States (25) § 21",
+        "🇺🇸 United States (26) § 22",
+        "🇷🇴 Romania § 23",
+        "🇮🇳 India (1) § 24",
+        "🇺🇸 United States (28) § 25",
+        "🇺🇸 United States (29) § 26",
+        "🇭🇰 Hong Kong § 27",
+        "🇺🇸 United States (32) § 28",
+        "🇺🇸 United States (35) § 29",
+        "🇺🇸 United States (36) § 30",
+        "🇺🇸 United States (37) § 31",
+        "🇯🇵 Japan (2) § 32",
+        "🇺🇸 United States (38) § 33",
+        "🇺🇸 United States (41) § 34",
+        "🇺🇸 United States (42) § 35",
+        "🇺🇸 United States (43) § 36",
+        "🇮🇩 Indonesia (1) § 37",
+        "🇺🇸 United States (45) § 38",
+        "🇺🇸 United States (46) § 39",
+        "🇺🇸 United States (48) § 40",
+        "🇺🇸 United States (50) § 41",
+        "🇺🇸 United States (51) § 42",
+        "🇺🇸 United States (52) § 43",
+        "🇺🇸 United States (53) § 44",
+        "🇺🇸 United States (54) § 45",
+        "🇺🇸 United States (56) § 46",
+        "🇺🇸 United States (57) § 47",
+        "🇨🇳 Taiwan (5) § 48",
+        "🇺🇸 United States (64) § 49",
+        "🇺🇸 United States (66) § 50",
+        "🇺🇸 United States (67) § 51",
+        "🇺🇸 United States (68) § 52",
+        "🇳🇱 Netherlands (4) § 53",
+        "🇺🇸 United States (69) § 54",
+        "🇺🇸 United States (70) § 55",
+        "🇵🇭 Philippines (1) § 56",
+        "🇺🇸 United States (71) § 57",
+        "🇺🇸 United States (72) § 58",
+        "🇺🇸 United States (74) § 59",
+        "🇺🇸 United States (75) § 60",
+        "🇺🇸 United States (76) § 61",
+        "🇺🇸 United States (78) § 62",
+        "🇺🇸 United States (79) § 63",
+        "🇺🇸 United States (80) § 64",
+        "🇺🇸 United States (81) § 65",
+        "🇳🇱 Netherlands (5) § 66",
+        "🇺🇸 United States (82) § 67",
+        "🇺🇸 United States (83) § 68",
+        "🇺🇸 United States (84) § 69",
+        "🇺🇸 United States (85) § 70",
+        "🇨🇳 Taiwan (9) § 71",
+        "🇺🇸 United States (86) § 72",
+        "🇺🇸 United States (87) § 73",
+        "🇺🇸 United States (88) § 74",
+        "🇺🇸 United States (89) § 75",
+        "🇯🇵 Japan (7) § 76",
+        "🇺🇸 United States (90) § 77",
+        "🇳🇱 Netherlands (6) § 78",
+        "🇺🇸 United States (91) § 79",
+        "🇨🇳 Taiwan (10) § 80",
+        "🇺🇸 United States (92) § 81",
+        "🇯🇵 Japan (8) § 82",
+        "🇯🇵 Japan (9) § 83",
+        "🇺🇸 United States (93) § 84",
+        "🇺🇸 United States (94) § 85",
+        "🇺🇸 United States (95) § 86",
+        "🇺🇸 United States (96) § 87",
+        "🇺🇸 United States (97) § 88",
+        "🇯🇵 Japan (10) § 89",
+        "🇺🇸 United States (98) § 90",
+        "🇩🇪 Germany (3) § 91",
+        "🇺🇸 United States (99) § 92",
+        "🇺🇸 United States (100) § 93",
+        "🇺🇸 United States (101) § 94",
+        "🇧🇪 Belgium § 95",
+        "🇮🇳 India (2) § 96",
+        "🇳🇱 Netherlands (7) § 97",
+        "🇺🇸 United States (102) § 98",
+        "🇺🇸 United States (103) § 99",
+        "🇺🇸 United States (104) § 100",
+        "🇩🇪 Germany (4) § 101",
+        "🇳🇱 Netherlands (8) § 102",
+        "🇵🇭 Philippines (2) § 103",
+        "🇺🇸 United States (105) § 104",
+        "🇳🇱 Netherlands (9) § 105",
+        "🇮🇳 India (3) § 106",
+        "🇺🇸 United States (106) § 107",
+        "🇺🇸 United States (107) § 108",
+        "🇬🇧 United Kingdom (2) § 109",
+        "🇺🇸 United States (108) § 110",
+        "🇺🇸 United States (109) § 111",
+        "🇺🇸 United States (110) § 112",
+        "🇭🇰 Hong Kong (2) § 113",
+        "🇵🇭 Philippines (3) § 114",
+        "🇺🇸 United States (111) § 115",
+        "🇺🇸 United States (112) § 116",
+        "🇨🇳 Taiwan (11) § 117",
+        "🇺🇸 United States (113) § 118",
+        "🇺🇸 United States (114) § 119",
+        "🇺🇸 United States (115) § 120",
+        "🇲🇴 Macao § 121",
+        "🇺🇸 United States (116) § 122",
+        "🇨🇳 Taiwan (12) § 123",
+        "🇨🇳 China § 124",
+        "🇺🇸 United States (117) § 125",
+        "🇺🇸 United States (118) § 126",
+        "🇺🇸 United States (119) § 127",
+        "🇵🇭 Philippines (4) § 128",
+        "🇺🇸 United States (120) § 129",
+        "🇺🇸 United States (121) § 130",
+        "🇨🇦 Canada (1) § 131",
+        "🇺🇸 United States (122) § 132",
+        "🇺🇸 United States (123) § 133",
+        "🇺🇸 United States (124) § 134",
+        "🇺🇸 United States (125) § 135",
+        "🇺🇸 United States (126) § 136",
+        "🇺🇸 United States (127) § 137",
+        "🇺🇸 United States (128) § 138",
+        "🇺🇸 United States (129) § 139",
+        "🇯🇵 Japan (11) § 140",
+        "🇺🇸 United States (130) § 141",
+        "🇺🇸 United States (131) § 142",
+        "🇺🇸 United States (132) § 143",
+        "🇭🇰 Hong Kong (3) § 144",
+        "🇺🇸 United States (133) § 145",
+        "🇺🇸 United States (134) § 146",
+        "🇫🇷 France § 147",
+        "🇺🇸 United States (135) § 148",
+        "🇺🇸 United States (136) § 149",
+        "🇵🇭 Philippines (5) § 150",
+        "🇮🇷 Iran § 151",
+        "🇺🇸 United States (137) § 152",
+        "🇸🇬 Singapore (4) § 153",
+        "🇺🇸 United States (138) § 154",
+        "🇵🇭 Philippines (6) § 155",
+        "🇺🇸 United States (139) § 156",
+        "🇺🇸 United States (140) § 157",
+        "🇺🇸 United States (141) § 158",
+        "🇺🇸 United States (142) § 159",
+        "🇫🇮 Finland § 160",
+        "🇺🇸 United States (143) § 161",
+        "🇺🇸 United States (144) § 162",
+        "🇺🇸 United States (145) § 163",
+        "🇵🇭 Philippines (7) § 164",
+        "🇮🇹 Italy § 165",
+        "🇺🇸 United States (146) § 166",
+        "🇺🇸 United States (147) § 167",
+        "🇹🇭 Thailand § 168",
+        "🇩🇪 Germany (5) § 169",
+        "🇺🇸 United States (148) § 170",
+        "Lithuania § 171",
+        "🇺🇸 United States (149) § 172",
+        "🇨🇳 Taiwan (13) § 173",
+        "🇿🇦 South Africa § 174",
+        "🇳🇱 Netherlands (10) § 175",
+        "🇳🇱 Netherlands (11) § 176",
+        "🇨🇳 China (1) § 177",
+        "🇺🇸 United States (150) § 178",
+        "🇨🇳 China (3) § 179",
+        "🇨🇳 China (4) § 180"
       ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
+      "default": "auto"
     },
     {
-      "tag": "SE🇸🇪",
       "type": "urltest",
+      "tag": "auto",
       "outbounds": [
-        "رایگان | SS | @VmessProtocol | SE🇸🇪 | 0️⃣1️⃣"
+        "🇵🇭 Philippines § 0",
+        "🇳🇱 Netherlands (1) § 1",
+        "🇮🇩 Indonesia § 2",
+        "🇺🇸 United States (4) § 3",
+        "🇺🇸 United States (5) § 4",
+        "🇺🇸 United States (6) § 5",
+        "🇺🇸 United States (7) § 6",
+        "🇺🇸 United States (8) § 7",
+        "🇺🇸 United States (10) § 8",
+        "🇺🇸 United States (12) § 9",
+        "🇺🇸 United States (13) § 10",
+        "🇺🇸 United States (15) § 11",
+        "🇺🇸 United States (16) § 12",
+        "🇳🇱 Netherlands (2) § 13",
+        "🇺🇸 United States (18) § 14",
+        "🇺🇸 United States (19) § 15",
+        "🇳🇱 Netherlands (3) § 16",
+        "🇺🇸 United States (21) § 17",
+        "🇺🇸 United States (22) § 18",
+        "🇺🇸 United States (23) § 19",
+        "🇺🇸 United States (24) § 20",
+        "🇺🇸 United States (25) § 21",
+        "🇺🇸 United States (26) § 22",
+        "🇷🇴 Romania § 23",
+        "🇮🇳 India (1) § 24",
+        "🇺🇸 United States (28) § 25",
+        "🇺🇸 United States (29) § 26",
+        "🇭🇰 Hong Kong § 27",
+        "🇺🇸 United States (32) § 28",
+        "🇺🇸 United States (35) § 29",
+        "🇺🇸 United States (36) § 30",
+        "🇺🇸 United States (37) § 31",
+        "🇯🇵 Japan (2) § 32",
+        "🇺🇸 United States (38) § 33",
+        "🇺🇸 United States (41) § 34",
+        "🇺🇸 United States (42) § 35",
+        "🇺🇸 United States (43) § 36",
+        "🇮🇩 Indonesia (1) § 37",
+        "🇺🇸 United States (45) § 38",
+        "🇺🇸 United States (46) § 39",
+        "🇺🇸 United States (48) § 40",
+        "🇺🇸 United States (50) § 41",
+        "🇺🇸 United States (51) § 42",
+        "🇺🇸 United States (52) § 43",
+        "🇺🇸 United States (53) § 44",
+        "🇺🇸 United States (54) § 45",
+        "🇺🇸 United States (56) § 46",
+        "🇺🇸 United States (57) § 47",
+        "🇨🇳 Taiwan (5) § 48",
+        "🇺🇸 United States (64) § 49",
+        "🇺🇸 United States (66) § 50",
+        "🇺🇸 United States (67) § 51",
+        "🇺🇸 United States (68) § 52",
+        "🇳🇱 Netherlands (4) § 53",
+        "🇺🇸 United States (69) § 54",
+        "🇺🇸 United States (70) § 55",
+        "🇵🇭 Philippines (1) § 56",
+        "🇺🇸 United States (71) § 57",
+        "🇺🇸 United States (72) § 58",
+        "🇺🇸 United States (74) § 59",
+        "🇺🇸 United States (75) § 60",
+        "🇺🇸 United States (76) § 61",
+        "🇺🇸 United States (78) § 62",
+        "🇺🇸 United States (79) § 63",
+        "🇺🇸 United States (80) § 64",
+        "🇺🇸 United States (81) § 65",
+        "🇳🇱 Netherlands (5) § 66",
+        "🇺🇸 United States (82) § 67",
+        "🇺🇸 United States (83) § 68",
+        "🇺🇸 United States (84) § 69",
+        "🇺🇸 United States (85) § 70",
+        "🇨🇳 Taiwan (9) § 71",
+        "🇺🇸 United States (86) § 72",
+        "🇺🇸 United States (87) § 73",
+        "🇺🇸 United States (88) § 74",
+        "🇺🇸 United States (89) § 75",
+        "🇯🇵 Japan (7) § 76",
+        "🇺🇸 United States (90) § 77",
+        "🇳🇱 Netherlands (6) § 78",
+        "🇺🇸 United States (91) § 79",
+        "🇨🇳 Taiwan (10) § 80",
+        "🇺🇸 United States (92) § 81",
+        "🇯🇵 Japan (8) § 82",
+        "🇯🇵 Japan (9) § 83",
+        "🇺🇸 United States (93) § 84",
+        "🇺🇸 United States (94) § 85",
+        "🇺🇸 United States (95) § 86",
+        "🇺🇸 United States (96) § 87",
+        "🇺🇸 United States (97) § 88",
+        "🇯🇵 Japan (10) § 89",
+        "🇺🇸 United States (98) § 90",
+        "🇩🇪 Germany (3) § 91",
+        "🇺🇸 United States (99) § 92",
+        "🇺🇸 United States (100) § 93",
+        "🇺🇸 United States (101) § 94",
+        "🇧🇪 Belgium § 95",
+        "🇮🇳 India (2) § 96",
+        "🇳🇱 Netherlands (7) § 97",
+        "🇺🇸 United States (102) § 98",
+        "🇺🇸 United States (103) § 99",
+        "🇺🇸 United States (104) § 100",
+        "🇩🇪 Germany (4) § 101",
+        "🇳🇱 Netherlands (8) § 102",
+        "🇵🇭 Philippines (2) § 103",
+        "🇺🇸 United States (105) § 104",
+        "🇳🇱 Netherlands (9) § 105",
+        "🇮🇳 India (3) § 106",
+        "🇺🇸 United States (106) § 107",
+        "🇺🇸 United States (107) § 108",
+        "🇬🇧 United Kingdom (2) § 109",
+        "🇺🇸 United States (108) § 110",
+        "🇺🇸 United States (109) § 111",
+        "🇺🇸 United States (110) § 112",
+        "🇭🇰 Hong Kong (2) § 113",
+        "🇵🇭 Philippines (3) § 114",
+        "🇺🇸 United States (111) § 115",
+        "🇺🇸 United States (112) § 116",
+        "🇨🇳 Taiwan (11) § 117",
+        "🇺🇸 United States (113) § 118",
+        "🇺🇸 United States (114) § 119",
+        "🇺🇸 United States (115) § 120",
+        "🇲🇴 Macao § 121",
+        "🇺🇸 United States (116) § 122",
+        "🇨🇳 Taiwan (12) § 123",
+        "🇨🇳 China § 124",
+        "🇺🇸 United States (117) § 125",
+        "🇺🇸 United States (118) § 126",
+        "🇺🇸 United States (119) § 127",
+        "🇵🇭 Philippines (4) § 128",
+        "🇺🇸 United States (120) § 129",
+        "🇺🇸 United States (121) § 130",
+        "🇨🇦 Canada (1) § 131",
+        "🇺🇸 United States (122) § 132",
+        "🇺🇸 United States (123) § 133",
+        "🇺🇸 United States (124) § 134",
+        "🇺🇸 United States (125) § 135",
+        "🇺🇸 United States (126) § 136",
+        "🇺🇸 United States (127) § 137",
+        "🇺🇸 United States (128) § 138",
+        "🇺🇸 United States (129) § 139",
+        "🇯🇵 Japan (11) § 140",
+        "🇺🇸 United States (130) § 141",
+        "🇺🇸 United States (131) § 142",
+        "🇺🇸 United States (132) § 143",
+        "🇭🇰 Hong Kong (3) § 144",
+        "🇺🇸 United States (133) § 145",
+        "🇺🇸 United States (134) § 146",
+        "🇫🇷 France § 147",
+        "🇺🇸 United States (135) § 148",
+        "🇺🇸 United States (136) § 149",
+        "🇵🇭 Philippines (5) § 150",
+        "🇮🇷 Iran § 151",
+        "🇺🇸 United States (137) § 152",
+        "🇸🇬 Singapore (4) § 153",
+        "🇺🇸 United States (138) § 154",
+        "🇵🇭 Philippines (6) § 155",
+        "🇺🇸 United States (139) § 156",
+        "🇺🇸 United States (140) § 157",
+        "🇺🇸 United States (141) § 158",
+        "🇺🇸 United States (142) § 159",
+        "🇫🇮 Finland § 160",
+        "🇺🇸 United States (143) § 161",
+        "🇺🇸 United States (144) § 162",
+        "🇺🇸 United States (145) § 163",
+        "🇵🇭 Philippines (7) § 164",
+        "🇮🇹 Italy § 165",
+        "🇺🇸 United States (146) § 166",
+        "🇺🇸 United States (147) § 167",
+        "🇹🇭 Thailand § 168",
+        "🇩🇪 Germany (5) § 169",
+        "🇺🇸 United States (148) § 170",
+        "Lithuania § 171",
+        "🇺🇸 United States (149) § 172",
+        "🇨🇳 Taiwan (13) § 173",
+        "🇿🇦 South Africa § 174",
+        "🇳🇱 Netherlands (10) § 175",
+        "🇳🇱 Netherlands (11) § 176",
+        "🇨🇳 China (1) § 177",
+        "🇺🇸 United States (150) § 178",
+        "🇨🇳 China (3) § 179",
+        "🇨🇳 China (4) § 180"
       ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
+      "url": "http://cp.cloudflare.com/",
+      "interval": "1m0s"
     },
     {
-      "tag": "DE🇩🇪",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @VmessProtocol | DE🇩🇪 | 0️⃣2️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
+      "type": "vmess",
+      "tag": "🇵🇭 Philippines § 0",
+      "server": "38.54.36.181",
+      "server_port": 50674,
+      "uuid": "09a9bdf1-7584-4b52-e810-c1330396c2cb",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "tag": "NL🇳🇱",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @VmessProtocol | NL🇳🇱 | 0️⃣3️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
-    },
-    {
-      "tag": "KR🇰🇷",
-      "type": "urltest",
-      "outbounds": [
-        "رایگان | SS | @yaney_01 | KR🇰🇷 | 0️⃣1️⃣"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50
-    },
-    {
-      "tag": "رایگان | SS | @VmessProtocol | SE🇸🇪 | 0️⃣1️⃣",
-      "type": "shadowsocks",
-      "server": "94.131.115.129",
-      "server_port": 38108,
-      "method": "chacha20-ietf-poly1305",
-      "password": "bNUe0jR9rzsvLEzfPmI4Of",
-      "plugin": "",
-      "plugin_opts": ""
-    },
-    {
-      "tag": "رایگان | SS | @VmessProtocol | DE🇩🇪 | 0️⃣2️⃣",
-      "type": "shadowsocks",
-      "server": "141.95.106.33",
-      "server_port": 1080,
-      "method": "aes-128-gcm",
-      "password": "KAffy7oieVJYGKFjHvUE3g",
-      "plugin": "",
-      "plugin_opts": ""
-    },
-    {
-      "tag": "رایگان | SS | @VmessProtocol | NL🇳🇱 | 0️⃣3️⃣",
-      "type": "shadowsocks",
-      "server": "45.87.154.143",
-      "server_port": 1165,
-      "method": "chacha20-ietf-poly1305",
-      "password": "0cAOTNuOqZQuK1c9-mCXJQ",
-      "plugin": "",
-      "plugin_opts": ""
-    },
-    {
-      "tag": "رایگان | SS | @yaney_01 | KR🇰🇷 | 0️⃣1️⃣",
-      "type": "shadowsocks",
-      "server": "43.201.56.214",
+      "type": "vmess",
+      "tag": "🇳🇱 Netherlands (1) § 1",
+      "server": "188.114.96.7",
       "server_port": 443,
-      "method": "aes-256-cfb",
-      "password": "amazonskr05",
-      "plugin": "",
-      "plugin_opts": ""
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "octavi.cfd",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "octavi.cfd"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "tag": "direct",
-      "type": "direct"
+      "type": "vmess",
+      "tag": "🇮🇩 Indonesia § 2",
+      "server": "113.20.28.102",
+      "server_port": 22188,
+      "uuid": "00677eb4-91c2-41f1-e790-963b9a093fd5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
     },
     {
-      "tag": "bypass",
-      "type": "direct"
+      "type": "vmess",
+      "tag": "🇺🇸 United States (4) § 3",
+      "server": "odelia.autos",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "odelia.autos",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "tag": "block",
-      "type": "block"
+      "type": "vmess",
+      "tag": "🇺🇸 United States (5) § 4",
+      "server": "172.67.215.230",
+      "server_port": 2083,
+      "uuid": "da37a316-d17b-493f-bd6e-b58a23e31823",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "foryourtestmyfriends.hesam5a.tk",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/foryourtestmyfriends2083",
+        "headers": {
+          "Host": "foryourtestmyfriends.hesam5a.tk"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "tag": "dns-out",
-      "type": "dns"
+      "type": "vmess",
+      "tag": "🇺🇸 United States (6) § 5",
+      "server": "198.2.200.37",
+      "server_port": 30000,
+      "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
+      "security": "auto",
+      "alter_id": 64,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "www.61708240.xyz",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/path/1702215223320",
+        "headers": {
+          "Host": "www.61708240.xyz"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (7) § 6",
+      "server": "30.vmessprotocol.telegram-vmessprotocol-channel.space",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "ophelia.mom",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "ophelia.mom"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (8) § 7",
+      "server": "172.67.229.25",
+      "server_port": 2086,
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (10) § 8",
+      "server": "172.67.142.191",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "edeen.makeup",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "edeen.makeup"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (12) § 9",
+      "server": "154.90.39.63",
+      "server_port": 45343,
+      "uuid": "08aa8499-d616-4ff1-d6ab-ce0c522824aa",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (13) § 10",
+      "server": "172.234.17.31",
+      "server_port": 48771,
+      "uuid": "f1c2be64-961b-407a-c4e0-b8919ca1253b",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (15) § 11",
+      "server": "144.202.81.122",
+      "server_port": 25514,
+      "uuid": "13bf827e-55cd-4b46-e9f1-b7f9ffbe7955",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (16) § 12",
+      "server": "172.67.206.124",
+      "server_port": 443,
+      "uuid": "4fa35ea4-668e-4d7b-9bbc-b83681060617",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "rlhrwtqusd.site",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/kwhmvws",
+        "headers": {
+          "Host": "rlhrwtqusd.site"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇳🇱 Netherlands (2) § 13",
+      "server": "188.114.97.3",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "odelia.autos",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (18) § 14",
+      "server": "198.2.202.24",
+      "server_port": 30000,
+      "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
+      "security": "auto",
+      "alter_id": 64,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "www.94231160.xyz",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/path/1702215223320",
+        "headers": {
+          "Host": "www.94231160.xyz"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (19) § 15",
+      "server": "alvvin.click",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "alvvin.click",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "alvvin.click"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇳🇱 Netherlands (3) § 16",
+      "server": "188.114.97.7",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "waynn.makeup",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "waynn.makeup"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (21) § 17",
+      "server": "104.21.53.12",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "ophelia.mom",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "ophelia.mom"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (22) § 18",
+      "server": "172.67.184.53",
+      "server_port": 8443,
+      "uuid": "1cec1ebc-b489-4769-f2d9-e079b5832a60",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "cloudconeaaa.gorgorchicken.one",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/cloudconeaaa",
+        "headers": {
+          "Host": "cloudconeaaa.gorgorchicken.one"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (23) § 19",
+      "server": "104.21.75.246",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "cf.tonyluk.link",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/ophelia.mom:443/linkvws",
+        "headers": {
+          "Host": "cf.tonyluk.link"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (24) § 20",
+      "server": "154.90.34.36",
+      "server_port": 27753,
+      "uuid": "f63cf6da-fbc8-48ec-ed3d-2b9b80a66c58",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (25) § 21",
+      "server": "nla.yj2022.gq",
+      "server_port": 8880,
+      "uuid": "4b5e4565-322f-4223-a891-78a84f189726",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/doxwPZje9wMMZi4m9xY8GkU5zT3Hs4kRDL4W3nistSRmDw3x2",
+        "headers": {
+          "Host": "nla.yj2022.gq"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (26) § 22",
+      "server": "xyfxhiogo.site",
+      "server_port": 443,
+      "uuid": "4fa35ea4-668e-4d7b-9bbc-b83681060617",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "xyfxhiogo.site",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/kwhmvws",
+        "headers": {
+          "Host": "xyfxhiogo.site"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇷🇴 Romania § 23",
+      "server": "89.36.162.35",
+      "server_port": 47333,
+      "uuid": "7e3e6c91-90fa-4321-ad74-db00f2442134",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇮🇳 India (1) § 24",
+      "server": "103.114.201.143",
+      "server_port": 59487,
+      "uuid": "51fb562e-0a9b-4c27-e4d8-6f4883bb5165",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (28) § 25",
+      "server": "172.67.185.26",
+      "server_port": 8880,
+      "uuid": "4b5e4565-322f-4223-a891-78a84f189726",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/9sTFt5L554kPVWmuJ2k8baS4bEY83PZ66xb4twoBBtsiMPK2b",
+        "headers": {
+          "Host": "fra.yj2022.gq"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (29) § 26",
+      "server": "edeen.makeup",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "edeen.makeup",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "edeen.makeup"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇭🇰 Hong Kong § 27",
+      "server": "115.126.50.111",
+      "server_port": 16399,
+      "uuid": "0a824660-8b17-4665-d2b4-a86c7f15d32a",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (32) § 28",
+      "server": "172.67.229.13",
+      "server_port": 2086,
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (35) § 29",
+      "server": "172.67.183.110",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "waynn.makeup",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "waynn.makeup"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (36) § 30",
+      "server": "104.21.91.254",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "waynn.makeup",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "waynn.makeup"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (37) § 31",
+      "server": "waynn.makeup",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "waynn.makeup",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "waynn.makeup"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇯🇵 Japan (2) § 32",
+      "server": "183.181.36.194",
+      "server_port": 41597,
+      "uuid": "4a6eaa2d-5603-4c05-d967-fb6f42250a5a",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (38) § 33",
+      "server": "172.67.229.39",
+      "server_port": 2086,
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (41) § 34",
+      "server": "torlqsbztdo.site",
+      "server_port": 443,
+      "uuid": "4fa35ea4-668e-4d7b-9bbc-b83681060617",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "torlqsbztdo.site",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/kwhmvws",
+        "headers": {
+          "Host": "torlqsbztdo.site"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (42) § 35",
+      "server": "xsasowspdqz.site",
+      "server_port": 443,
+      "uuid": "4fa35ea4-668e-4d7b-9bbc-b83681060617",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "xsasowspdqz.site",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/kwhmvws",
+        "headers": {
+          "Host": "xsasowspdqz.site"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (43) § 36",
+      "server": "join4.vmessprotocol.sbs",
+      "server_port": 2086,
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇮🇩 Indonesia (1) § 37",
+      "server": "103.177.94.138",
+      "server_port": 22843,
+      "uuid": "009bae05-80bb-4e27-d2c1-efea629e95ae",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (45) § 38",
+      "server": "104.21.31.183",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "octavi.cfd",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "octavi.cfd"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (46) § 39",
+      "server": "172.67.229.35",
+      "server_port": 2086,
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (48) § 40",
+      "server": "154.90.34.148",
+      "server_port": 33890,
+      "uuid": "f5c49819-07c3-4fb5-b7ca-395303d83417",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (50) § 41",
+      "server": "172.67.229.19",
+      "server_port": 2086,
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (51) § 42",
+      "server": "168.235.72.221",
+      "server_port": 15551,
+      "uuid": "69510633-6acb-4291-a98e-0cdcc9bd5c51",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (52) § 43",
+      "server": "ophelia.mom",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "ophelia.mom",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "ophelia.mom"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (53) § 44",
+      "server": "18.216.249.151",
+      "server_port": 46403,
+      "uuid": "28dc6b61-09d8-4c19-b655-233cfb535567",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (54) § 45",
+      "server": "64.176.37.216",
+      "server_port": 45930,
+      "uuid": "b2930b0d-02b4-45dc-8025-a3c19879d4ab",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (56) § 46",
+      "server": "104.21.4.29",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "oliv.beauty",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "oliv.beauty"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (57) § 47",
+      "server": "oliv.beauty",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "oliv.beauty",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "oliv.beauty"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇨🇳 Taiwan (5) § 48",
+      "server": "45.121.48.196",
+      "server_port": 10001,
+      "uuid": "0ed35629-919a-4891-ba0f-13cd198f863b",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (64) § 49",
+      "server": "104.21.21.88",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "odelia.autos",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (66) § 50",
+      "server": "47.88.89.106",
+      "server_port": 80,
+      "uuid": "86f8f25d-9d26-41a6-a75b-e0ef992cc74a",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/rxrsOUmNbuTJCk4izFEHWrb9qm",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (67) § 51",
+      "server": "104.21.36.26",
+      "server_port": 8443,
+      "uuid": "1cec1ebc-b489-4769-f2d9-e079b5832a60",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "cloudconeaaa.gorgorchicken.one",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/cloudconeaaa",
+        "headers": {
+          "Host": "cloudconeaaa.gorgorchicken.one"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (68) § 52",
+      "server": "104.31.16.120",
+      "server_port": 8443,
+      "uuid": "1cec1ebc-b489-4769-f2d9-e079b5832a60",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "cloudconeaaa.gorgorchicken.one",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/cloudconeaaa",
+        "headers": {
+          "Host": "cloudconeaaa.gorgorchicken.one"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇳🇱 Netherlands (4) § 53",
+      "server": "188.114.96.3",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "oliv.beauty",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "oliv.beauty"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (69) § 54",
+      "server": "104.21.19.49",
+      "server_port": 443,
+      "uuid": "4fa35ea4-668e-4d7b-9bbc-b83681060617",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "ztzhhluj.site",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/kwhmvws",
+        "headers": {
+          "Host": "ztzhhluj.site"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (70) § 55",
+      "server": "ns1.v2-vip.fun",
+      "server_port": 2086,
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇵🇭 Philippines (1) § 56",
+      "server": "38.54.36.70",
+      "server_port": 58300,
+      "uuid": "0c1e5254-eab9-4c47-f749-a467019cf2ba",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (71) § 57",
+      "server": "104.21.30.195",
+      "server_port": 2096,
+      "uuid": "c7ccf81e-2f35-4170-aeb8-f84fb2ec2b29",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "PAnEl128.MookomeIlz.Homes",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/@FreeVPNHomes@FreeVPNHomes",
+        "headers": {
+          "Host": "PAnEl128.MookomeIlz.Homes"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (72) § 58",
+      "server": "172.67.229.14",
+      "server_port": 80,
+      "uuid": "617c9bc4-4116-41c6-99e0-ace49a38fcdb",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Jnv8ViZOUVgijjOh0p5uGjHnXIiY",
+        "headers": {
+          "Host": "fr9.tehme100.fun"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (74) § 59",
+      "server": "38.54.185.111",
+      "server_port": 30000,
+      "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
+      "security": "auto",
+      "alter_id": 64,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "www.73664999.xyz",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/path/1700657625181",
+        "headers": {
+          "Host": "www.73664999.xyz"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (75) § 60",
+      "server": "172.67.164.184",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "alvvin.click",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "alvvin.click"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (76) § 61",
+      "server": "64.176.42.137",
+      "server_port": 20886,
+      "uuid": "f574b237-3ebf-405c-d540-541530fe5ed7",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (78) § 62",
+      "server": "104.31.16.28",
+      "server_port": 80,
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "headers": {
+          "Host": "ca4.tehme2.fun"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (79) § 63",
+      "server": "172.67.131.150",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "oliv.beauty",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "oliv.beauty"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (80) § 64",
+      "server": "172.67.229.37",
+      "server_port": 2086,
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (81) § 65",
+      "server": "104.21.27.139",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "edeen.makeup",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "edeen.makeup"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇳🇱 Netherlands (5) § 66",
+      "server": "188.114.99.0",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "ophelia.mom",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "ophelia.mom"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (82) § 67",
+      "server": "172.67.229.36",
+      "server_port": 2086,
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (83) § 68",
+      "server": "80.92.205.112",
+      "server_port": 443,
+      "uuid": "4c90ba75-230b-4f8b-bbff-8efa0eb0415f",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (84) § 69",
+      "server": "7.vmessprotocol.join.telegram-vmessprotocol-channel.space",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "ophelia.mom",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "ophelia.mom"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (85) § 70",
+      "server": "129.146.247.135",
+      "server_port": 42598,
+      "uuid": "1773b226-0bdb-43c5-87d8-270d26211dda",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇨🇳 Taiwan (9) § 71",
+      "server": "45.121.48.172",
+      "server_port": 10001,
+      "uuid": "dba51a2e-a788-43b7-9ac4-9f7cc1255f15",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (86) § 72",
+      "server": "us-02.jikuai.xyz",
+      "server_port": 2082,
+      "uuid": "70666776-4e9f-4350-b3f0-afaff6a70db0",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "us-02.jikuai.xyz"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (87) § 73",
+      "server": "144.202.112.204",
+      "server_port": 50051,
+      "uuid": "609f376e-2d8f-4509-e733-5e4580aa614c",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (88) § 74",
+      "server": "64.176.58.7",
+      "server_port": 14431,
+      "uuid": "ff681ba6-55f5-4e79-8f40-ad6bbdf14044",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (89) § 75",
+      "server": "172.233.188.166",
+      "server_port": 11397,
+      "uuid": "20e0d67d-f7aa-4bb1-daae-b7f217306bba",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇯🇵 Japan (7) § 76",
+      "server": "139.180.202.213",
+      "server_port": 42434,
+      "uuid": "d9a7c529-f98b-429b-eb26-c90979c910a3",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (90) § 77",
+      "server": "107.182.189.201",
+      "server_port": 55187,
+      "uuid": "26670a76-5fe2-4738-a84b-1229905e0354",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇳🇱 Netherlands (6) § 78",
+      "server": "188.114.96.2",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "ophelia.mom",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "ophelia.mom"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (91) § 79",
+      "server": "104.21.50.177",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "alvvin.click",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "alvvin.click"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇨🇳 Taiwan (10) § 80",
+      "server": "103.159.206.35",
+      "server_port": 31945,
+      "uuid": "e2e511b0-7def-4e1b-d238-6cb5391b2e3f",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (92) § 81",
+      "server": "104.237.128.72",
+      "server_port": 14432,
+      "uuid": "4c09b776-6f83-4bf2-f7f7-4e286dbbb6da",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇯🇵 Japan (8) § 82",
+      "server": "149.28.19.63",
+      "server_port": 42280,
+      "uuid": "823ca0d4-a7f8-4e99-8090-2351f718d106",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇯🇵 Japan (9) § 83",
+      "server": "139.162.125.97",
+      "server_port": 49499,
+      "uuid": "3ce1d2e3-0e1b-4b00-921b-fcc0f8abe1f6",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (93) § 84",
+      "server": "172.67.197.82",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "odelia.autos",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (94) § 85",
+      "server": "172.67.229.33",
+      "server_port": 2086,
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (95) § 86",
+      "server": "45.58.153.24",
+      "server_port": 30000,
+      "uuid": "4242f9e0-6b7e-4257-9e93-7ad38015c46a",
+      "security": "auto",
+      "alter_id": 64,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "www.77935707.xyz",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/path/1702392255355",
+        "headers": {
+          "Host": "www.77935707.xyz"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (96) § 87",
+      "server": "104.21.16.201",
+      "server_port": 2083,
+      "uuid": "da37a316-d17b-493f-bd6e-b58a23e31823",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "foryourtestmyfriends.hesam5a.tk",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/foryourtestmyfriends2083",
+        "headers": {
+          "Host": "foryourtestmyfriends.hesam5a.tk"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (97) § 88",
+      "server": "45.58.145.200",
+      "server_port": 30000,
+      "uuid": "55545f9e-a561-454a-8dc0-8bc110e6b1c9",
+      "security": "auto",
+      "alter_id": 64,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "www.51652109.xyz",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/path/1702301098557",
+        "headers": {
+          "Host": "www.51652109.xyz"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇯🇵 Japan (10) § 89",
+      "server": "167.179.111.237",
+      "server_port": 14935,
+      "uuid": "e961894f-8e90-472f-98d3-09402e4be453",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (98) § 90",
+      "server": "172.67.179.37",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "octavi.cfd",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "octavi.cfd"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇩🇪 Germany (3) § 91",
+      "server": "45.155.249.151",
+      "server_port": 80,
+      "uuid": "9d5e69d2-46cf-4865-95fe-a2ee8c52a013",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "tms.dingtalk.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (99) § 92",
+      "server": "104.27.97.42",
+      "server_port": 8443,
+      "uuid": "aa0c4744-9568-4bee-a08b-73668a9b2a42",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "cloudconebbb.gorgorchicken.one",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/cloudconebbb",
+        "headers": {
+          "Host": "cloudconebbb.gorgorchicken.one"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (100) § 93",
+      "server": "156.251.190.252",
+      "server_port": 20624,
+      "uuid": "4323758f-d0fd-466e-f500-0d9515bcd1cb",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (101) § 94",
+      "server": "104.21.33.130",
+      "server_port": 2052,
+      "uuid": "544f2e93-51b0-4d47-fd72-e7d858021bbd",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "family.mgtajhiz.ir"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇧🇪 Belgium § 95",
+      "server": "37.120.236.251",
+      "server_port": 443,
+      "uuid": "ed162daa-ee20-44ed-830f-b522c501387a",
+      "security": "auto",
+      "alter_id": 64,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "www.42088326.xyz",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/path/143013092425",
+        "headers": {
+          "Host": "www.42088326.xyz"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇮🇳 India (2) § 96",
+      "server": "103.113.68.57",
+      "server_port": 8443,
+      "uuid": "01fd0618-8ac2-48e4-b008-3b2bc2653b60",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "103.113.68.57",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇳🇱 Netherlands (7) § 97",
+      "server": "22.vmessprotocol.telegram-vmessprotocol-channel.space",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "odelia.autos",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (102) § 98",
+      "server": "64.176.58.15",
+      "server_port": 46154,
+      "uuid": "adcbe160-3010-483d-b438-d6057f465b1d",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (103) § 99",
+      "server": "94.131.8.32",
+      "server_port": 8880,
+      "uuid": "57e37a74-badc-4b71-87c7-5b9e20879b58",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/vmess",
+        "headers": {
+          "Host": "internet.life.com.by"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (104) § 100",
+      "server": "94.131.10.135",
+      "server_port": 2086,
+      "uuid": "e2021c91-6e29-49d6-9641-14a8f2600e05",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/vmess",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇩🇪 Germany (4) § 101",
+      "server": "217.160.45.31",
+      "server_port": 8880,
+      "uuid": "4e186678-fcca-4325-e4bc-b2916bdf6708",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇳🇱 Netherlands (8) § 102",
+      "server": "188.114.97.1",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "odelia.autos",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇵🇭 Philippines (2) § 103",
+      "server": "38.54.36.65",
+      "server_port": 31057,
+      "uuid": "817d17de-7b50-40e9-af69-38345e8c9b33",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (105) § 104",
+      "server": "47.236.123.100",
+      "server_port": 33681,
+      "uuid": "7202d11f-2759-4d8c-e1d1-14cb138e4205",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇳🇱 Netherlands (9) § 105",
+      "server": "188.114.98.0",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "odelia.autos",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇮🇳 India (3) § 106",
+      "server": "103.106.230.153",
+      "server_port": 32732,
+      "uuid": "eb931108-646b-4ceb-a741-d32490cb00f4",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (106) § 107",
+      "server": "e691d61a-f.3nvx.com",
+      "server_port": 443,
+      "uuid": "74dd674d-35fa-4f75-8b05-0f276e15c091",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "e691d61a-f.3nvx.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/assets",
+        "headers": {
+          "Host": "e691d61a-f.3nvx.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (107) § 108",
+      "server": "47.88.87.39",
+      "server_port": 80,
+      "uuid": "18351862-d953-4ab9-afae-4998dcd56f8b",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/wRDYyXAgH6oASzMKs65VUYw",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇬🇧 United Kingdom (2) § 109",
+      "server": "158.178.227.16",
+      "server_port": 30839,
+      "uuid": "19bf4866-54ce-4fc9-8903-db7e160c5b81",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (108) § 110",
+      "server": "172.67.215.202",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "octavi.cfd",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "octavi.cfd"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (109) § 111",
+      "server": "femiafmr.site",
+      "server_port": 443,
+      "uuid": "4fa35ea4-668e-4d7b-9bbc-b83681060617",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "femiafmr.site",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/kwhmvws",
+        "headers": {
+          "Host": "femiafmr.site"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (110) § 112",
+      "server": "ldkpsvvhhe.site",
+      "server_port": 443,
+      "uuid": "4fa35ea4-668e-4d7b-9bbc-b83681060617",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "ldkpsvvhhe.site",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/kwhmvws",
+        "headers": {
+          "Host": "ldkpsvvhhe.site"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇭🇰 Hong Kong (2) § 113",
+      "server": "182.16.1.194",
+      "server_port": 80,
+      "uuid": "00a1da14-d55f-5f75-e346-79b985e1a723",
+      "security": "auto",
+      "alter_id": 64,
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/opt/video/images",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇵🇭 Philippines (3) § 114",
+      "server": "38.54.36.149",
+      "server_port": 25189,
+      "uuid": "3b9cc000-59ea-4cd2-f10e-91de3e69fe1c",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (111) § 115",
+      "server": "172.67.207.114",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "ophelia.mom",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "ophelia.mom"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (112) § 116",
+      "server": "fra.yj2022.gq",
+      "server_port": 8880,
+      "uuid": "4b5e4565-322f-4223-a891-78a84f189726",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/9sTFt5L554kPVWmuJ2k8baS4bEY83PZ66xb4twoBBtsiMPK2b",
+        "headers": {
+          "Host": "fra.yj2022.gq"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇨🇳 Taiwan (11) § 117",
+      "server": "123.58.197.70",
+      "server_port": 443,
+      "uuid": "4ca0196c-05e7-45eb-9036-692c201f45fb",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (113) § 118",
+      "server": "cp2.colacloud.site",
+      "server_port": 2086,
+      "uuid": "63f06e16-01b8-44dc-aae6-1fe31af8a762",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/sssddd",
+        "headers": {
+          "Host": "cf-nlss.colacloud.site"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (114) § 119",
+      "server": "132.145.132.227",
+      "server_port": 37121,
+      "uuid": "93845b50-26f6-4203-f5ad-4d231d4e8f45",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (115) § 120",
+      "server": "38.180.98.215",
+      "server_port": 8080,
+      "uuid": "773ac60d-36d7-45b5-c99e-a0e3903e2e3a",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇲🇴 Macao § 121",
+      "server": "163.53.246.239",
+      "server_port": 10065,
+      "uuid": "1f308996-7fa6-46ac-8700-7d766eae084b",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (116) § 122",
+      "server": "192.9.241.163",
+      "server_port": 55555,
+      "uuid": "bb68b623-7f27-4da1-b068-4e5748ca29d6",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "sj.alieszvps.cf",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "sj.alieszvps.cf"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇨🇳 Taiwan (12) § 123",
+      "server": "nb24.ntbq.dynu.net",
+      "server_port": 443,
+      "uuid": "14327f86-7734-4d5b-9561-b58ad95cbcfb",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "nb24.ntbq.dynu.net",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/b24",
+        "headers": {
+          "Host": "nb24.ntbq.dynu.net"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇨🇳 China § 124",
+      "server": "194.156.98.167",
+      "server_port": 8443,
+      "uuid": "8cb670df-17e8-4dab-bfd9-15c79d519bdd",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "194.156.98.167",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (117) § 125",
+      "server": "104.31.16.197",
+      "server_port": 443,
+      "uuid": "795CAC68-4CF8-42D6-BCF6-EDAA8EDCC435",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "blue-fog-7594.walidfree3.workers.dev",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/speedtest/Kansas.kotick.site",
+        "headers": {
+          "Host": "blue-fog-7594.walidfree3.workers.dev"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (118) § 126",
+      "server": "38.180.33.136",
+      "server_port": 50104,
+      "uuid": "790f6802-7535-4109-de6d-15f676d5e3f7",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (119) § 127",
+      "server": "38.6.224.204",
+      "server_port": 65055,
+      "uuid": "3a0940b9-de34-4994-a07e-2f7fc7f6b197",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇵🇭 Philippines (4) § 128",
+      "server": "38.54.86.217",
+      "server_port": 56502,
+      "uuid": "d20747ad-e689-4111-a46e-d5cf21ff4827",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (120) § 129",
+      "server": "23.108.100.101",
+      "server_port": 443,
+      "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
+      "security": "auto",
+      "alter_id": 64,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "www.40587333.xyz",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/footers",
+        "headers": {
+          "Host": "www.40587333.xyz"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (121) § 130",
+      "server": "64.176.47.200",
+      "server_port": 29414,
+      "uuid": "4d5e8aa2-0641-4323-e92c-2c061cdc8e34",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇨🇦 Canada (1) § 131",
+      "server": "198.57.27.212",
+      "server_port": 22324,
+      "uuid": "04621bae-ab36-11ec-b909-0242ac120002",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (122) § 132",
+      "server": "154.90.34.225",
+      "server_port": 20875,
+      "uuid": "f5fb8bab-dcd2-4f63-bcd3-405aa4ad530f",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (123) § 133",
+      "server": "148.135.33.92",
+      "server_port": 443,
+      "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
+      "security": "auto",
+      "alter_id": 64,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "www.30994104.xyz",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/path/1702392255355",
+        "headers": {
+          "Host": "www.30994104.xyz"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (124) § 134",
+      "server": "198.2.202.93",
+      "server_port": 30000,
+      "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
+      "security": "auto",
+      "alter_id": 64,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "www.65825524.xyz",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/path/1702392255355",
+        "headers": {
+          "Host": "www.65825524.xyz"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (125) § 135",
+      "server": "96.30.197.59",
+      "server_port": 56272,
+      "uuid": "8e8d5a10-7fd0-4818-8265-a4dc4a569d31",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (126) § 136",
+      "server": "cloudconeaaa.gorgorchicken.one",
+      "server_port": 8443,
+      "uuid": "1cec1ebc-b489-4769-f2d9-e079b5832a60",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "cloudconeaaa.gorgorchicken.one",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/cloudconeaaa",
+        "headers": {
+          "Host": "cloudconeaaa.gorgorchicken.one"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (127) § 137",
+      "server": "94.131.10.135",
+      "server_port": 80,
+      "uuid": "e2021c91-6e29-49d6-9641-14a8f2600e05",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/vmess",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (128) § 138",
+      "server": "172.67.229.34",
+      "server_port": 2086,
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (129) § 139",
+      "server": "14.openiisee.monster",
+      "server_port": 443,
+      "uuid": "ba5122f9-308e-360a-a149-a599d2f65e88",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "outofthisworld.dropyourlove.top",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/every51",
+        "headers": {
+          "Host": "outofthisworld.dropyourlove.top"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇯🇵 Japan (11) § 140",
+      "server": "138.2.44.211",
+      "server_port": 20081,
+      "uuid": "593b8525-0c48-4b0f-d9af-2d73a9148973",
+      "security": "auto",
+      "alter_id": 64,
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (130) § 141",
+      "server": "129.146.133.157",
+      "server_port": 51009,
+      "uuid": "81714cef-9bde-4a08-aa50-d6bc0172d78b",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (131) § 142",
+      "server": "172.67.229.38",
+      "server_port": 2086,
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (132) § 143",
+      "server": "107.186.200.127",
+      "server_port": 43213,
+      "uuid": "2da2fb9c-d903-4550-bf75-9992cc282bd1",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇭🇰 Hong Kong (3) § 144",
+      "server": "hrgdvpn.flycdnedc55.vip",
+      "server_port": 80,
+      "uuid": "00a1da14-d55f-5f75-e346-79b985e1a723",
+      "security": "auto",
+      "alter_id": 32,
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/opt/video/images",
+        "headers": {
+          "Host": "hrgdvpn.flycdnedc55.vip"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (133) § 145",
+      "server": "yyyumloalo.site",
+      "server_port": 443,
+      "uuid": "4fa35ea4-668e-4d7b-9bbc-b83681060617",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "yyyumloalo.site",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/kwhmvws",
+        "headers": {
+          "Host": "yyyumloalo.site"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (134) § 146",
+      "server": "38.47.126.36",
+      "server_port": 14319,
+      "uuid": "a8a5e90b-e116-4d62-c826-1d38e8fa78f2",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇫🇷 France § 147",
+      "server": "146.59.147.250",
+      "server_port": 29776,
+      "uuid": "82447abf-dcb9-408a-9ca6-79e0a7698d08",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (135) § 148",
+      "server": "octavi.cfd",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "octavi.cfd",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "octavi.cfd"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (136) § 149",
+      "server": "143.42.66.9",
+      "server_port": 58686,
+      "uuid": "6144b171-1f93-4eed-8583-8016babb7fcd",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/chami",
+        "headers": {
+          "Host": "youtube.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇵🇭 Philippines (5) § 150",
+      "server": "38.54.36.74",
+      "server_port": 45589,
+      "uuid": "1493d12a-5f0e-4094-9c74-08254fb9ed7c",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇮🇷 Iran § 151",
+      "server": "91.107.172.128",
+      "server_port": 3350,
+      "uuid": "2bf900ac-909a-4610-dc18-86a3a136b286",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (137) § 152",
+      "server": "94.131.10.135",
+      "server_port": 8880,
+      "uuid": "e2021c91-6e29-49d6-9641-14a8f2600e05",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/vmess",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇸🇬 Singapore (4) § 153",
+      "server": "207.148.77.215",
+      "server_port": 2,
+      "uuid": "6e2080bc-07b0-4046-8c6a-bb5a18e12f7c",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "SG.linkedin.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (138) § 154",
+      "server": "94.131.10.135",
+      "server_port": 8080,
+      "uuid": "e2021c91-6e29-49d6-9641-14a8f2600e05",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/vmess",
+        "headers": {
+          "Host": "internet.life.com.by"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇵🇭 Philippines (6) § 155",
+      "server": "38.54.36.99",
+      "server_port": 14163,
+      "uuid": "482a7849-2557-45de-e85c-95519c1b88e0",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (139) § 156",
+      "server": "21.openiisee.monster",
+      "server_port": 443,
+      "uuid": "ba5122f9-308e-360a-a149-a599d2f65e88",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "outofthisworld.dropyourlove.top",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/every44",
+        "headers": {
+          "Host": "outofthisworld.dropyourlove.top"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (140) § 157",
+      "server": "104.21.3.4",
+      "server_port": 80,
+      "uuid": "c97cf46e-1554-36cb-8b36-c3556b883dc4",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/526-dekDP6Otf",
+        "headers": {
+          "Host": "v118a.ai88888.top"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (141) § 158",
+      "server": "23c6afc3-f.3nvx.com",
+      "server_port": 443,
+      "uuid": "74dd674d-35fa-4f75-8b05-0f276e15c091",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "23c6afc3-f.3nvx.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/assets",
+        "headers": {
+          "Host": "23c6afc3-f.3nvx.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (142) § 159",
+      "server": "104.21.40.44",
+      "server_port": 443,
+      "uuid": "4fa35ea4-668e-4d7b-9bbc-b83681060617",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "yyyumloalo.site",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/kwhmvws",
+        "headers": {
+          "Host": "yyyumloalo.site"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇫🇮 Finland § 160",
+      "server": "65.108.27.217",
+      "server_port": 809,
+      "uuid": "a71ff472-4560-4b15-af3f-aac02bd43e5f",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (143) § 161",
+      "server": "38.6.227.31",
+      "server_port": 10365,
+      "uuid": "3a150f47-4284-4472-bb17-908bec58e01a",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (144) § 162",
+      "server": "2876be99-f.3nvx.com",
+      "server_port": 443,
+      "uuid": "74dd674d-35fa-4f75-8b05-0f276e15c091",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "2876be99-f.3nvx.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/assets",
+        "headers": {
+          "Host": "2876be99-f.3nvx.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (145) § 163",
+      "server": "172.67.184.149",
+      "server_port": 2096,
+      "uuid": "4bd60b16-2aee-4dcf-91a1-1b2cdf16ad2f",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "v1.583181.xyz",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "v1.583181.xyz"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇵🇭 Philippines (7) § 164",
+      "server": "38.54.36.214",
+      "server_port": 31682,
+      "uuid": "217fdbc2-c062-4632-c440-36c3a4934713",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇮🇹 Italy § 165",
+      "server": "149.62.189.23",
+      "server_port": 30028,
+      "uuid": "eb1ab395-1845-4161-e02a-fbcca0086d94",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": ""
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (146) § 166",
+      "server": "rlhrwtqusd.site",
+      "server_port": 443,
+      "uuid": "4fa35ea4-668e-4d7b-9bbc-b83681060617",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "rlhrwtqusd.site",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/kwhmvws",
+        "headers": {
+          "Host": "rlhrwtqusd.site"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (147) § 167",
+      "server": "27.openiisee.monster",
+      "server_port": 443,
+      "uuid": "ba5122f9-308e-360a-a149-a599d2f65e88",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "outofthisworld.dropyourlove.top",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/every38",
+        "headers": {
+          "Host": "outofthisworld.dropyourlove.top"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇹🇭 Thailand § 168",
+      "server": "38.54.82.54",
+      "server_port": 41604,
+      "uuid": "54de50e5-5e4b-443f-d9b8-9e9e0eee865c",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇩🇪 Germany (5) § 169",
+      "server": "trojan-panel.alphav.top",
+      "server_port": 37138,
+      "uuid": "d56fd71b-f819-43fd-a61d-3593d742d682",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/BIA-Telegram-V2ray_Alpha",
+        "headers": {
+          "Host": "trojan-panel.alphav.top"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (148) § 170",
+      "server": "tehgsykbzb.site",
+      "server_port": 443,
+      "uuid": "4fa35ea4-668e-4d7b-9bbc-b83681060617",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "tehgsykbzb.site",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/kwhmvws",
+        "headers": {
+          "Host": "tehgsykbzb.site"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "Lithuania § 171",
+      "server": "20.openiisee.monster",
+      "server_port": 443,
+      "uuid": "ba5122f9-308e-360a-a149-a599d2f65e88",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "outofthisworld.dropyourlove.top",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/every45",
+        "headers": {
+          "Host": "outofthisworld.dropyourlove.top"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (149) § 172",
+      "server": "104.16.91.78",
+      "server_port": 443,
+      "uuid": "F3E36B53-E75E-48C0-B9F1-F918F397E996",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "Kansas.bobbykotick.rip",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/speedtest",
+        "headers": {
+          "Host": "Kansas.bobbykotick.rip"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇨🇳 Taiwan (13) § 173",
+      "server": "b11.ntbq.dynu.net",
+      "server_port": 443,
+      "uuid": "14327f86-7734-4d5b-9561-b58ad95cbcfb",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "b11.ntbq.dynu.net",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/b11",
+        "headers": {
+          "Host": "b11.ntbq.dynu.net"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇿🇦 South Africa § 174",
+      "server": "12.openiisee.monster",
+      "server_port": 443,
+      "uuid": "ba5122f9-308e-360a-a149-a599d2f65e88",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "outofthisworld.dropyourlove.top",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/every53",
+        "headers": {
+          "Host": "outofthisworld.dropyourlove.top"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇳🇱 Netherlands (10) § 175",
+      "server": "188.114.99.0",
+      "server_port": 8443,
+      "uuid": "aa0c4744-9568-4bee-a08b-73668a9b2a42",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "cloudconebbb.gorgorchicken.one",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/cloudconebbb",
+        "headers": {
+          "Host": "cloudconebbb.gorgorchicken.one"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇳🇱 Netherlands (11) § 176",
+      "server": "188.114.96.58",
+      "server_port": 443,
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "security": "auto",
+      "alter_id": 1,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "ophelia.mom",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "linkvws",
+        "headers": {
+          "Host": "ophelia.mom"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇨🇳 China (1) § 177",
+      "server": "cctv.iepl01.yuntiair365.top",
+      "server_port": 53003,
+      "uuid": "40db85f1-223f-374f-a49a-dbc9736c430f",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 United States (150) § 178",
+      "server": "us-new04.gujuji.top",
+      "server_port": 8080,
+      "uuid": "b0853364-fb92-4fcb-9717-16cb093ca379",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "us-new04.gujuji.top"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇨🇳 China (3) § 179",
+      "server": "m.cnmjcn.com",
+      "server_port": 16616,
+      "uuid": "c2c76420-257f-492a-b20f-6560f3bfa78d",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "d4d028243c73047d9171bacb9b0439e8.mobgslb.tbcache.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇨🇳 China (4) § 180",
+      "server": "yes.cnmjcn.net",
+      "server_port": 16616,
+      "uuid": "c2c76420-257f-492a-b20f-6560f3bfa78d",
+      "security": "auto",
+      "authenticated_length": true,
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "d4d028243c73047d9171bacb9b0439e8.mobgslb.tbcache.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "direct",
+      "tag": "bypass"
+    },
+    {
+      "type": "block",
+      "tag": "block"
     }
   ]
 }
