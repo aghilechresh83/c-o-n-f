@@ -1,179 +1,906 @@
 {
   "log": {
+    "disabled": false,
     "level": "fatal",
     "timestamp": true
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "0.0.0.0:9090",
+      "external_ui": "yacd",
+      "external_ui_download_url": "https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
+      "external_ui_download_detour": "direct",
+      "secret": "",
+      "default_mode": "rule"
+    }
   },
   "dns": {
     "servers": [
       {
-        "tag": "dns-remote",
-        "address": "149.112.112.112",
-        "address_resolver": "dns-direct",
-        "strategy": "ipv4_only"
+        "tag": "dns_proxy",
+        "address": "95.85.95.85",
+        "address_resolver": "dns_resolver",
+        "strategy": "ipv4_only",
+        "detour": "proxy"
       },
       {
-        "tag": "dns-direct",
-        "address": "9.9.9.9",
-        "address_resolver": "dns-local",
+        "tag": "dns_direct",
+        "address": "local",
+        "address_resolver": "dns_resolver",
         "strategy": "ipv4_only",
         "detour": "direct"
       },
       {
-        "tag": "dns-local",
-        "address": "local",
-        "detour": "direct"
+        "tag": "dns_block",
+        "address": "rcode://refused"
       },
       {
-        "tag": "dns-block",
-        "address": "rcode://success"
+        "tag": "dns_resolver",
+        "address": "local",
+        "strategy": "ipv4_only",
+        "detour": "direct"
       }
-    ]
+    ],
+    "rules": [
+      {
+        "inbound": [
+          "mixed-in"
+        ],
+        "server": "dns_proxy"
+      }
+    ],
+    "final": "dns_proxy"
   },
   "inbounds": [
     {
-      "type": "direct",
-      "tag": "dns-in",
       "listen": "0.0.0.0",
       "listen_port": 6450,
       "override_address": "8.8.8.8",
-      "override_port": 53
+      "override_port": 53,
+      "tag": "dns-in",
+      "type": "direct"
+    },
+    {
+      "domain_strategy": "",
+      "listen": "0.0.0.0",
+      "listen_port": 2080,
+      "sniff": true,
+      "sniff_override_destination": false,
+      "tag": "mixed-in",
+      "type": "mixed"
     },
     {
       "type": "tun",
       "tag": "tun-in",
+      "domain_strategy": "",
       "interface_name": "tun0",
+      "inet4_address": "172.19.0.1/30",
+      "inet6_address": "2001:db8:3c4d:1::/64",
       "mtu": 9000,
-      "inet4_address": "10.10.0.36/23",
       "auto_route": true,
       "strict_route": true,
-      "endpoint_independent_nat": true,
       "stack": "system",
-      "sniff": true
-    },
-    {
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "0.0.0.0",
-      "listen_port": 2080,
-      "sniff": true
+      "endpoint_independent_nat": true,
+      "sniff": true,
+      "sniff_override_destination": true
     }
   ],
+  "route": {
+    "auto_detect_interface": true,
+    "override_android_vpn": true,
+    "final": "proxy",
+    "geoip": {
+      "download_url": "https://github.com/MiSaturo/sing-box-geoip-ir/releases/latest/download/geoip.db",
+      "download_detour": "direct"
+    },
+    "geosite": {
+      "download_url": "https://github.com/MasterKia/iran-hosted-domains/releases/latest/download/iran-geosite.db",
+      "download_detour": "direct"
+    },
+    "rules": [
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      },
+      {
+        "protocol": [
+          "quic"
+        ],
+        "outbound": "block"
+      }
+    ],
+    "find_process": true
+  },
+  "ntp": {
+    "enabled": false,
+    "server": "time.apple.com",
+    "server_port": 123,
+    "interval": "30m",
+    "detour": "direct"
+  },
   "outbounds": [
     {
-      "type": "selector",
-      "tag": "proxy",
-      "outbounds": [
-        "auto",
-        "🇳🇱 Netherlands (1) § 0",
-        "🇺🇸 United States (5) § 1",
-        "🇺🇸 United States (6) § 2",
-        "🇺🇸 United States (10) § 3",
-        "🇳🇱 Netherlands (2) § 4",
-        "🇳🇱 Netherlands (3) § 5",
-        "🇺🇸 United States (49) § 6",
-        "🇺🇸 United States (66) § 7",
-        "🇺🇸 United States (67) § 8",
-        "🇳🇱 Netherlands (4) § 9",
-        "🇺🇸 United States (71) § 10",
-        "🇺🇸 United States (74) § 11",
-        "🇺🇸 United States (75) § 12",
-        "🇺🇸 United States (78) § 13",
-        "🇺🇸 United States (79) § 14",
-        "🇺🇸 United States (81) § 15",
-        "🇳🇱 Netherlands (5) § 16",
-        "🇺🇸 United States (83) § 17",
-        "🇨🇳 Taiwan (9) § 18",
-        "🇳🇱 Netherlands (6) § 19",
-        "🇺🇸 United States (91) § 20",
-        "🇺🇸 United States (93) § 21",
-        "🇺🇸 United States (95) § 22",
-        "🇺🇸 United States (96) § 23",
-        "🇺🇸 United States (97) § 24",
-        "🇺🇸 United States (99) § 25",
-        "🇧🇪 Belgium § 26",
-        "🇳🇱 Netherlands (7) § 27",
-        "🇳🇱 Netherlands (9) § 28",
-        "🇬🇧 United Kingdom (2) § 29",
-        "🇺🇸 United States (108) § 30",
-        "🇺🇸 United States (111) § 31",
-        "🇨🇳 Taiwan (11) § 32",
-        "🇺🇸 United States (115) § 33",
-        "🇺🇸 United States (123) § 34",
-        "🇺🇸 United States (124) § 35",
-        "🇺🇸 United States (125) § 36",
-        "🇺🇸 United States (130) § 37",
-        "🇺🇸 United States (131) § 38",
-        "🇺🇸 United States (132) § 39",
-        "🇫🇷 France § 40",
-        "🇵🇭 Philippines (5) § 41",
-        "🇵🇭 Philippines (6) § 42",
-        "🇺🇸 United States (140) § 43",
-        "🇺🇸 United States (142) § 44",
-        "🇫🇮 Finland § 45",
-        "🇵🇭 Philippines (7) § 46",
-        "🇹🇭 Thailand § 47",
-        "🇺🇸 United States (149) § 48",
-        "🇳🇱 Netherlands (11) § 49"
-      ],
-      "default": "auto"
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "vn6.5gsieutocdo.com",
+      "server_port": 80,
+      "transport": {
+        "headers": {
+          "Host": "vn6.5gsieutocdo.com"
+        },
+        "path": "/5gsieutocdo.club",
+        "type": "ws"
+      },
+      "uuid": "c95357eb-2869-4511-8940-f0dc5e1ec9b1",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "Vietnam"
     },
     {
-      "type": "urltest",
-      "tag": "auto",
-      "outbounds": [
-        "🇳🇱 Netherlands (1) § 0",
-        "🇺🇸 United States (5) § 1",
-        "🇺🇸 United States (6) § 2",
-        "🇺🇸 United States (10) § 3",
-        "🇳🇱 Netherlands (2) § 4",
-        "🇳🇱 Netherlands (3) § 5",
-        "🇺🇸 United States (49) § 6",
-        "🇺🇸 United States (66) § 7",
-        "🇺🇸 United States (67) § 8",
-        "🇳🇱 Netherlands (4) § 9",
-        "🇺🇸 United States (71) § 10",
-        "🇺🇸 United States (74) § 11",
-        "🇺🇸 United States (75) § 12",
-        "🇺🇸 United States (78) § 13",
-        "🇺🇸 United States (79) § 14",
-        "🇺🇸 United States (81) § 15",
-        "🇳🇱 Netherlands (5) § 16",
-        "🇺🇸 United States (83) § 17",
-        "🇨🇳 Taiwan (9) § 18",
-        "🇳🇱 Netherlands (6) § 19",
-        "🇺🇸 United States (91) § 20",
-        "🇺🇸 United States (93) § 21",
-        "🇺🇸 United States (95) § 22",
-        "🇺🇸 United States (96) § 23",
-        "🇺🇸 United States (97) § 24",
-        "🇺🇸 United States (99) § 25",
-        "🇧🇪 Belgium § 26",
-        "🇳🇱 Netherlands (7) § 27",
-        "🇳🇱 Netherlands (9) § 28",
-        "🇬🇧 United Kingdom (2) § 29",
-        "🇺🇸 United States (108) § 30",
-        "🇺🇸 United States (111) § 31",
-        "🇨🇳 Taiwan (11) § 32",
-        "🇺🇸 United States (115) § 33",
-        "🇺🇸 United States (123) § 34",
-        "🇺🇸 United States (124) § 35",
-        "🇺🇸 United States (125) § 36",
-        "🇺🇸 United States (130) § 37",
-        "🇺🇸 United States (131) § 38",
-        "🇺🇸 United States (132) § 39",
-        "🇫🇷 France § 40",
-        "🇵🇭 Philippines (5) § 41",
-        "🇵🇭 Philippines (6) § 42",
-        "🇺🇸 United States (140) § 43",
-        "🇺🇸 United States (142) § 44",
-        "🇫🇮 Finland § 45",
-        "🇵🇭 Philippines (7) § 46",
-        "🇹🇭 Thailand § 47",
-        "🇺🇸 United States (149) § 48",
-        "🇳🇱 Netherlands (11) § 49"
-      ],
-      "url": "http://cp.cloudflare.com/",
-      "interval": "5m0s"
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "188.114.97.18",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "odelia.autos"
+      },
+      "transport": {
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "path": "linkvws",
+        "type": "ws"
+      },
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "Netherlands"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "172.67.183.110",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "waynn.makeup"
+      },
+      "transport": {
+        "headers": {
+          "Host": "waynn.makeup"
+        },
+        "path": "linkvws",
+        "type": "ws"
+      },
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States"
+    },
+    {
+      "alter_id": 1,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "172.67.131.150",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "oliv.beauty"
+      },
+      "transport": {
+        "headers": {
+          "Host": "oliv.beauty"
+        },
+        "path": "linkvws",
+        "type": "ws"
+      },
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-1"
+    },
+    {
+      "alter_id": 1,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "172.67.197.82",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "odelia.autos"
+      },
+      "transport": {
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "path": "linkvws",
+        "type": "ws"
+      },
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-2"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "172.67.229.14",
+      "server_port": 80,
+      "transport": {
+        "headers": {
+          "Host": "fr9.tehme100.fun"
+        },
+        "path": "/Jnv8ViZOUVgijjOh0p5uGjHnXIiY",
+        "type": "ws"
+      },
+      "uuid": "617c9bc4-4116-41c6-99e0-ace49a38fcdb",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-3"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "waynn.makeup",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false
+      },
+      "transport": {
+        "headers": {},
+        "path": "linkvws",
+        "type": "ws"
+      },
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-4"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "104.21.21.88",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "odelia.autos"
+      },
+      "transport": {
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "path": "linkvws",
+        "type": "ws"
+      },
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-5"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "T1pb7XxxrolvPSb0u2xSOA",
+      "server": "beacomf.xyz",
+      "server_port": 8080,
+      "type": "shadowsocks",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "Finland"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "104.21.4.29",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "oliv.beauty"
+      },
+      "transport": {
+        "headers": {
+          "Host": "oliv.beauty"
+        },
+        "path": "linkvws",
+        "type": "ws"
+      },
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-6"
+    },
+    {
+      "alter_id": 1,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "188.114.97.1",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "odelia.autos"
+      },
+      "transport": {
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "path": "linkvws",
+        "type": "ws"
+      },
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "Netherlands-1"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "123.58.197.70",
+      "server_port": 443,
+      "transport": {
+        "headers": {},
+        "path": "/",
+        "type": "ws"
+      },
+      "uuid": "4ca0196c-05e7-45eb-9036-692c201f45fb",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "Taiwan"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "glweidf.cfd",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "glweidf.cfd"
+      },
+      "transport": {
+        "headers": {
+          "Host": "glweidf.cfd"
+        },
+        "path": "/linkws",
+        "type": "ws"
+      },
+      "uuid": "1052f24e-7b09-45eb-b0c5-d858eb124192",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-7"
+    },
+    {
+      "alter_id": 1,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "22.vmessprotocol.telegram-vmessprotocol-channel.space",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "odelia.autos"
+      },
+      "transport": {
+        "headers": {
+          "Host": "odelia.autos"
+        },
+        "path": "linkvws",
+        "type": "ws"
+      },
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "Netherlands-2"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "adenc35.fixedlfoat.top",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "adenc35.fixedlfoat.top"
+      },
+      "transport": {
+        "headers": {
+          "Host": "adenc35.fixedlfoat.top"
+        },
+        "path": "/linkws",
+        "type": "ws"
+      },
+      "uuid": "45f63e92-f782-4cac-84b8-e61cb5a5bfd0",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-8"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "172.67.185.26",
+      "server_port": 8880,
+      "transport": {
+        "headers": {
+          "Host": "fra.yj2022.gq"
+        },
+        "path": "/9sTFt5L554kPVWmuJ2k8baS4bEY83PZ66xb4twoBBtsiMPK2b",
+        "type": "ws"
+      },
+      "uuid": "4b5e4565-322f-4223-a891-78a84f189726",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-9"
+    },
+    {
+      "alter_id": 1,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "odelia.autos",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false
+      },
+      "transport": {
+        "headers": {},
+        "path": "linkvws",
+        "type": "ws"
+      },
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-10"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "188.114.96.3",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "oliv.beauty"
+      },
+      "transport": {
+        "headers": {
+          "Host": "oliv.beauty"
+        },
+        "path": "linkvws",
+        "type": "ws"
+      },
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "Netherlands-3"
+    },
+    {
+      "alter_id": 1,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "188.114.97.7",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "waynn.makeup"
+      },
+      "transport": {
+        "headers": {
+          "Host": "waynn.makeup"
+        },
+        "path": "linkvws",
+        "type": "ws"
+      },
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "Netherlands-4"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "172.67.229.33",
+      "server_port": 2086,
+      "transport": {
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "type": "ws"
+      },
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-11"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "172.67.189.60",
+      "server_port": 80,
+      "transport": {
+        "headers": {
+          "Host": "fr2c.newliving.top"
+        },
+        "path": "/skincare",
+        "type": "ws"
+      },
+      "uuid": "892ebb75-7055-3007-8d16-356e65c6a49a",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-12"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "45.121.48.172",
+      "server_port": 10001,
+      "uuid": "dba51a2e-a788-43b7-9ac4-9f7cc1255f15",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "Taiwan-1"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "104.31.16.27",
+      "server_port": 80,
+      "transport": {
+        "headers": {
+          "Host": "ca5.tehme2.fun"
+        },
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "type": "ws"
+      },
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-13"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "172.67.229.37",
+      "server_port": 2086,
+      "transport": {
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "type": "ws"
+      },
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-14"
+    },
+    {
+      "alter_id": 1,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "oliv.beauty",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "oliv.beauty"
+      },
+      "transport": {
+        "headers": {
+          "Host": "oliv.beauty"
+        },
+        "path": "linkvws",
+        "type": "ws"
+      },
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-15"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "172.67.229.38",
+      "server_port": 2086,
+      "transport": {
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "type": "ws"
+      },
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-16"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "172.67.229.25",
+      "server_port": 2086,
+      "transport": {
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "type": "ws"
+      },
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-17"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "join4.vmessprotocol.sbs",
+      "server_port": 2086,
+      "transport": {
+        "headers": {
+          "Host": "ca6.tehme100.fun"
+        },
+        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
+        "type": "ws"
+      },
+      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-18"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "104.21.91.254",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "waynn.makeup"
+      },
+      "transport": {
+        "headers": {
+          "Host": "waynn.makeup"
+        },
+        "path": "linkvws",
+        "type": "ws"
+      },
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-19"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "afrhms16v.bestxray.buzz",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false
+      },
+      "transport": {
+        "headers": {},
+        "path": "/linkws",
+        "type": "ws"
+      },
+      "uuid": "f584de15-2034-4170-a723-f48c2bae5e0f",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-20"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "linde06.indiavideo.sbs",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "linde06.indiavideo.sbs"
+      },
+      "transport": {
+        "headers": {
+          "Host": "linde06.indiavideo.sbs"
+        },
+        "path": "/linkws",
+        "type": "ws"
+      },
+      "uuid": "edbb1059-1633-4271-b66e-ed4fba47a1bf",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-21"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "pla.yj2022.gq",
+      "server_port": 8880,
+      "transport": {
+        "headers": {
+          "Host": "pla.yj2022.gq"
+        },
+        "path": "/r8ykwif5rffiqJeJ49zLQtAUESmka7PbhWz3wiHs8cSeiRyZL",
+        "type": "ws"
+      },
+      "uuid": "4b5e4565-322f-4223-a891-78a84f189726",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-22"
+    },
+    {
+      "alter_id": 0,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "nla.yj2022.gq",
+      "server_port": 8880,
+      "transport": {
+        "headers": {
+          "Host": "nla.yj2022.gq"
+        },
+        "path": "/doxwPZje9wMMZi4m9xY8GkU5zT3Hs4kRDL4W3nistSRmDw3x2",
+        "type": "ws"
+      },
+      "uuid": "4b5e4565-322f-4223-a891-78a84f189726",
+      "type": "vmess",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United States-23"
+    },
+    {
+      "password": "93ec7261-1c92-4149-848a-26b6fb9fc4ce",
+      "server": "my02.trojanyyds.xyz",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "my02.trojanyyds.xyz"
+      },
+      "type": "trojan",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United+Kingdom"
+    },
+    {
+      "password": "93ec7261-1c92-4149-848a-26b6fb9fc4ce",
+      "server": "my01.trojanyyds.xyz",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false
+      },
+      "type": "trojan",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "Hong+Kong"
+    },
+    {
+      "password": "93ec7261-1c92-4149-848a-26b6fb9fc4ce",
+      "server": "hk03.trojanyyds.xyz",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "hk03.trojanyyds.xyz"
+      },
+      "type": "trojan",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "Hong+Kong-1"
+    },
+    {
+      "password": "93ec7261-1c92-4149-848a-26b6fb9fc4ce",
+      "server": "hk04.trojanyyds.xyz",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false
+      },
+      "type": "trojan",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United+Kingdom-1"
+    },
+    {
+      "password": "93ec7261-1c92-4149-848a-26b6fb9fc4ce",
+      "server": "sk01.trojanyyds.xyz",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "sk01.trojanyyds.xyz"
+      },
+      "type": "trojan",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United+Kingdom-2"
+    },
+    {
+      "password": "93ec7261-1c92-4149-848a-26b6fb9fc4ce",
+      "server": "ru01.trojanyyds.xyz",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "ru01.trojanyyds.xyz"
+      },
+      "type": "trojan",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "Hong+Kong-2"
+    },
+    {
+      "password": "93ec7261-1c92-4149-848a-26b6fb9fc4ce",
+      "server": "in01.trojanyyds.xyz",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false
+      },
+      "type": "trojan",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "United+Kingdom-3"
+    },
+    {
+      "password": "93ec7261-1c92-4149-848a-26b6fb9fc4ce",
+      "server": "hk01.trojanyyds.xyz",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "hk01.trojanyyds.xyz"
+      },
+      "type": "trojan",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "Hong+Kong-3"
+    },
+    {
+      "password": "93ec7261-1c92-4149-848a-26b6fb9fc4ce",
+      "server": "tw02.trojanyyds.xyz",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "tw02.trojanyyds.xyz"
+      },
+      "type": "trojan",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "Hong+Kong-4"
+    },
+    {
+      "password": "93ec7261-1c92-4149-848a-26b6fb9fc4ce",
+      "server": "hk02.trojanyyds.xyz",
+      "server_port": 443,
+      "tls": {
+        "enabled": true,
+        "insecure": false
+      },
+      "type": "trojan",
+      "domain_strategy": "prefer_ipv4",
+      "tag": "Hong+Kong-5"
     },
     {
       "type": "vmess",
@@ -1326,63 +2053,129 @@
       }
     },
     {
-      "type": "dns",
-      "tag": "dns-out"
+      "type": "selector",
+      "tag": "proxy",
+      "outbounds": [
+        "URL-TEST"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "URL-TEST",
+      "outbounds": [
+        "🇳🇱 Netherlands (1) § 0",
+        "🇺🇸 United States (5) § 1",
+        "🇺🇸 United States (6) § 2",
+        "🇺🇸 United States (10) § 3",
+        "🇳🇱 Netherlands (2) § 4",
+        "🇳🇱 Netherlands (3) § 5",
+        "🇺🇸 United States (49) § 6",
+        "🇺🇸 United States (66) § 7",
+        "🇺🇸 United States (67) § 8",
+        "🇳🇱 Netherlands (4) § 9",
+        "🇺🇸 United States (71) § 10",
+        "🇺🇸 United States (74) § 11",
+        "🇺🇸 United States (75) § 12",
+        "🇺🇸 United States (78) § 13",
+        "🇺🇸 United States (79) § 14",
+        "🇺🇸 United States (81) § 15",
+        "🇳🇱 Netherlands (5) § 16",
+        "🇺🇸 United States (83) § 17",
+        "🇨🇳 Taiwan (9) § 18",
+        "🇳🇱 Netherlands (6) § 19",
+        "🇺🇸 United States (91) § 20",
+        "🇺🇸 United States (93) § 21",
+        "🇺🇸 United States (95) § 22",
+        "🇺🇸 United States (96) § 23",
+        "🇺🇸 United States (97) § 24",
+        "🇺🇸 United States (99) § 25",
+        "🇧🇪 Belgium § 26",
+        "🇳🇱 Netherlands (7) § 27",
+        "🇳🇱 Netherlands (9) § 28",
+        "🇬🇧 United Kingdom (2) § 29",
+        "🇺🇸 United States (108) § 30",
+        "🇺🇸 United States (111) § 31",
+        "🇨🇳 Taiwan (11) § 32",
+        "🇺🇸 United States (115) § 33",
+        "🇺🇸 United States (123) § 34",
+        "🇺🇸 United States (124) § 35",
+        "🇺🇸 United States (125) § 36",
+        "🇺🇸 United States (130) § 37",
+        "🇺🇸 United States (131) § 38",
+        "🇺🇸 United States (132) § 39",
+        "🇫🇷 France § 40",
+        "🇵🇭 Philippines (5) § 41",
+        "🇵🇭 Philippines (6) § 42",
+        "🇺🇸 United States (140) § 43",
+        "🇺🇸 United States (142) § 44",
+        "🇫🇮 Finland § 45",
+        "🇵🇭 Philippines (7) § 46",
+        "🇹🇭 Thailand § 47",
+        "🇺🇸 United States (149) § 48",
+        "🇳🇱 Netherlands (11) § 49",
+        "United States-5",
+        "Hong+Kong-1",
+        "United States-2",
+        "United States-19",
+        "United States-13",
+        "United+Kingdom-1",
+        "United+Kingdom-2",
+        "United States-3",
+        "Hong+Kong-2",
+        "United States-20",
+        "United States-14",
+        "Netherlands-1",
+        "Netherlands-4",
+        "United+Kingdom-3",
+        "United States-11",
+        "United States-21",
+        "Vietnam",
+        "Taiwan",
+        "United States-7",
+        "Netherlands-2",
+        "Netherlands",
+        "United States-15",
+        "United States-12",
+        "United States-22",
+        "Taiwan-1",
+        "United States-8",
+        "United States-23",
+        "United States-9",
+        "United States-6",
+        "United States",
+        "United States-16",
+        "United States-17",
+        "Hong+Kong-3",
+        "United States-10",
+        "United States-18",
+        "Finland",
+        "United States-1",
+        "Netherlands-3",
+        "United States-4",
+        "United+Kingdom",
+        "Hong+Kong-4",
+        "Hong+Kong",
+        "Hong+Kong-5"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m0s",
+      "tolerance": 50
     },
     {
       "type": "direct",
       "tag": "direct"
     },
     {
+      "type": "block",
+      "tag": "block"
+    },
+    {
       "type": "direct",
       "tag": "bypass"
     },
     {
-      "type": "block",
-      "tag": "block"
+      "type": "dns",
+      "tag": "dns-out"
     }
-  ],
-  "route": {
-    "geoip": {
-      "download_url": "https://github.com/chocolate4u/Iran-sing-box-rules/releases/latest/download/geoip.db",
-      "download_detour": "direct"
-    },
-    "geosite": {
-      "download_url": "https://github.com/chocolate4u/Iran-sing-box-rules/releases/latest/download/geosite.db",
-      "download_detour": "direct"
-    },
-    "rules": [
-      {
-        "port": 53,
-        "outbound": "dns-out"
-      },
-      {
-        "inbound": "dns-in",
-        "outbound": "dns-out"
-      },
-      {
-        "source_ip_cidr": [
-          "224.0.0.0/3",
-          "ff00::/8"
-        ],
-        "ip_cidr": [
-          "224.0.0.0/3",
-          "ff00::/8"
-        ],
-        "outbound": "block"
-      }
-    ],
-    "final": "proxy",
-    "auto_detect_interface": true,
-    "override_android_vpn": true
-  },
-  "experimental": {
-    "clash_api": {
-      "external_controller": "0.0.0.0:9090",
-      "external_ui": "yacd",
-      "external_ui_download_url": "https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
-      "external_ui_download_detour": "direct",
-      "default_mode": "rule"
-    }
-  }
+  ]
 }
