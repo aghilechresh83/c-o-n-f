@@ -1,18 +1,38 @@
 {
+  "log": {
+    "disabled": false,
+    "level": "fatal",
+    "timestamp": true
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "0.0.0.0:9090",
+      "external_ui": "yacd",
+      "external_ui_download_url": "https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
+      "external_ui_download_detour": "direct",
+      "secret": "",
+      "default_mode": "rule"
+    },
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db",
+      "cache_id": "my_profile2",
+      "store_fakeip": true
+    }
+  },
   "dns": {
-    "independent_cache": true,
     "servers": [
       {
-        "address": "tcp://9.9.9.9",
+        "address": "tcp://95.85.95.85",
         "address_resolver": "dns-direct",
-        "strategy": "prefer_ipv4",
+        "strategy": "ipv4_only",
         "tag": "dns-remote"
       },
       {
-        "address": "8.8.8.8",
+        "address": "local",
         "address_resolver": "dns-local",
         "detour": "direct",
-        "strategy": "prefer_ipv4",
+        "strategy": "ipv4_only",
         "tag": "dns-direct"
       },
       {
@@ -25,969 +45,311 @@
         "tag": "dns-block"
       }
     ],
-    "final": "dns-remote"
-  },
-  "experimental": {
-    "clash_api": {
-      "external_controller": "0.0.0.0:9090",
-      "external_ui": "yacd",
-      "external_ui_download_url": "https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
-      "external_ui_download_detour": "direct",
-      "secret": "",
-      "default_mode": "rule"
-    }
+    "rules": [
+      {
+        "domain_suffix": [
+          ".ir",
+"104.21.65.133",
+"sg22.vlessx.xyz",
+"adenc35.fixedlfoat.top"
+        ],
+        "server": "dns-direct"
+      },
+      {
+        "outbound": "direct",
+        "server": "dns-direct",
+        "rewrite_ttl": 20
+      },
+      {
+        "outbound": "any",
+        "server": "dns-direct",
+        "rewrite_ttl": 20
+      }
+    ],
+    "reverse_mapping": true,
+    "strategy": "ipv4_only",
+    "independent_cache": true
   },
   "inbounds": [
     {
-      "listen": "0.0.0.0",
+      "listen": "127.0.0.1",
       "listen_port": 6450,
-      "override_address": "8.8.8.8",
+      "override_address": "95.85.95.85",
       "override_port": 53,
       "tag": "dns-in",
       "type": "direct"
     },
     {
-      "domain_strategy": "prefer_ipv4",
-      "endpoint_independent_nat": true,
-      "inet4_address": [
-        "172.19.0.1/28"
-      ],
-      "inet6_address": [
-        "fdfe:dcba:9876::1/126"
-      ],
-      "mtu": 1500,
-      "sniff": true,
-      "sniff_override_destination": false,
-      "stack": "mixed",
+      "type": "tun",
+      "tag": "mixed-in",
+      "domain_strategy": "ipv4_only",
+      "interface_name": "tun0",
+      "inet4_address": "10.200.0.0/16",
+      "mtu": 9000,
       "auto_route": true,
       "strict_route": true,
-      "tag": "tun-in",
-      "type": "tun"
+      "stack": "system",
+      "endpoint_independent_nat": true,
+      "sniff": true,
+      "sniff_override_destination": true
     },
     {
       "domain_strategy": "",
-      "listen": "0.0.0.0",
+      "listen": "127.0.0.1",
       "listen_port": 2080,
       "sniff": true,
-      "sniff_override_destination": false,
+      "sniff_override_destination": true,
       "tag": "mixed-in",
       "type": "mixed"
     }
   ],
-  "log": {
-    "level": "warn"
-  },
   "outbounds": [
     {
-      "outbounds": [
-        "🇺🇸 United States (9)",
-        "🇺🇸 United States (10)",
-        "🇺🇸 United States (11)",
-        "🇨🇭 Switzerland",
-        "سوئ (1)",
-        "🇺🇸 United States (15)",
-        "Canada (16)",
-        "🇺🇸 United States (19)",
-        "🇯🇵 Japan",
-        "🇺🇸 United States (20)",
-        "🇺🇸 United States (22)",
-        "🇺🇸 United States (23)",
-        "🇺🇸 United States (24)",
-        "🇬🇧 United Kingdom (2)",
-        "🇨🇳 Taiwan (1)",
-        "🇺🇸 United States (28)",
-        "🇺🇸 United States (32)",
-        "بریتانیا",
-        "🇩🇪 Germany (5)",
-        "🇺🇸 United States (35)",
-        "🇺🇸 United States (36)",
-        "🇺🇸 United States (37)",
-        "🇺🇸 United States (40)",
-        "🇺🇸 United States (41)",
-        "🇺🇸 United States (43)",
-        "🇻🇳 Vietnam (1)",
-        "🇺🇸 United States (44)",
-        "🇺🇸 United States (49)",
-        "🇺🇸 United States (50)",
-        "🇺🇸 United States (52)",
-        "🇺🇸 United States (55)",
-        "سوئد",
-        "🇺🇸 United States (58)",
-        "🇭🇰 Hong Kong",
-        "🇺🇸 United States (59)",
-        "🇺🇸 United States (61)",
-        "🇺🇸 United States (62)",
-        "🇺🇸 United States (63)",
-        "سوئد(66)",
-        "🇺🇸 United States (67)",
-        "🇻🇳 Vietnam (2)",
-        "🇻🇳 Vietnam (3)",
-        "🇯🇵 Japan (3)",
-        "🇺🇸 United States (73)",
-        "سوئد (1)",
-        "🇷🇸 تایوان",
-        "🇺🇸 United States (2)",
-        "🇺🇸 United States (3)",
-        "🇺🇸 United States (6)"
-      ],
       "tag": "proxy",
+      "type": "selector",
+      "outbounds": [
+        "URL-TEST",
+        "美国【付费推荐：https://jdyvip.link/】77 | 1",
+        "🇺🇸 United States | 2",
+        "印度【付费推荐：https://jdyvip.link/】82 | 3",
+        "美国【付费推荐：https://jdyvip.link/】34 | 4",
+        "🇺🇸 United States | 5",
+        "🇺🇸 United States | 6",
+        "韩国【付费推荐：https://jdyvip.link/】24 | 7",
+        "🇨🇭 Switzerland | 8"
+      ]
+    },
+    {
+      "tag": "URL-TEST",
       "type": "urltest",
+      "outbounds": [
+        "美国【付费推荐：https://jdyvip.link/】77 | 1",
+        "🇺🇸 United States | 2",
+        "印度【付费推荐：https://jdyvip.link/】82 | 3",
+        "美国【付费推荐：https://jdyvip.link/】34 | 4",
+        "🇺🇸 United States | 5",
+        "🇺🇸 United States | 6",
+        "韩国【付费推荐：https://jdyvip.link/】24 | 7",
+        "🇨🇭 Switzerland | 8"
+      ],
       "url": "https://www.gstatic.com/generate_204",
-      "interval": "1m",
-      "tolerance": 1
+      "interval": "10m",
+      "tolerance": 50
     },
     {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2606:4700:3030::ac43:cba9",
-      "server_port": 8880,
-      "transport": {
-        "headers": {
-          "Host": "nla.yj2022.gq"
-        },
-        "path": "/doxwPZje9wMMZi4m9xY8GkU5zT3Hs4kRDL4W3nistSRmDw3x2",
-        "type": "ws"
+      "tag": "美国【付费推荐：https://jdyvip.link/】77 | 1",
+      "type": "vless",
+      "server": "104.21.65.133",
+      "server_port": 443,
+      "uuid": "dfb18c6f-731a-4898-a1c4-cc36c6055a90",
+      "flow": "",
+      "packet_encoding": "xudp",
+      "multiplex": {
+        "enabled": false,
+        "protocol": "smux",
+        "max_streams": 32
       },
-      "uuid": "4b5e4565-322f-4223-a891-78a84f189726",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "سوئد (1)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "89.23.86.189",
-      "server_port": 59492,
-      "transport": {
-        "headers": {
-          "Host": "dm.imzcc.com"
-        },
-        "path": "/imzcc",
-        "type": "ws"
-      },
-      "uuid": "3cd1a2f0-499f-4eb0-862a-cdd0ecd821c7",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇷🇸 تایوان"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2a06:98c1:3121::3",
-      "server_port": 8080,
-      "transport": {
-        "headers": {
-          "Host": "mehdi4.mehdimoghaddam.fun"
-        },
-        "path": "/@forwardv2ray",
-        "type": "ws"
-      },
-      "uuid": "69ec0fdb-b959-43d0-9004-45e310147b5a",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (2)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2a06:98c1:3121::3",
-      "server_port": 2052,
-      "transport": {
-        "headers": {
-          "Host": "mehdi14.mehdimoghaddam.fun"
-        },
-        "path": "/@forwardv2ray",
-        "type": "ws"
-      },
-      "uuid": "f4b9203b-78df-425b-ab70-5ab006405884",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (3)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2a06:98c1:3120::7",
-      "server_port": 8880,
-      "transport": {
-        "headers": {
-          "Host": "mehdi3.mehdimoghaddam.fun"
-        },
-        "path": "/@forwardv2ray",
-        "type": "ws"
-      },
-      "uuid": "4f92e557-efa9-40d6-a673-7ccce4c9826f",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (6)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "172.67.229.38",
-      "server_port": 2086,
-      "transport": {
-        "headers": {
-          "Host": "ca6.tehme100.fun"
-        },
-        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
-        "type": "ws"
-      },
-      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (9)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2a06:98c1:3120::3",
-      "server_port": 8443,
       "tls": {
         "enabled": true,
+        "server_name": "w2.sylarsun.eu.org",
         "insecure": false,
-        "server_name": "mehdi13.mehdimoghaddam.fun"
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
       },
       "transport": {
-        "headers": {
-          "Host": "mehdi13.mehdimoghaddam.fun"
-        },
-        "path": "/@forwardv2ray",
-        "type": "ws"
-      },
-      "uuid": "b6d9ffc3-ca2d-444c-b39a-d0bfebc81292",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (10)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2a06:98c1:3120::3",
-      "server_port": 8080,
-      "transport": {
-        "headers": {
-          "Host": "mehdi18.mehdimoghaddam.fun"
-        },
-        "path": "/@forwardv2ray",
-        "type": "ws"
-      },
-      "uuid": "69ec0fdb-b959-43d0-9004-45e310147b5a",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (11)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "94.131.99.8",
-      "server_port": 47182,
-      "uuid": "81b2b630-8b6a-404f-b996-b12f13db5786",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇨🇭 Switzerland"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "20.70.181.212",
-      "server_port": 29548,
-      "transport": {
-        "headers": {},
+        "type": "ws",
         "path": "/",
-        "type": "ws"
-      },
-      "uuid": "294dde06-603b-4bd3-afdc-9e4de14ca183",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "سوئ (1)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2606:4700:3034::ac43:8817",
-      "server_port": 8880,
-      "transport": {
         "headers": {
-          "Host": "a3.bcbot.in"
-        },
-        "path": "/",
-        "type": "ws"
-      },
-      "uuid": "ce9aadc8-8c6e-4867-d247-9a84b469ac27",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (15)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "104.31.16.27",
-      "server_port": 80,
-      "transport": {
-        "headers": {
-          "Host": "ca5.tehme2.fun"
-        },
-        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
-        "type": "ws"
-      },
-      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "Canada (16)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "23.225.133.77",
-      "server_port": 41698,
-      "transport": {
-        "early_data_header_name": "Sec-WebSocket-Protocol",
-        "headers": {
-          "Host": "hk-300.changding.tech"
+          "Host": "w2.sylarsun.eu.org"
         },
         "max_early_data": 2048,
-        "path": "/changding-tls0",
-        "type": "ws"
-      },
-      "uuid": "a3dfbdd6-7e01-4735-9973-e3dd056c129e",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (19)"
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
-      "alter_id": 64,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "140.83.63.38",
-      "server_port": 24445,
-      "uuid": "94c5ef37-4d82-49f9-c624-f01259374a17",
+      "tag": "🇺🇸 United States | 2",
       "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇯🇵 Japan"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "172.67.217.144",
-      "server_port": 80,
-      "transport": {
-        "headers": {
-          "Host": "lv1.xv2ray.net"
-        },
-        "path": "/",
-        "type": "ws"
-      },
-      "uuid": "85674552-ce41-44d9-bb2a-50f76450b3d8",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (20)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2606:4700:3030::ac43:836c",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "server_name": "glweidf.cfd"
-      },
-      "transport": {
-        "headers": {
-          "Host": "glweidf.cfd"
-        },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "uuid": "1052f24e-7b09-45eb-b0c5-d858eb124192",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (22)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2a06:98c1:3120::3",
-      "server_port": 2052,
-      "transport": {
-        "headers": {
-          "Host": "mehdi13.mehdimoghaddam.fun"
-        },
-        "path": "/@forwardv2ray",
-        "type": "ws"
-      },
-      "uuid": "f4b9203b-78df-425b-ab70-5ab006405884",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (23)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2a06:98c1:3120::3",
-      "server_port": 2095,
-      "transport": {
-        "headers": {
-          "Host": "mehdi2.mehdimoghaddam.fun"
-        },
-        "path": "/@forwardv2ray",
-        "type": "ws"
-      },
-      "uuid": "f14b7672-1272-437d-8ce1-e9dfff517e47",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (24)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "172.99.190.12",
-      "server_port": 22324,
-      "uuid": "04621bae-ab36-11ec-b909-0242ac120002",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇬🇧 United Kingdom (2)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "123.58.197.70",
-      "server_port": 443,
-      "transport": {
-        "headers": {},
-        "path": "/",
-        "type": "ws"
-      },
-      "uuid": "4ca0196c-05e7-45eb-9036-692c201f45fb",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇨🇳 Taiwan (1)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2606:4700:3031::ac43:cf1a",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "server_name": "glweidf.sbs"
-      },
-      "transport": {
-        "headers": {
-          "Host": "glweidf.sbs"
-        },
-        "path": "/linkws",
-        "type": "ws"
-      },
-      "uuid": "76221bfb-e92f-4e80-81c5-6fe48f50ac0b",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (28)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "104.31.16.28",
-      "server_port": 80,
-      "transport": {
-        "headers": {
-          "Host": "ca4.tehme2.fun"
-        },
-        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
-        "type": "ws"
-      },
-      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (32)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2606:4700:3035::6815:28a2",
-      "server_port": 80,
-      "transport": {
-        "headers": {
-          "Host": "ee1.xv2ray.net"
-        },
-        "path": "/vmess",
-        "type": "ws"
-      },
-      "uuid": "0580abe6-9aaf-40e2-ba33-0bc9f3b6ef2b",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "بریتانیا"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "138.201.184.34",
-      "server_port": 443,
-      "transport": {
-        "headers": {
-          "Host": "fast.com"
-        },
-        "path": "/@VPNLime",
-        "type": "ws"
-      },
-      "uuid": "4edffbd4-cac3-40bc-ca2a-0329c7494346",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇩🇪 Germany (5)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2a06:98c1:3121::3",
-      "server_port": 2087,
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "server_name": "mehdi7.mehdimoghaddam.fun"
-      },
-      "transport": {
-        "headers": {
-          "Host": "mehdi7.mehdimoghaddam.fun"
-        },
-        "path": "/@forwardv2ray",
-        "type": "ws"
-      },
-      "uuid": "3541227e-6e66-4909-9cd0-3a27d348c55e",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (35)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2a06:98c1:3121::3",
-      "server_port": 2082,
-      "transport": {
-        "headers": {
-          "Host": "mehdi14.mehdimoghaddam.fun"
-        },
-        "path": "/@forwardv2ray",
-        "type": "ws"
-      },
-      "uuid": "089b3e45-1be5-4dad-8754-6cec4ccb3ae9",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (36)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
       "server": "154.90.39.63",
       "server_port": 45343,
       "uuid": "08aa8499-d616-4ff1-d6ab-ce0c522824aa",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (37)"
+      "security": "auto",
+      "alter_id": 0,
+      "global_padding": false,
+      "authenticated_length": true,
+      "packet_encoding": "",
+      "multiplex": {
+        "enabled": false,
+        "protocol": "smux",
+        "max_streams": 32
+      }
     },
     {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2a06:98c1:3121::3",
-      "server_port": 2086,
-      "transport": {
-        "headers": {
-          "Host": "mehdi20.mehdimoghaddam.fun"
-        },
-        "path": "/@forwardv2ray",
-        "type": "ws"
+      "tag": "印度【付费推荐：https://jdyvip.link/】82 | 3",
+      "type": "vless",
+      "server": "103.110.127.85",
+      "server_port": 8443,
+      "uuid": "f2cc5221-acc1-4da5-b4f0-dee53b40ebec",
+      "flow": "",
+      "packet_encoding": "xudp",
+      "multiplex": {
+        "enabled": false,
+        "protocol": "smux",
+        "max_streams": 32
       },
-      "uuid": "6d695795-2fd7-42ae-91ab-0eff97edec92",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (40)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "172.67.229.35",
-      "server_port": 2086,
-      "transport": {
-        "headers": {
-          "Host": "ca6.tehme100.fun"
-        },
-        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
-        "type": "ws"
-      },
-      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (41)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "172.67.229.26",
-      "server_port": 2086,
-      "transport": {
-        "headers": {
-          "Host": "ca6.tehme100.fun"
-        },
-        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
-        "type": "ws"
-      },
-      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (43)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "103.82.39.220",
-      "server_port": 80,
-      "transport": {
-        "headers": {
-          "Host": "hcmvip1.shopvpn4g.vn"
-        },
-        "path": "/dt3shopvpn4g",
-        "type": "ws"
-      },
-      "uuid": "dbbf9558-b938-478e-a51c-d7fb6b283535",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇻🇳 Vietnam (1)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "172.67.229.14",
-      "server_port": 80,
-      "transport": {
-        "headers": {
-          "Host": "fr9.tehme100.fun"
-        },
-        "path": "/Jnv8ViZOUVgijjOh0p5uGjHnXIiY",
-        "type": "ws"
-      },
-      "uuid": "617c9bc4-4116-41c6-99e0-ace49a38fcdb",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (44)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2a06:98c1:3121::3",
-      "server_port": 2096,
       "tls": {
         "enabled": true,
+        "server_name": "cric.yourdisha.in",
         "insecure": false,
-        "server_name": "mehdi19.mehdimoghaddam.fun"
-      },
-      "transport": {
-        "headers": {
-          "Host": "mehdi19.mehdimoghaddam.fun"
-        },
-        "path": "/@forwardv2ray",
-        "type": "ws"
-      },
-      "uuid": "1207c544-8199-45b8-befe-23fdd03630c0",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (49)"
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
     },
     {
-      "alter_id": 0,
-      "packet_encoding": "",
+      "tag": "美国【付费推荐：https://jdyvip.link/】34 | 4",
+      "type": "vless",
+      "server": "sg22.vlessx.xyz",
+      "server_port": 8443,
+      "uuid": "60813b9d-aa0e-4a5c-88b8-ed231058e82a",
+      "flow": "",
+      "packet_encoding": "xudp",
+      "multiplex": {
+        "enabled": false,
+        "protocol": "smux",
+        "max_streams": 32
+      },
+      "tls": {
+        "enabled": true,
+        "server_name": "pages.20230619.love",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/fuck0yes",
+        "headers": {
+          "Host": "pages.20230619.love"
+        },
+        "max_early_data": 0,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "tag": "🇺🇸 United States | 5",
+      "type": "vmess",
+      "server": "adenc35.fixedlfoat.top",
+      "server_port": 443,
+      "uuid": "45f63e92-f782-4cac-84b8-e61cb5a5bfd0",
       "security": "auto",
-      "server": "2a06:98c1:3121::3",
+      "alter_id": 0,
+      "global_padding": false,
+      "authenticated_length": true,
+      "packet_encoding": "",
+      "multiplex": {
+        "enabled": false,
+        "protocol": "smux",
+        "max_streams": 32
+      },
+      "tls": {
+        "enabled": true,
+        "server_name": "adenc35.fixedlfoat.top",
+        "insecure": true,
+        "disable_sni": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/linkws",
+        "headers": {
+          "Host": "adenc35.fixedlfoat.top"
+        },
+        "max_early_data": 0,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "tag": "🇺🇸 United States | 6",
+      "type": "vmess",
+      "server": "nla.yj2022.gq",
       "server_port": 8880,
+      "uuid": "4b5e4565-322f-4223-a891-78a84f189726",
+      "security": "auto",
+      "alter_id": 0,
+      "global_padding": false,
+      "authenticated_length": true,
+      "packet_encoding": "",
+      "multiplex": {
+        "enabled": false,
+        "protocol": "smux",
+        "max_streams": 32
+      },
       "transport": {
+        "type": "ws",
+        "path": "/doxwPZje9wMMZi4m9xY8GkU5zT3Hs4kRDL4W3nistSRmDw3x2",
         "headers": {
-          "Host": "mehdi9.mehdimoghaddam.fun"
+          "Host": "nla.yj2022.gq"
         },
-        "path": "/@forwardv2ray",
-        "type": "ws"
+        "max_early_data": 0,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "tag": "韩国【付费推荐：https://jdyvip.link/】24 | 7",
+      "type": "vless",
+      "server": "hk03.nttkk.com",
+      "server_port": 443,
+      "uuid": "60813b9d-aa0e-4a5c-88b8-ed231058e82a",
+      "flow": "",
+      "packet_encoding": "xudp",
+      "multiplex": {
+        "enabled": false,
+        "protocol": "smux",
+        "max_streams": 32
       },
-      "uuid": "4f92e557-efa9-40d6-a673-7ccce4c9826f",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (50)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "129.146.133.157",
-      "server_port": 51009,
-      "uuid": "81714cef-9bde-4a08-aa50-d6bc0172d78b",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (52)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "47.254.89.211",
-      "server_port": 80,
-      "transport": {
-        "headers": {},
-        "path": "/GSoTl9ZoYG5V2R0k4tUTGI8k",
-        "type": "ws"
+      "tls": {
+        "enabled": true,
+        "server_name": "pages.20230619.love",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
       },
-      "uuid": "203b2ab2-4994-4193-8193-6631a575edb0",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (55)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2a06:98c1:3120::3",
-      "server_port": 2086,
       "transport": {
+        "type": "ws",
+        "path": "/fuck0yes",
         "headers": {
-          "Host": "mehdi18.mehdimoghaddam.fun"
+          "Host": "pages.20230619.love"
         },
-        "path": "/@forwardv2ray",
-        "type": "ws"
-      },
-      "uuid": "6d695795-2fd7-42ae-91ab-0eff97edec92",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "سوئد"
+        "max_early_data": 0,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     },
     {
+      "tag": "🇨🇭 Switzerland | 8",
+      "type": "vmess",
+      "server": "94.131.99.8",
+      "server_port": 47182,
+      "uuid": "81b2b630-8b6a-404f-b996-b12f13db5786",
+      "security": "auto",
       "alter_id": 0,
+      "global_padding": false,
+      "authenticated_length": true,
       "packet_encoding": "",
-      "security": "auto",
-      "server": "172.67.229.19",
-      "server_port": 2086,
-      "transport": {
-        "headers": {
-          "Host": "ca6.tehme100.fun"
-        },
-        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
-        "type": "ws"
-      },
-      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (58)"
-    },
-    {
-      "alter_id": 64,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "182.16.1.194",
-      "server_port": 80,
-      "transport": {
-        "headers": {},
-        "path": "/opt/video/images",
-        "type": "ws"
-      },
-      "uuid": "00a1da14-d55f-5f75-e346-79b985e1a723",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇭🇰 Hong Kong"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "172.67.229.37",
-      "server_port": 2086,
-      "transport": {
-        "headers": {
-          "Host": "ca6.tehme100.fun"
-        },
-        "path": "/IOebhLMhl1CTbFHbL95myfRX2",
-        "type": "ws"
-      },
-      "uuid": "58fe1542-5290-40ad-815a-77707a81afe5",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (59)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "104.21.40.162",
-      "server_port": 80,
-      "transport": {
-        "headers": {
-          "Host": "ee1.xv2ray.net"
-        },
-        "path": "/vmess",
-        "type": "ws"
-      },
-      "uuid": "0580abe6-9aaf-40e2-ba33-0bc9f3b6ef2b",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (61)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2606:4700:3031::ac43:aa4b",
-      "server_port": 80,
-      "transport": {
-        "headers": {
-          "Host": "us3e-mmnnfr9dop0.v2freevpn.com"
-        },
-        "path": "/v118-fccxmxm35",
-        "type": "ws"
-      },
-      "uuid": "2a8a10fb-9ca3-367e-a234-cf09f841be4f",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (62)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "38.180.33.136",
-      "server_port": 50104,
-      "uuid": "790f6802-7535-4109-de6d-15f676d5e3f7",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (63)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2a06:98c1:3121::3",
-      "server_port": 2095,
-      "transport": {
-        "headers": {
-          "Host": "mehdi15.mehdimoghaddam.fun"
-        },
-        "path": "/@forwardv2ray",
-        "type": "ws"
-      },
-      "uuid": "f14b7672-1272-437d-8ce1-e9dfff517e47",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "سوئد(66)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "64.64.229.96",
-      "server_port": 80,
-      "transport": {
-        "headers": {},
-        "path": "/",
-        "type": "ws"
-      },
-      "uuid": "88816e0c-db97-486c-9029-9693d14e4c34",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (67)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "103.82.27.129",
-      "server_port": 80,
-      "transport": {
-        "headers": {
-          "Host": "vn7.5gsieutocdo.com"
-        },
-        "path": "/5gsieutocdo.club",
-        "type": "ws"
-      },
-      "uuid": "c95357eb-2869-4511-8940-f0dc5e1ec9b1",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇻🇳 Vietnam (2)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "125.212.231.79",
-      "server_port": 80,
-      "transport": {
-        "headers": {},
-        "path": "/VPNDATA.xYx",
-        "type": "ws"
-      },
-      "uuid": "bb4170c1-509b-4bb8-ac94-37f90f90b84d",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇻🇳 Vietnam (3)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "183.181.36.194",
-      "server_port": 41597,
-      "transport": {
-        "headers": {},
-        "path": "/",
-        "type": "ws"
-      },
-      "uuid": "4a6eaa2d-5603-4c05-d967-fb6f42250a5a",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇯🇵 Japan (3)"
-    },
-    {
-      "alter_id": 0,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "2606:4700:3031::ac43:b80d",
-      "server_port": 80,
-      "transport": {
-        "headers": {
-          "Host": "yhnsb3.shabijichang.com"
-        },
-        "path": "/",
-        "type": "ws"
-      },
-      "uuid": "c458695d-6908-45c3-9512-e0c46418454c",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "🇺🇸 United States (73)"
+      "multiplex": {
+        "enabled": false,
+        "protocol": "smux",
+        "max_streams": 32
+      }
     },
     {
       "tag": "direct",
@@ -1008,6 +370,16 @@
   ],
   "route": {
     "auto_detect_interface": true,
+    "override_android_vpn": true,
+    "final": "proxy",
+    "geoip": {
+      "download_url": "https://github.com/MiSaturo/sing-box-geoip-ir/releases/latest/download/geoip.db",
+      "download_detour": "direct"
+    },
+    "geosite": {
+      "download_url": "https://github.com/MasterKia/iran-hosted-domains/releases/latest/download/iran-geosite.db",
+      "download_detour": "direct"
+    },
     "rules": [
       {
         "outbound": "dns-out",
@@ -1019,24 +391,82 @@
         "inbound": [
           "dns-in"
         ],
-        "outbound": "dns-out"
+        "outbound": "proxy"
+      },
+      {
+        "domain_suffix": [
+          ".ir",
+"adenc35.fixedlfoat.top",
+"sg22.vlessx.xyz",
+"codeberg.org",
+"github",
+"githubassets"
+        ],
+        "outbound": "bypass"
+      },
+      {
+        "geoip": [
+          "ir"
+        ],
+        "outbound": "bypass"
       },
       {
         "geosite": [
-          "category-ads-all"
+          "ir"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "geosite": [
+          "other"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "geosite": [
+          "ads"
         ],
         "outbound": "block"
       },
       {
         "ip_cidr": [
-          "224.0.0.0/3",
+          "127.0.0.0/8",
           "ff00::/8"
         ],
-        "outbound": "block",
+        "outbound": "proxy",
         "source_ip_cidr": [
           "224.0.0.0/3",
           "ff00::/8"
         ]
+      },
+      {
+        "rule_set": "geoip-us",
+        "rule_set_ipcidr_match_source": true,
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geoip-cn",
+        "outbound": "direct"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      }
+    ],
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "geoip-cn",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "type": "remote",
+        "tag": "geoip-us",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-us.srs",
+        "download_detour": "direct"
       }
     ]
   }
