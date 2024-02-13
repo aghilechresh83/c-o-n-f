@@ -14,34 +14,54 @@
       },
       {
         "tag": "dns-direct",
-        "address": "tcp://95.85.95.85",
+        "address": "local",
         "address_resolver": "dns-local",
         "strategy": "ipv4_only",
         "detour": "direct"
       },
       {
-        "tag": "dns-local",
-        "address": "local",
-        "detour": "direct"
-      },
-      {
         "tag": "dns-block",
         "address": "rcode://success"
+      },
+      {
+        "address": "fakeip",
+        "strategy": "ipv4_only",
+        "tag": "dns-fake"
       }
     ],
     "rules": [
       {
         "domain": [
           "nina.bond",
+          ".ir",
+          "gstatic.com",
           "meroiy.icu",
           "vip2323.cfd",
           "kellie.makeup",
           "ming2.kiwireich.com"
         ],
         "server": "dns-direct"
+      },
+      {
+        "inbound": [
+          "tun-in"
+        ],
+        "server": "dns-fake"
+      },
+      {
+        "disable_cache": true,
+        "inbound": [
+          "tun-in"
+        ],
+        "server": "dns-fake"
       }
     ],
-    "independent_cache": true
+    "independent_cache": true,
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    }
   },
   "inbounds": [
     {
@@ -51,11 +71,11 @@
       "inet4_address": "172.19.0.1/28",
       "inet6_address": "fdfe:dcba:9876::1/126",
       "auto_route": true,
-      "strict_route": true,
-      "endpoint_independent_nat": true,
+      "strict_route": false,
+      "endpoint_independent_nat": false,
       "sniff": true,
       "sniff_override_destination": true,
-      "domain_strategy": "prefer_ipv4",
+      "domain_strategy": "",
       "inet6_route_address": [
         "::/1",
         "8000::/1",
@@ -74,23 +94,23 @@
         "160.0.0.0/5",
         "168.0.0.0/6",
         "172.0.0.0/12",
-        "172.32.0.0/11", 
-        "172.64.0.0/10", 
-        "172.128.0.0/9", 
-        "173.0.0.0/8", 
-        "174.0.0.0/7", 
-        "176.0.0.0/4", 
-        "192.0.0.0/9", 
-        "192.128.0.0/11", 
-        "192.160.0.0/13", 
-        "192.169.0.0/16", 
-        "192.170.0.0/15", 
-        "192.172.0.0/14", 
-        "192.176.0.0/12", 
-        "192.192.0.0/10", 
-        "193.0.0.0/8", 
-        "194.0.0.0/7", 
-        "196.0.0.0/6", 
+        "172.32.0.0/11",
+        "172.64.0.0/10",
+        "172.128.0.0/9",
+        "173.0.0.0/8",
+        "174.0.0.0/7",
+        "176.0.0.0/4",
+        "192.0.0.0/9",
+        "192.128.0.0/11",
+        "192.160.0.0/13",
+        "192.169.0.0/16",
+        "192.170.0.0/15",
+        "192.172.0.0/14",
+        "192.176.0.0/12",
+        "192.192.0.0/10",
+        "193.0.0.0/8",
+        "194.0.0.0/7",
+        "196.0.0.0/6",
         "200.0.0.0/5",
         "208.0.0.0/4",
         "10.255.255.2/32"
@@ -103,7 +123,7 @@
       "listen_port": 2334,
       "sniff": true,
       "sniff_override_destination": true,
-      "domain_strategy": "prefer_ipv4"
+      "domain_strategy": ""
     },
     {
       "type": "direct",
@@ -152,8 +172,7 @@
         "Japan § 29",
         "United States § 30",
         "United States § 31"
-      ],
-      "default": "auto"
+      ]
     },
     {
       "type": "urltest",
@@ -192,8 +211,9 @@
         "United States § 30",
         "United States § 31"
       ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "40s"
+      "url": "https://www.gstatic.com/generate_204/",
+      "interval": "2m",
+      "tolerance": 70
     },
     {
       "type": "vmess",
@@ -931,6 +951,49 @@
       {
         "geoip": "private",
         "outbound": "bypass"
+      },
+      {
+        "geoip": [
+          "malware",
+          "phishing"
+        ],
+        "outbound": "block"
+      },
+      {
+        "geosite": [
+          "geosite:category-ads-all",
+          "malware",
+          "phishing",
+          "cryptominers"
+        ],
+        "outbound": "block"
+      },
+      {
+        "geoip": [
+          "ir",
+          "private",
+          "arvancloud"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "outbound": "dns-out",
+        "port": [
+          853
+        ]
+      },
+      {
+        "domain": [
+          "nina.bond",
+          ".ir",
+          "github.com",
+          "gstatic.com",
+          "meroiy.icu",
+          "vip2323.cfd",
+          "kellie.makeup",
+          "ming2.kiwireich.com"
+        ],
+        "outbound": "direct"
       }
     ],
     "auto_detect_interface": true,
