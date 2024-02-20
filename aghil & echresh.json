@@ -1,177 +1,149 @@
 {
-  "log": {
-    "level": "warn",
-    "output": "box.log",
-    "timestamp": true
-  },
   "dns": {
+    "independent_cache": true,
     "servers": [
       {
-        "tag": "dns-remote",
         "address": "tcp://95.85.95.85",
         "address_resolver": "dns-direct",
-        "strategy": "ipv4_only"
+        "strategy": "ipv4_only",
+        "tag": "dns-remote"
       },
       {
-        "tag": "dns-direct",
-        "address": "local",
+        "address": "8.8.8.8",
         "address_resolver": "dns-local",
+        "detour": "direct",
         "strategy": "ipv4_only",
-        "detour": "direct"
+        "tag": "dns-direct"
       },
       {
-        "tag": "dns-block",
-        "address": "rcode://success"
+        "address": "local",
+        "detour": "direct",
+        "tag": "dns-local"
       },
       {
-        "address": "fakeip",
-        "strategy": "ipv4_only",
-        "tag": "dns-fake"
+        "address": "rcode://success",
+        "tag": "dns-block"
       }
-    ],
+    ]
+  },
+  "log": {
+    "level": "warn"
+  },
+  "route": {
+    "auto_detect_interface": true,
     "rules": [
       {
-        "domain": [
-          "nina.bond",
-          ".ir",
-          "gstatic.com",
-          "meroiy.icu",
-          "vip2323.cfd",
-          "kellie.makeup",
-          "ming2.kiwireich.com"
-        ],
-        "server": "dns-direct"
+        "outbound": "dns-out",
+        "port": [
+          53
+        ]
       },
       {
         "inbound": [
-          "tun-in"
+          "dns-in"
         ],
-        "server": "dns-fake"
+        "outbound": "dns-out"
       },
       {
-        "disable_cache": true,
-        "inbound": [
-          "tun-in"
+        "geosite": [
+          "category-ads-all",
+          "category-ads-ir",
+          "google-ads",
+          "spotify-ads",
+          "adobe-ads",
+          "apple-ads"
         ],
-        "server": "dns-fake"
+        "outbound": "proxy"
+      },
+      {
+        "geosite": [
+          "apple",
+          "adobe",
+          "anthropic",
+          "openai",
+          "clubhouse",
+          "netflix",
+          "nvidia",
+          "intel",
+          "amd",
+          "signal",
+          "soundcloud",
+          "youtube",
+          "telegram",
+          "twitter",
+          "instagram",
+          "facebook",
+          "whatsapp",
+          "pinterest",
+          "tiktok",
+          "spotify",
+          "twitch",
+          "discord"
+        ],
+        "outbound": "proxy"
+      },
+      {
+        "geosite": [
+          "cn"
+        ],
+        "outbound": "proxy"
+      },
+      {
+        "geoip": [
+          "cn"
+        ],
+        "outbound": "proxy"
+      },
+      {
+        "geosite": [
+          "category-bank-ir",
+          "category-bourse-ir",
+          "category-education-ir",
+          "category-forums-ir",
+          "category-gov-ir",
+          "category-insurance-ir",
+          "category-media-ir",
+          "category-news-ir",
+          "category-payment-ir",
+          "category-scholar-ir",
+          "category-shopping-ir",
+          "category-social-media-ir",
+          "category-tech-ir",
+          "category-travel-ir"
+        ],
+        "outbound": "bypass"
+      },
+      {
+        "geoip": [
+          "ir"
+        ],
+        "outbound": "bypass"
+      },
+      {
+        "geoip": [
+          "private"
+        ],
+        "outbound": "bypass"
+      },
+      {
+        "ip_cidr": [
+          "224.0.0.0/3",
+          "ff00::/8"
+        ],
+        "outbound": "block",
+        "source_ip_cidr": [
+          "224.0.0.0/3",
+          "ff00::/8"
+        ]
       }
-    ],
-    "independent_cache": true,
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    }
+    ]
   },
-  "inbounds": [
-    {
-      "type": "tun",
-      "tag": "tun-in",
-      "mtu": 9000,
-      "inet4_address": "172.19.0.1/28",
-      "inet6_address": "fdfe:dcba:9876::1/126",
-      "auto_route": true,
-      "strict_route": false,
-      "endpoint_independent_nat": false,
-      "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "",
-      "inet6_route_address": [
-        "::/1",
-        "8000::/1",
-        "2a01:5ec0:d000::/36",
-        "fe80::/10"
-      ],
-      "inet4_route_address": [
-        "0.0.0.0/5",
-        "8.0.0.0/7",
-        "11.0.0.0/8",
-        "12.0.0.0/6",
-        "16.0.0.0/4",
-        "32.0.0.0/3",
-        "64.0.0.0/2",
-        "128.0.0.0/3",
-        "160.0.0.0/5",
-        "168.0.0.0/6",
-        "172.0.0.0/12",
-        "172.32.0.0/11",
-        "172.64.0.0/10",
-        "172.128.0.0/9",
-        "173.0.0.0/8",
-        "174.0.0.0/7",
-        "176.0.0.0/4",
-        "192.0.0.0/9",
-        "192.128.0.0/11",
-        "192.160.0.0/13",
-        "192.169.0.0/16",
-        "192.170.0.0/15",
-        "192.172.0.0/14",
-        "192.176.0.0/12",
-        "192.192.0.0/10",
-        "193.0.0.0/8",
-        "194.0.0.0/7",
-        "196.0.0.0/6",
-        "200.0.0.0/5",
-        "208.0.0.0/4",
-        "10.255.255.2/32"
-      ]
-    },
-    {
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "127.0.0.1",
-      "listen_port": 2334,
-      "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": ""
-    },
-    {
-      "type": "direct",
-      "tag": "dns-in",
-      "listen": "127.0.0.1",
-      "listen_port": 6450,
-      "override_address": "8.8.8.8",
-      "override_port": 53
-    }
-  ],
   "outbounds": [
     {
       "type": "selector",
-      "tag": "select",
+      "tag": "proxy",
       "outbounds": [
-        "auto",
-        "United Kingdom § 0",
-        "United States § 1",
-        "United States § 2",
-        "United States § 3",
-        "United States § 4",
-        "United States § 5",
-        "Russia § 6",
-        "United States § 7",
-        "United States § 8",
-        "United States § 9",
-        "United States § 10",
-        "United States § 11",
-        "United States § 12",
-        "United States § 13",
-        "United States § 14",
-        "United States § 15",
-        "United States § 16",
-        "United States § 17",
-        "United States § 18",
-        "Australia § 19",
-        "United States § 20",
-        "Norway § 21",
-        "United States § 22",
-        "United States § 23",
-        "The Netherlands § 24",
-        "United States § 25",
-        "Netherlands § 26",
-        "United States § 27",
-        "United States § 28",
-        "Japan § 29",
-        "United States § 30",
-        "United States § 31"
+        "auto"
       ]
     },
     {
@@ -212,8 +184,8 @@
         "United States § 31"
       ],
       "url": "https://www.gstatic.com/generate_204/",
-      "interval": "2m",
-      "tolerance": 70
+      "interval": "50s",
+      "tolerance": 30
     },
     {
       "type": "vmess",
@@ -924,81 +896,6 @@
       "tag": "block"
     }
   ],
-  "route": {
-    "geoip": {
-      "path": "geo-assets/sagernet-sing-geoip-geoip.db"
-    },
-    "geosite": {
-      "path": "geo-assets/sagernet-sing-geosite-geosite.db"
-    },
-    "rules": [
-      {
-        "inbound": "dns-in",
-        "outbound": "dns-out"
-      },
-      {
-        "port": 53,
-        "outbound": "dns-out"
-      },
-      {
-        "clash_mode": "Direct",
-        "outbound": "direct"
-      },
-      {
-        "clash_mode": "Global",
-        "outbound": "select"
-      },
-      {
-        "geoip": "private",
-        "outbound": "bypass"
-      },
-      {
-        "geoip": [
-          "malware",
-          "phishing"
-        ],
-        "outbound": "block"
-      },
-      {
-        "geosite": [
-          "geosite:category-ads-all",
-          "malware",
-          "phishing",
-          "cryptominers"
-        ],
-        "outbound": "block"
-      },
-      {
-        "geoip": [
-          "ir",
-          "private",
-          "arvancloud"
-        ],
-        "outbound": "direct"
-      },
-      {
-        "outbound": "dns-out",
-        "port": [
-          853
-        ]
-      },
-      {
-        "domain": [
-          "nina.bond",
-          ".ir",
-          "github.com",
-          "gstatic.com",
-          "meroiy.icu",
-          "vip2323.cfd",
-          "kellie.makeup",
-          "ming2.kiwireich.com"
-        ],
-        "outbound": "direct"
-      }
-    ],
-    "auto_detect_interface": true,
-    "override_android_vpn": true
-  },
   "experimental": {
     "clash_api": {
       "external_controller": "0.0.0.0:9090",
@@ -1008,5 +905,76 @@
       "secret": "",
       "default_mode": "rule"
     }
-  }
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "listen_port": 6450,
+      "override_address": "8.8.8.8",
+      "override_port": 53,
+      "tag": "dns-in",
+      "type": "direct"
+    },
+    {
+      "domain_strategy": "",
+      "listen": "127.0.0.1",
+      "listen_port": 2080,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "tag": "mixed-in",
+      "type": "mixed"
+    },
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "mtu": 9000,
+      "inet4_address": "172.19.0.1/28",
+      "inet6_address": "fdfe:dcba:9876::1/126",
+      "auto_route": true,
+      "strict_route": true,
+      "endpoint_independent_nat": true,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "",
+      "inet6_route_address": [
+        "::/1",
+        "8000::/1",
+        "2a01:5ec0:d000::/36",
+        "fe80::/10"
+      ],
+      "inet4_route_address": [
+        "0.0.0.0/5",
+        "8.0.0.0/7",
+        "11.0.0.0/8",
+        "12.0.0.0/6",
+        "16.0.0.0/4",
+        "32.0.0.0/3",
+        "64.0.0.0/2",
+        "128.0.0.0/3",
+        "160.0.0.0/5",
+        "168.0.0.0/6",
+        "172.0.0.0/12",
+        "172.32.0.0/11",
+        "172.64.0.0/10",
+        "172.128.0.0/9",
+        "173.0.0.0/8",
+        "174.0.0.0/7",
+        "176.0.0.0/4",
+        "192.0.0.0/9",
+        "192.128.0.0/11",
+        "192.160.0.0/13",
+        "192.169.0.0/16",
+        "192.170.0.0/15",
+        "192.172.0.0/14",
+        "192.176.0.0/12",
+        "192.192.0.0/10",
+        "193.0.0.0/8",
+        "194.0.0.0/7",
+        "196.0.0.0/6",
+        "200.0.0.0/5",
+        "208.0.0.0/4",
+        "10.255.255.2/32"
+      ]
+    }
+  ]
 }
